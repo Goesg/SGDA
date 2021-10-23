@@ -139,7 +139,7 @@ class Condominio{
             let hash = await bcrypt.hashSync(newPassword,salt)
             
             await database.where({id:validCpf.result[0].id}).update({password:hash}).table(this.table)
-            return {status:200 , result:{Ok:`senha atualizada com sucesso!`}}
+            return {status:200 , result:{Ok:`senha atualizada com sucesso!`,user:validCpf.result[0]}}
         }catch(err){
             console.log(err)
             throw new Error(`Erro no model User, método updatePassword`)

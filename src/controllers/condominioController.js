@@ -92,8 +92,8 @@ class condominioController {
     async recoveryPassword(req,res){
        try{
            let {cpf,newPassword} = req.body
-           let resultToken = await Condominio.updatePassword(cpf,newPassword)
-           res.status(resultToken.status).json(resultToken.result)
+           let resultPassword = await Condominio.updatePassword(cpf,newPassword)
+           res.json(resultPassword.result)
         }catch(err){
             console.log(err)
             let catchErro = {erro:`Houve uma falha no servidor ao mudar a senha`}
