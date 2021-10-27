@@ -1,26 +1,26 @@
 const router = require('express').Router()
-const condominioController = require('../controllers/condominioController')
+const condominoController = require('../controllers/condominoController')
 
 
-// INSERIR USUARIO
-router.post('/user', condominioController.create)
+// INSERIR CONDOMINO
+router.post('/condomino', condominoController.create)
 
 // MOSTRAR TODOS OS USUÁRIOS
-router.get('/users', condominioController.showAll)
+router.get('/condominos', condominoController.showAll)
 
-// MOSTRAR USUARIO PELO ID
-router.get('/user/:id', condominioController.showById)
+// MOSTRAR CONDOMINO PELO ID
+router.get('/condomino/:id', condominoController.showById)
 
-// ATUALIZAR USUARIO PELO UD
-router.put('/user', condominioController.editById)
+// ATUALIZAR CONDOMINO PELO UD
+router.put('/condomino', condominoController.editById)
 
 // DELETAR USUÁRIO PELO ID
-router.delete('/user/:id', condominioController.removeById)
+router.delete('/condomino/:id', condominoController.removeById)
 
 // TROCAR SENHA PELO CPF
-router.post('/recovery', condominioController.recoveryPassword)
+router.post('/recovery', condominoController.recoveryPassword)
 
-// ROTA DE LOGIN DE USUARIO
-router.post('/login',condominioController.login)
+// ROTA DE LOGIN DE CONDOMINO
+router.post('/login',condominoController.login)
 
 module.exports = router

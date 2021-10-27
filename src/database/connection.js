@@ -16,7 +16,8 @@ const Connection = new Sequelize('SGADC','root','goes2310',{
     host:'localhost',
     dialect:'mysql',
     define: {
-        timestamps: false
+        timestamps: false,
+        freezeTableName: true
     }
 })
 Connection.authenticate().then(()=>{console.log('Conexão com o banco estabelicida')})

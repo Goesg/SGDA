@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 app.set('view engine','ejs')
 app.use(express.static('email'))
 
-const Condominio = require('./database/schemas/Condominio')
+const Condomino = require('./database/schemas/Condomino')
 const {db} = require('./database/connection')
 // db.sync({force:true})
 
