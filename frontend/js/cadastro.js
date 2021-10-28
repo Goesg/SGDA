@@ -5,10 +5,10 @@ $('button').click(()=>{
         password: $('#inputPassword').val(),
         cpf: $('#inputCpf').val(),
     }
-    axios.post('http://localhost:8787/user',cadastro).then(response => {
+    axios.post('http://localhost:8787/condomino',cadastro).then(response => {
         let dados = response.data
         if(dados.Ok) {
-            window.location.href = ('/SGDAHtml/menu.html') 
+            window.location.href = ('/frontend/menu.html') 
         }
         else{ alert(dados.erro)}
     })

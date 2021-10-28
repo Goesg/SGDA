@@ -12,5 +12,5 @@ $('.logout').click(()=>{
     sessionStorage.userName = null
     sessionStorage.userEmail = null
     sessionStorage.userCpf = null
-    window.location.href = "/SGDAHtml/index.html"
+    window.location.href = "/frontend/index.html"
 })

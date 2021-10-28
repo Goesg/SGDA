@@ -1,7 +1,10 @@
-const {database} = require('../../database/connection');
+const {database} = require('../../database/connection')
 
 class checkEmail{
-    static  async checkerEmail(table,email){
+    constructor(table){
+        this.table = table;
+    }
+    async checkerEmail(email){
         try{
             if(email == undefined || email == null || email == " "){
                 return {status:404, result:{erro:`Obrigatório a informação de algum email`}};   
@@ -10,7 +13,7 @@ class checkEmail{
             if(regExpEmail.test(email) == false){
                 return {status:404, result:{erro:`Insira um email válido`}};
             };
-            let existEmail = await database.select().from(table).where({email:email}).then(result =>{
+            let existEmail = await database.select().from(this.table).where({email:email}).then(result =>{
                 if(result.length > 0) return true
                 else{return false}                     
             });
@@ -27,19 +30,23 @@ class checkPassword{
         if(password == undefined || password == null || password == " "){
             return {status:404, result:{erro:`Obrigatório uma senha para realizar seu cadastro`}}    
         }
-        // else if(password.length < 6){
-        //     return {status:404, result:{erro:`A senha precisa conter mais de 6 caracteres`}}     
-        // }
+        else if(password.length < 6){
+            return {status:404, result:{erro:`A senha precisa conter mais de 6 caracteres`}}     
+        }
     }
 }
 
+
 class checkCpf{
-    static  async checkerCpf(cpf){
+    constructor(table){
+        this.table = table;
+    }
+    async checkerCpf(cpf){
         try{
             if(cpf == undefined || cpf == null || cpf == " "){
                 return {status:404, result:{erro:`Obrigatório a informação de algum cpf`}};   
             };
-            let existCpf = await database.select().from(table).where({cpf:cpf}).then(result =>{
+            let existCpf = await database.select().from(this.table).where({cpf:cpf}).then(result =>{
                 if(result.length > 0) return true
                 else{return false}                     
             });
@@ -56,9 +63,9 @@ class userValidation{
     constructor(table){
         this.table = table;
     }
-        async validarEmail(email){
+       async validarEmail(email){
             try{
-                return await checkEmail.checkerEmail(email)
+                return await new checkEmail(this.table).checkerEmail(email)
             }catch(err){
                 console.log(err)
                 throw new Error(`Erro no UserValidation método validar email`)
@@ -76,13 +83,12 @@ class userValidation{
 
         async validarCpf(cpf){
             try{
-                return await checkCpf.checkerCpf(cpf)
+                return await new checkCpf(this.table).checkerCpf(cpf)
             }catch(err){
                 console.log(err)
                 throw new Error(`Erro no UserValidation método validar cpf`)
             }
         }
-       
 }
 
 module.exports = userValidation

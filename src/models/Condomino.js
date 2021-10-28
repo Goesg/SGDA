@@ -1,12 +1,13 @@
 const {database} = require('../database/connection')
 const bcrypt = require('bcryptjs')
 const Validation = require('../controllers/validations/validation');
-const condominioValidation = new Validation('condominos')
+const condominioValidation = new Validation('condomino')
 
 class Condominos{
     
     constructor(table){
         this.table = table;
+        this.select = ['id','name','email','cpf','birth_date','sex','phone','password']
     }
 
     async insertUser(dataUser){
@@ -37,7 +38,7 @@ class Condominos{
 
     async findAll(){
         try{
-           let users = await database.select(['id','name','email','cpf','birth_date','sex','phone']).table(this.table)
+           let users = await database.select(this.select).table(this.table)
            if(users.length > 0) return {status:200, result:users}          
            else return {status:404, result:{erro:`Nenhum usuario foi encontrado`}}
         }catch(err){
@@ -48,7 +49,7 @@ class Condominos{
 
     async findAllByName(name){
         try{
-           let user = await database.select(['id','name','email','cpf','birth_date','sex','phone']).table(this.table).where({name:name})
+           let user = await database.select(this.select).table(this.table).where({name:name})
            if(user.length > 0) return {status:200, result:user} 
            else return {status:404, result:{erro:`O nome ${name} não corresponde a nenhum usuario`}}
         }catch(err){
@@ -59,7 +60,7 @@ class Condominos{
 
     async findAllByRole(role){
         try{
-           let user = await database.select(['id','name','email','cpf','birth_date','sex','phone']).table(this.table).where({role:role})
+           let user = await database.select(this.select).table(this.table).where({role:role})
            if(user.length > 0) return {status:200, result:user} 
            else return {status:404, result:{erro:`O cargo ${role} não corresponde a nenhum usuario`}}
         }catch(err){
@@ -70,7 +71,7 @@ class Condominos{
 
     async findById(id){
         try{
-            let user = await database.select(['id','name','email','cpf','birth_date','sex','phone']).table(this.table).where({id:id})
+            let user = await database.select(this.select).table(this.table).where({id:id})
             if(user.length > 0) return {status:200, result:user} 
             else return {status:404, result:{erro:`O id ${id} não corresponde a nenhum usuario`}}
         }catch(err){
@@ -81,7 +82,7 @@ class Condominos{
 
     async findByCpf(cpf){
         try{
-            let user = await database.select(['id','name','email','cpf','birth_date','sex','phone']).table(this.table).where({cpf:cpf})
+            let user = await database.select(this.select).table(this.table).where({cpf:cpf})
             if(user.length > 0) return {status:200, result:user} 
             else return {status:404, result:{erro:`O cpf ${cpf} não corresponde a nenhum usuario`}}
         }catch(err){
@@ -92,7 +93,7 @@ class Condominos{
 
     async findByEmail(email){
         try{
-            let user = await database.select(['id','name','email','cpf','birth_date','sex','phone','password']).table(this.table).where({email:email})
+            let user = await database.select(this.select).table(this.table).where({email:email})
             if(user.length > 0) return {status:200, result:user} 
             else return {status:404, result:{erro:`O email ${email} não corresponde a nenhum usuario`}}
         }catch(err){
@@ -161,4 +162,4 @@ class Condominos{
     }
 }
 
-module.exports = new Condominos('condominos')
+module.exports = new Condominos('condomino')

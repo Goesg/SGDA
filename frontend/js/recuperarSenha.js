@@ -14,7 +14,7 @@ $('button').click(()=>{
                 sessionStorage.userName = dados.user.name
                 sessionStorage.userCpf = dados.user.cpf
                 sessionStorage.userEmail = dados.user.email
-                window.location.href = ('/SGDAHtml/menu.html') 
+                window.location.href = ('/frontend/menu.html') 
             }
         })
     }
