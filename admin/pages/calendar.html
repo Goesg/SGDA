@@ -24,7 +24,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../index.html" class="nav-link">Home</a>
+        <a href="/admin/index.html" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -183,7 +183,7 @@
         </div>
       </div>
 
-       <!-- Sidebar Menu -->
+      <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
@@ -192,10 +192,12 @@
          
           <li class="nav-header"></li>
           <li class="nav-item">
+          </li>
+          <li class="nav-item">
             <a href="/admin/pages/calendar.html" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                Eventos
+                Calendário
                 <span class="badge badge-info right">2</span>
               </p>
             </a>
@@ -287,7 +289,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/pages/gestao/eventos.html" class="nav-link">
+                <a href="/admin/pages/gestao/projects.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Eventos</p>
                 </a>
@@ -303,8 +305,6 @@
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
     </div>
     <!-- /.sidebar -->
   </aside>
@@ -341,11 +341,11 @@
                 <div class="card-body">
                   <!-- the events -->
                   <div id="external-events">
-                    <div class="external-event bg-success">Lunch</div>
-                    <div class="external-event bg-warning">Go home</div>
-                    <div class="external-event bg-info">Do homework</div>
-                    <div class="external-event bg-primary">Work on UI design</div>
-                    <div class="external-event bg-danger">Sleep tight</div>
+                    <div class="external-event bg-success">Reunião</div>
+                    <div class="external-event bg-warning">Eventos</div>
+                    <div class="external-event bg-info">Aniversários</div>
+                    <div class="external-event bg-primary">Reservas</div>
+                    <div class="external-event bg-danger">Obras</div>
                     <div class="checkbox">
                       <label for="drop-remove">
                         <input type="checkbox" id="drop-remove">
@@ -357,32 +357,7 @@
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Create Event</h3>
-                </div>
-                <div class="card-body">
-                  <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
-                    <ul class="fc-color-picker" id="color-chooser">
-                      <li><a class="text-primary" href="#"><i class="fas fa-square"></i></a></li>
-                      <li><a class="text-warning" href="#"><i class="fas fa-square"></i></a></li>
-                      <li><a class="text-success" href="#"><i class="fas fa-square"></i></a></li>
-                      <li><a class="text-danger" href="#"><i class="fas fa-square"></i></a></li>
-                      <li><a class="text-muted" href="#"><i class="fas fa-square"></i></a></li>
-                    </ul>
-                  </div>
-                  <!-- /btn-group -->
-                  <div class="input-group">
-                    <input id="new-event" type="text" class="form-control" placeholder="Event Title">
-
-                    <div class="input-group-append">
-                      <button id="add-new-event" type="button" class="btn btn-primary">Add</button>
-                    </div>
-                    <!-- /btn-group -->
-                  </div>
-                  <!-- /input-group -->
-                </div>
-              </div>
+             
             </div>
           </div>
           <!-- /.col -->
@@ -439,30 +414,7 @@
 
     /* initialize the external events
      -----------------------------------------------------------------*/
-    function ini_events(ele) {
-      ele.each(function () {
-
-        // create an Event Object (https://fullcalendar.io/docs/event-object)
-        // it doesn't need to have a start or end
-        var eventObject = {
-          title: $.trim($(this).text()) // use the element's text as the event title
-        }
-
-        // store the Event Object in the DOM element so we can get to it later
-        $(this).data('eventObject', eventObject)
-
-        // make the event draggable using jQuery UI
-        $(this).draggable({
-          zIndex        : 1070,
-          revert        : true, // will cause the event to go back to its
-          revertDuration: 0  //  original position after the drag
-        })
-
-      })
-    }
-
-    ini_events($('#external-events div.external-event'))
-
+    
     /* initialize the calendar
      -----------------------------------------------------------------*/
     //Date for the calendar events (dummy data)
@@ -472,7 +424,6 @@
         y    = date.getFullYear()
 
     var Calendar = FullCalendar.Calendar;
-    var Draggable = FullCalendar.Draggable;
 
     var containerEl = document.getElementById('external-events');
     var checkbox = document.getElementById('drop-remove');
@@ -481,23 +432,13 @@
     // initialize the external events
     // -----------------------------------------------------------------
 
-    new Draggable(containerEl, {
-      itemSelector: '.external-event',
-      eventData: function(eventEl) {
-        return {
-          title: eventEl.innerText,
-          backgroundColor: window.getComputedStyle( eventEl ,null).getPropertyValue('background-color'),
-          borderColor: window.getComputedStyle( eventEl ,null).getPropertyValue('background-color'),
-          textColor: window.getComputedStyle( eventEl ,null).getPropertyValue('color'),
-        };
-      }
-    });
 
     var calendar = new Calendar(calendarEl, {
+      locale:'pt-br',
       headerToolbar: {
         left  : 'prev,next today',
         center: 'title',
-        right : 'dayGridMonth,timeGridWeek,timeGridDay'
+        right : 'dayGridMonth,timeGridWeek,timeGridDay',
       },
       themeSystem: 'bootstrap',
       //Random default events
@@ -533,11 +474,11 @@
         },
         {
           title          : 'Birthday Party',
-          start          : new Date(y, m, d + 1, 19, 0),
+          start          : new Date(2021, 12, 4 + 1, 19, 0),
           end            : new Date(y, m, d + 1, 22, 30),
           allDay         : false,
-          backgroundColor: '#00a65a', //Success (green)
-          borderColor    : '#00a65a' //Success (green)
+          backgroundColor: '#dc3545', //Success (green)
+          borderColor    : '#dc3545' //Success (green)
         },
         {
           title          : 'Click for Google',
@@ -548,57 +489,11 @@
           borderColor    : '#3c8dbc' //Primary (light-blue)
         }
       ],
-      editable  : true,
-      droppable : true, // this allows things to be dropped onto the calendar !!!
-      drop      : function(info) {
-        // is the "remove after drop" checkbox checked?
-        if (checkbox.checked) {
-          // if so, remove the element from the "Draggable Events" list
-          info.draggedEl.parentNode.removeChild(info.draggedEl);
-        }
-      }
+      
     });
 
     calendar.render();
     // $('#calendar').fullCalendar()
-
-    /* ADDING EVENTS */
-    var currColor = '#3c8dbc' //Red by default
-    // Color chooser button
-    $('#color-chooser > li > a').click(function (e) {
-      e.preventDefault()
-      // Save color
-      currColor = $(this).css('color')
-      // Add color effect to button
-      $('#add-new-event').css({
-        'background-color': currColor,
-        'border-color'    : currColor
-      })
-    })
-    $('#add-new-event').click(function (e) {
-      e.preventDefault()
-      // Get value and make sure it is not null
-      var val = $('#new-event').val()
-      if (val.length == 0) {
-        return
-      }
-
-      // Create events
-      var event = $('<div />')
-      event.css({
-        'background-color': currColor,
-        'border-color'    : currColor,
-        'color'           : '#fff'
-      }).addClass('external-event')
-      event.text(val)
-      $('#external-events').prepend(event)
-
-      // Add draggable funtionality
-      ini_events(event)
-
-      // Remove event from text input
-      $('#new-event').val('')
-    })
   })
 </script>
 </body>
