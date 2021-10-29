@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
 app.set('view engine','ejs')
-app.use(express.static('email'))
+app.use(express.static('public'))
 
 const Condomino = require('./database/schemas/Condomino')
 const {db} = require('./database/connection')

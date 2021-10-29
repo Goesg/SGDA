@@ -10,7 +10,7 @@ $('button').click(()=>{
             sessionStorage.userName = dados.user.name
             sessionStorage.userCpf = dados.user.cpf
             sessionStorage.userEmail = dados.user.email
-            window.location.href = ('/frontend/menu.html') 
+            window.location.href = ('/frontEnd/menu.html') 
         }
         else{ alert(dados.erro)}
     })

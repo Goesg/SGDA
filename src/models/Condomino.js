@@ -1,7 +1,7 @@
 const {database} = require('../database/connection')
 const bcrypt = require('bcryptjs')
 const Validation = require('../controllers/validations/validation');
-const condominioValidation = new Validation('condomino')
+const condominoValidation = new Validation('condomino')
 
 class Condominos{
     
@@ -13,13 +13,13 @@ class Condominos{
     async insertUser(dataUser){
         try{
         // VALIDAR EMAIL E SENHA
-            let invalidEmail = await condominioValidation.validarEmail(dataUser.email)
+            let invalidEmail = await condominoValidation.validarEmail(dataUser.email)
             if(invalidEmail) return invalidEmail
             
-            let invalidPassword = await condominioValidation.validarSenha(dataUser.password)
+            let invalidPassword = await condominoValidation.validarSenha(dataUser.password)
             if(invalidPassword) return invalidPassword
 
-            let invalidCpf = await condominioValidation.validarCpf(dataUser.cpf)
+            let invalidCpf = await condominoValidation.validarCpf(dataUser.cpf)
             if(invalidCpf) return invalidCpf
                
         // BCRYPT
@@ -133,7 +133,7 @@ class Condominos{
         // VALIDACAO
             let validCpf = await this.findByCpf(cpf)
             if(validCpf.status == 404) return validCpf
-            let validPassword = await condominioValidation.validarSenha(newPassword)
+            let validPassword = await condominoValidation.validarSenha(newPassword)
             if(validPassword) return validPassword
         // BCRYPT
             let salt = await bcrypt.genSaltSync(10)

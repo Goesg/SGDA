@@ -8,7 +8,7 @@ $('button').click(()=>{
     axios.post('http://localhost:8787/condomino',cadastro).then(response => {
         let dados = response.data
         if(dados.Ok) {
-            window.location.href = ('/frontend/menu.html') 
+            window.location.href = ('/frontEnd/menu.html') 
         }
         else{ alert(dados.erro)}
     })
