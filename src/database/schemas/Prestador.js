@@ -1,60 +1,48 @@
 const {db,Sequelize} = require('../connection')
 
-const Condomino = db.define('condomino',{
-    cpf:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
+const Prestador = db.define('prestador',{
     nome:{
         type: Sequelize.STRING,
         allowNull: false
     },
-    email:{
+    cargo:{
         type: Sequelize.STRING,
         allowNull: false
-    },
-    login:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    senha:{
-         type: Sequelize.STRING,
-        allowNull: false
-    },
-    dataNascimento:{
-        type: Sequelize.STRING,
     },
     sexo:{
+        type: Sequelize.STRING,
+    },
+    dataNascimento:{
         type: Sequelize.STRING,
     },
     estadoCivil:{
         type: Sequelize.STRING,
     },
+    cpf:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     rg:{
         type: Sequelize.STRING,
     },
-    cep:{
+    cnpj:{
+        type: Sequelize.STRING,
+    },
+    endereco:{
+         type: Sequelize.STRING,
+    },
+    bairro:{
         type: Sequelize.STRING,      
     }, 
-    telefone:{
+    cep:{
         type: Sequelize.STRING,       
     },
-    dataCadastro:{
+    telefone:{
         type: Sequelize.STRING,      
     },
-    ativo:{
+    celular:{
         type: Sequelize.STRING,      
     },
-    dependentes:{
-        type: Sequelize.INTEGER,      
-    },
-    apartamento:{
-        type: Sequelize.INTEGER,      
-    },
-    profissao:{
-        type: Sequelize.STRING,      
-    },
-    
 })
 
-module.exports = Condomino
+module.exports = Prestador

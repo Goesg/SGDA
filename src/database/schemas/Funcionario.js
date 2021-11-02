@@ -1,6 +1,7 @@
 const {db,Sequelize} = require('../connection')
+const Condominio = require('./Condominio')
 
-const Condomino = db.define('condomino',{
+const Funcionario = db.define('funcionario',{
     cpf:{
         type: Sequelize.STRING,
         allowNull: false
@@ -45,16 +46,18 @@ const Condomino = db.define('condomino',{
     ativo:{
         type: Sequelize.STRING,      
     },
-    dependentes:{
-        type: Sequelize.INTEGER,      
-    },
-    apartamento:{
-        type: Sequelize.INTEGER,      
-    },
-    profissao:{
+    cargo:{
         type: Sequelize.STRING,      
     },
-    
+    ctps:{
+        type: Sequelize.INTEGER,      
+    }, 
 })
 
-module.exports = Condomino
+Funcionario.belongsTo(Condominio,{
+    constraint:true,
+    foreignKey:'id_Condominio',
+})
+
+
+module.exports = Funcionario

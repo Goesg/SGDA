@@ -1,23 +1,35 @@
 const Condomino = require('../models/Condomino')
 
 class condominoController {
+    constructor(name){
+        this.name = name
+    }
     async create(req,res){   
          async function inserirUsuario(){
             try{
                 let dataUser =  await {
-                    name:req.body.name,
-                    email:req.body.email,
-                    password:req.body.password,
+                    nome:req.body.nome,
                     cpf:req.body.cpf,
-                    birth_date: req.body.birth_date,
-                    sex:req.body.sex,
-                    phone:req.body.phone
+                    email:req.body.email,
+                    login:req.body.login,
+                    senha:req.body.senha,
+                    dataNascimento:req.body.dataNascimento,
+                    sexo:req.body.sexo,    
+                    estadoCivil:req.body.estadoCivil,
+                    rg:req.body.rg,
+                    cep:req.body.cep,
+                    telefone:req.body.telefone,
+                    dataCadastro:req.body.dataCadastro,
+                    ativo:req.body.ativo,
+                    dependentes:req.body.dependentes,
+                    apartamento:req.body.apartamento,
+                    profissao:req.body.profissao
                 }
                 let resultInsert = await Condomino.insertUser(dataUser)
                 res.json(resultInsert.result)
             }catch(err){
                 console.log(err)
-                let catchErro = {erro:`Houve uma falha no servidor ao cadastrar um novo usuário`}
+                let catchErro = {erro:`Houve uma falha no servidor ao cadastrar um novo ${this.name}`}
                 res.status(500).json(catchErro)
             }
          }       
@@ -27,10 +39,10 @@ class condominoController {
     async showAll(req,res){
         try{
             let resultFindAll = await Condomino.findAll()
-            res.status(resultFindAll.status).json(resultFindAll.result)
+            res.json(resultFindAll.result)
         }catch(err){
             console.log(err)
-            let catchErro = {erro:`Houve uma falha no servidor ao listar todos usuarios`}
+            let catchErro = {erro:`Houve uma falha no servidor ao listar todos ${this.name}s`}
             res.status(500).json(catchErro)
         }     
     };
@@ -38,10 +50,10 @@ class condominoController {
     async showById(req,res){    
         try{
             let resultFindId = await Condomino.findById(req.params.id)
-            res.status(resultFindId.status).json(resultFindId.result)
+            res.json(resultFindId.result)
         }catch(err){
             console.log(err)
-            let catchErro = {erro:`Houve uma falha no servidor ao listar usuario pelo id`}
+            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pelo id`}
             res.status(500).json(catchErro)
         }
     };
@@ -49,10 +61,10 @@ class condominoController {
     async showByEmail(req,res){    
         try{
             let resultFindId = await Condomino.findByEmail(req.body.email)
-            res.status(resultFindId.status).json(resultFindId.result)
+            res.json(resultFindId.result)
         }catch(err){
             console.log(err)
-            let catchErro = {erro:`Houve uma falha no servidor ao listar usuario pelo email`}
+            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} o pelo email`}
             res.status(500).json(catchErro)
         }
     };
@@ -61,38 +73,47 @@ class condominoController {
         try{
             let dataUpdate = await {
                 id:req.body.id,
-                name:req.body.name,
-                email:req.body.email,
-                password:req.body.password,
+                nome:req.body.nome,
                 cpf:req.body.cpf,
-                birth_date: req.body.birth_date,
-                sex:req.body.sex,
-                phone:req.body.phone
+                email:req.body.email,
+                login:req.body.login,
+                senha:req.body.senha,
+                dataNascimento:req.body.dataNascimento,
+                sexo:req.body.sexo,    
+                estadoCivil:req.body.estadoCivil,
+                rg:req.body.rg,
+                cep:req.body.cep,
+                telefone:req.body.telefone,
+                dataCadastro:req.body.dataCadastro,
+                ativo:req.body.ativo,
+                dependentes:req.body.dependentes,
+                apartamento:req.body.apartamento,
+                profissao:req.body.profissao
             }
             let resultUpdate = await Condomino.updateById(dataUpdate)
-            res.status(resultUpdate.status).json(resultUpdate.result)
+            res.json(resultUpdate.result)
         }catch(err){
             console.log(err)
-            let catchErro = {erro:`Houve uma falha no servidor ao editar usuario pelo id`}
+            let catchErro = {erro:`Houve uma falha no servidor ao editar ${this.name} pelo id`}
             res.status(500).json(catchErro)
         }
     };
 
     async removeById(req,res){
         try{
-           let resultDelete = await Condomino.deleteById(req.params.id)
-           res.status(resultDelete.status).json(resultDelete.result)
+           let resultDelete = await Condomino.deleteById(req.body.id)
+           res.json(resultDelete.result)
         }catch(err){
             console.log(err)
-            let catchErro = {erro:`Houve uma falha no servidor ao remover usuario pelo id`}
+            let catchErro = {erro:`Houve uma falha no servidor ao remover ${this.name} pelo id`}
             res.status(500).json(catchErro)
         }
     }
 
     async recoveryPassword(req,res){
        try{
-           let {cpf,newPassword} = req.body
-           let resultPassword = await Condomino.updatePassword(cpf,newPassword)
+           let {cpf,novaSenha} = req.body
+           let resultPassword = await Condomino.updatePassword(cpf,novaSenha)
            res.json(resultPassword.result)
         }catch(err){
             console.log(err)
@@ -103,8 +124,8 @@ class condominoController {
     
     async login(req,res){
         try{
-            let {email , password} = await req.body
-            let resultLogin = await Condomino.loginUser(email,password)
+            let {login , senha} = await req.body
+            let resultLogin = await Condomino.login(login,senha)
             res.json(resultLogin.result)
         }catch(err){
             console.log(err)
@@ -114,4 +135,4 @@ class condominoController {
     }
 }
 
-module.exports = new condominoController
+module.exports = new condominoController ('condômino')

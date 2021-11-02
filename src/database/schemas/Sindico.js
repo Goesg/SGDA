@@ -1,6 +1,6 @@
 const {db,Sequelize} = require('../connection')
 
-const Condomino = db.define('condomino',{
+const Sindico = db.define('sindico',{
     cpf:{
         type: Sequelize.STRING,
         allowNull: false
@@ -45,16 +45,6 @@ const Condomino = db.define('condomino',{
     ativo:{
         type: Sequelize.STRING,      
     },
-    dependentes:{
-        type: Sequelize.INTEGER,      
-    },
-    apartamento:{
-        type: Sequelize.INTEGER,      
-    },
-    profissao:{
-        type: Sequelize.STRING,      
-    },
-    
 })
 
-module.exports = Condomino
+module.exports = Sindico
