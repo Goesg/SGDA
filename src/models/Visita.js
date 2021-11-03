@@ -1,6 +1,6 @@
 const {database} = require('../database/connection')
 
-class Apartamento{
+class Visita{
     
     constructor(table,name){
         this.table = table;
@@ -29,14 +29,14 @@ class Apartamento{
         };
     };
 
-    async findByNumero(numero){
+    async findByRg(rg){
         try{
-           let user = await database.select().table(this.table).where({numero:numero})
+           let user = await database.select().table(this.table).where({rg:rg})
            if(user.length > 0) return {status:200, result:user} 
-           else return {status:404, result:{erro:`O número ${numero} não corresponde a nenhum ${this.name}`}}
+           else return {status:404, result:{erro:`O rg ${rg} não corresponde a nenhum ${this.name}`}}
         }catch(err){
             console.log(err)
-            throw new Error(`Erro no model ${this.name}, método findByNumero`)
+            throw new Error(`Erro no model ${this.name}, método findByRg`)
         };
     };
 
@@ -78,4 +78,4 @@ class Apartamento{
     }
 }
 
-module.exports = new Apartamento('apartamento','apartamento')
+module.exports = new Visita('visita','visita')

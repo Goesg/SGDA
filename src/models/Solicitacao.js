@@ -1,6 +1,6 @@
 const {database} = require('../database/connection')
 
-class Apartamento{
+class Solicitacao{
     
     constructor(table,name){
         this.table = table;
@@ -29,14 +29,14 @@ class Apartamento{
         };
     };
 
-    async findByNumero(numero){
+    async findByCodMovel(codMovel){
         try{
-           let user = await database.select().table(this.table).where({numero:numero})
+           let user = await database.select().table(this.table).where({codMovel:codMovel})
            if(user.length > 0) return {status:200, result:user} 
-           else return {status:404, result:{erro:`O número ${numero} não corresponde a nenhum ${this.name}`}}
+           else return {status:404, result:{erro:`O código do imóvel ${codMovel} não corresponde a nenhuma ${this.name}`}}
         }catch(err){
             console.log(err)
-            throw new Error(`Erro no model ${this.name}, método findByNumero`)
+            throw new Error(`Erro no model ${this.name}, método findByCodMovel`)
         };
     };
 
@@ -44,7 +44,7 @@ class Apartamento{
         try{
             let user = await database.select().table(this.table).where({id:id})
             if(user.length > 0) return {status:200, result:user} 
-            else return {status:404, result:{erro:`O id ${id} não corresponde a nenhum ${this.name}`}}
+            else return {status:404, result:{erro:`O id ${id} não corresponde a nenhuma ${this.name}`}}
         }catch(err){
             console.log(err)
             throw new Error(`Erro no model ${this.name}, método  findById`)
@@ -78,4 +78,4 @@ class Apartamento{
     }
 }
 
-module.exports = new Apartamento('apartamento','apartamento')
+module.exports = new Solicitacao('solicitacao','solicitação')

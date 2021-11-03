@@ -10,6 +10,10 @@ const noticiaController = require('../controllers/noticiaController')
 const petController = require('../controllers/petController')
 const prestadorController = require('../controllers/prestadorController')
 const reservaController = require('../controllers/reservaController')
+const sindicoController = require('../controllers/sindicoController')
+const solicitacaoController = require('../controllers/solicitacaoController')
+const veiculoController = require('../controllers/veiculoController')
+const visitaController = require('../controllers/visitaController')
 
 
 // AGENDA
@@ -64,7 +68,7 @@ router.post('/login/funcionario',funcionarioController.login)
 
 // NEGOCIACAO
 router.post('/negociacao', negociacaoController.create)
-router.get('/negociacaos', negociacaoController.showAll)
+router.get('/negociacoes', negociacaoController.showAll)
 router.get('/negociacao/codMovel/:codMovel', negociacaoController.showByCodigo)
 router.get('/negociacao/:id', negociacaoController.showById)
 router.put('/negociacao', negociacaoController.editById)
@@ -101,5 +105,37 @@ router.get('/reserva/:id', reservaController.showById)
 router.put('/reserva', reservaController.editById)
 router.delete('/reserva/:id', reservaController.removeById)
 
+// SINDICO
+router.post('/sindico', sindicoController.create)
+router.get('/sindicos', sindicoController.showAll)
+router.get('/sindico/:id', sindicoController.showById)
+router.put('/sindico', sindicoController.editById)
+router.delete('/sindico/:id', sindicoController.removeById)
+router.post('/recovery/sindico', sindicoController.recoveryPassword)
+router.post('/login/sindico',sindicoController.login)
+
+// SOLICITACAO
+router.post('/solicitacao', solicitacaoController.create)
+router.get('/solicitacoes', solicitacaoController.showAll)
+router.get('/solicitacao/codMovel/:codMovel', solicitacaoController.showByCodigo)
+router.get('/solicitacao/:id', solicitacaoController.showById)
+router.put('/solicitacao', solicitacaoController.editById)
+router.delete('/solicitacao/:id', solicitacaoController.removeById)
+
+// VEICULO
+router.post('/veiculo', veiculoController.create)
+router.get('/veiculos', veiculoController.showAll)
+router.get('/veiculo/placa/:placa', veiculoController.showByPlaca)
+router.get('/veiculo/:id', veiculoController.showById)
+router.put('/veiculo', veiculoController.editById)
+router.delete('/veiculo/:id', veiculoController.removeById)
+
+// VISITA
+router.post('/visita', visitaController.create)
+router.get('/visitas', visitaController.showAll)
+router.get('/visita/rg/:rg', visitaController.showByRg)
+router.get('/visita/:id', visitaController.showById)
+router.put('/visita', visitaController.editById)
+router.delete('/visita/:id', visitaController.removeById)
 
 module.exports = router

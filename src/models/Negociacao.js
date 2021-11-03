@@ -36,7 +36,7 @@ class Negociacao{
            else return {status:404, result:{erro:`O código do imóvel ${codMovel} não corresponde a nenhuma ${this.name}`}}
         }catch(err){
             console.log(err)
-            throw new Error(`Erro no model ${this.name}, método findByCodigo`)
+            throw new Error(`Erro no model ${this.name}, método findByCodMovel`)
         };
     };
 
