@@ -7,6 +7,7 @@ const condominioController = require('../controllers/condominioController')
 const funcionarioController = require('../controllers/funcionarioController')
 const negociacaoController = require('../controllers/negociacaoController')
 const noticiaController = require('../controllers/noticiaController')
+const petController = require('../controllers/petController')
 
 
 // AGENDA
@@ -74,5 +75,13 @@ router.get('/noticias/data/:data', noticiaController.showBydata)
 router.get('/noticia/:id', noticiaController.showById)
 router.put('/noticia', noticiaController.editById)
 router.delete('/noticia/:id', noticiaController.removeById)
+
+// PET
+router.post('/pet', petController.create)
+router.get('/pets', petController.showAll)
+router.get('/pets/apartamento/:apartamento', petController.showByApartamento)
+router.get('/pet/:id', petController.showById)
+router.put('/pet', petController.editById)
+router.delete('/pet/:id', petController.removeById)
 
 module.exports = router
