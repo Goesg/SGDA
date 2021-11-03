@@ -8,6 +8,8 @@ const funcionarioController = require('../controllers/funcionarioController')
 const negociacaoController = require('../controllers/negociacaoController')
 const noticiaController = require('../controllers/noticiaController')
 const petController = require('../controllers/petController')
+const prestadorController = require('../controllers/prestadorController')
+const reservaController = require('../controllers/reservaController')
 
 
 // AGENDA
@@ -83,5 +85,21 @@ router.get('/pets/apartamento/:apartamento', petController.showByApartamento)
 router.get('/pet/:id', petController.showById)
 router.put('/pet', petController.editById)
 router.delete('/pet/:id', petController.removeById)
+
+// PRESTADOR
+router.post('/prestador', prestadorController.create)
+router.get('/prestadores', prestadorController.showAll)
+router.get('/prestador/:id', prestadorController.showById)
+router.put('/prestador', prestadorController.editById)
+router.delete('/prestador/:id', prestadorController.removeById)
+
+// RESERVA
+router.post('/reserva', reservaController.create)
+router.get('/reservas', reservaController.showAll)
+router.get('/reservas/data/:data', reservaController.showBydata)
+router.get('/reserva/:id', reservaController.showById)
+router.put('/reserva', reservaController.editById)
+router.delete('/reserva/:id', reservaController.removeById)
+
 
 module.exports = router

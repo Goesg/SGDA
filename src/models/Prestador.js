@@ -1,9 +1,9 @@
 const {database} = require('../database/connection')
 const bcrypt = require('bcryptjs')
 const Validation = require('../controllers/validations/validation');
-const funcionarioValidation = new Validation('funcionario')
+const prestadorValidation = new Validation('prestador')
 
-class Funcionario{
+class Prestador{
     
     constructor(table,name){
         this.table = table;
@@ -12,24 +12,10 @@ class Funcionario{
 
     async insertUser(dataUser){
         try{
-        // VALIDAR EMAIL, CPF, LOGIN E SENHA
-            let invalidEmail = await funcionarioValidation.validarEmail(dataUser.email)
-            if(invalidEmail) return invalidEmail
-            
-            let invalidSenha = await funcionarioValidation.validarSenha(dataUser.senha)
-            if(invalidSenha) return invalidSenha
-
-            let invalidCpf = await funcionarioValidation.validarCpf(dataUser.cpf)
+        // VALIDAR CPF
+            let invalidCpf = await prestadorValidation.validarCpf(dataUser.cpf)
             if(invalidCpf) return invalidCpf
 
-            let invalidLogin = await funcionarioValidation.validarLogin(dataUser.login)
-            if(invalidLogin) return invalidLogin
-
-        // BCRYPT
-            let salt = await bcrypt.genSaltSync(10)
-            let hash = await bcrypt.hashSync(dataUser.senha,salt)
-            dataUser.senha = hash
-            console.log(dataUser.senha)
         // INSERT
             await database.insert(dataUser).into(this.table)
             return {status:200, result:{Ok:`${this.name} cadastrado com sucesso!`}}  
@@ -130,38 +116,6 @@ class Funcionario{
             throw new Error(`Erro no model ${this.name}, método deleteById`)
         }
     }
-
-    async updatePassword(cpf,novaSenha){
-        try{
-        // VALIDACAO
-            let validCpf = await this.findByCpf(cpf)
-            if(validCpf.status == 404) return validCpf
-            let validPassword = await funcionarioValidation.validarSenha(novaSenha)
-            if(validPassword) return validPassword
-        // BCRYPT
-            let salt = await bcrypt.genSaltSync(10)
-            let hash = await bcrypt.hashSync(novaSenha,salt)
-            
-            await database.where({id:validCpf.result[0].id}).update({senha:hash}).table(this.table)
-            return {status:200 , result:{Ok:`senha atualizada com sucesso!`,user:validCpf.result[0]}}
-        }catch(err){
-            console.log(err)
-            throw new Error(`Erro no model ${this.name}, método updatePassword`)
-        }
-    }
-
-    async login(login,senha){
-        try{
-            let user = await this.findByLogin(login)
-            if(user.status == 404) return user
-            let correctPassword = bcrypt.compareSync(senha,user.result[0].senha) 
-            if(correctPassword) return {status:200, result:{Ok:`Usuário logado com sucesso`,user:user.result[0]}}
-            else{return {status:404, result:{erro:`Senha incorreta`}}}
-        }catch(err){
-            console.log(err)
-            throw new Error(`Erro no model ${this.name}, método login`)
-        }
-    }
 }
 
-module.exports = new Funcionario('funcionario','funcionário')
+module.exports = new Prestador('prestador','prestador')
