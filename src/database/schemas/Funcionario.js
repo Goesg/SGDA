@@ -47,7 +47,8 @@ const Funcionario = db.define('funcionario',{
         type: Sequelize.STRING,      
     },
     cargo:{
-        type: Sequelize.STRING,      
+        type: Sequelize.STRING, 
+        allowNull: false     
     },
     ctps:{
         type: Sequelize.INTEGER,      

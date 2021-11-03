@@ -1,6 +1,6 @@
-const Condomino = require('../models/Condomino')
+const Funcionario = require('../models/Funcionario')
 
-class condominoController {
+class funcionarioController {
     constructor(name){
         this.name = name
     }
@@ -21,11 +21,10 @@ class condominoController {
                     telefone:req.body.telefone,
                     dataCadastro:req.body.dataCadastro,
                     ativo:req.body.ativo,
-                    dependentes:req.body.dependentes,
-                    apartamento:req.body.apartamento,
-                    profissao:req.body.profissao
+                    cargo:req.body.cargo,
+                    ctps:req.body.ctps,
                 }
-                let resultInsert = await Condomino.insertUser(dataUser)
+                let resultInsert = await Funcionario.insertUser(dataUser)
                 res.json(resultInsert.result)
             }catch(err){
                 console.log(err)
@@ -38,7 +37,7 @@ class condominoController {
 
     async showAll(req,res){
         try{
-            let resultFindAll = await Condomino.findAll()
+            let resultFindAll = await Funcionario.findAll()
             res.json(resultFindAll.result)
         }catch(err){
             console.log(err)
@@ -49,7 +48,7 @@ class condominoController {
 
     async showById(req,res){    
         try{
-            let resultFindId = await Condomino.findById(req.params.id)
+            let resultFindId = await Funcionario.findById(req.params.id)
             res.json(resultFindId.result)
         }catch(err){
             console.log(err)
@@ -60,7 +59,7 @@ class condominoController {
 
     async showByEmail(req,res){    
         try{
-            let resultFindId = await Condomino.findByEmail(req.params.email)
+            let resultFindId = await Funcionario.findByEmail(req.params.email)
             res.json(resultFindId.result)
         }catch(err){
             console.log(err)
@@ -86,11 +85,10 @@ class condominoController {
                 telefone:req.body.telefone,
                 dataCadastro:req.body.dataCadastro,
                 ativo:req.body.ativo,
-                dependentes:req.body.dependentes,
-                apartamento:req.body.apartamento,
-                profissao:req.body.profissao
+                cargo:req.body.cargo,
+                ctps:req.body.ctps,
             }
-            let resultUpdate = await Condomino.updateById(dataUpdate)
+            let resultUpdate = await Funcionario.updateById(dataUpdate)
             res.json(resultUpdate.result)
         }catch(err){
             console.log(err)
@@ -101,7 +99,7 @@ class condominoController {
 
     async removeById(req,res){
         try{
-           let resultDelete = await Condomino.deleteById(req.params.id)
+           let resultDelete = await Funcionario.deleteById(req.params.id)
            res.json(resultDelete.result)
         }catch(err){
             console.log(err)
@@ -113,7 +111,7 @@ class condominoController {
     async recoveryPassword(req,res){
        try{
            let {cpf,novaSenha} = req.body
-           let resultPassword = await Condomino.updatePassword(cpf,novaSenha)
+           let resultPassword = await Funcionario.updatePassword(cpf,novaSenha)
            res.json(resultPassword.result)
         }catch(err){
             console.log(err)
@@ -125,7 +123,7 @@ class condominoController {
     async login(req,res){
         try{
             let {login , senha} = await req.body
-            let resultLogin = await Condomino.login(login,senha)
+            let resultLogin = await Funcionario.login(login,senha)
             res.json(resultLogin.result)
         }catch(err){
             console.log(err)
@@ -135,4 +133,4 @@ class condominoController {
     }
 }
 
-module.exports = new condominoController ('condômino')
+module.exports = new funcionarioController ('funcionário')

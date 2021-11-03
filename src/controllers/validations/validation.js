@@ -25,6 +25,27 @@ class checkEmail{
     }
 }
 
+class checkLogin{
+    constructor(table){
+        this.table = table;
+    }
+    async checkerLogin(login){
+        try{
+            if(login == undefined || login == null || login == " "){
+                return {status:404, result:{erro:`Obrigatório a informação de algum login`}};   
+            };
+            let existLogin = await database.select().from(this.table).where({login:login}).then(result =>{
+                if(result.length > 0) return true
+                else{return false}                     
+            });
+            if(existLogin) return{status:406, result:{erro:`Login já existente`}}
+        }catch(err){
+            console.log(err)
+            throw new Error(err)
+        }
+    }
+}
+
 class checkPassword{
     static  async checkerPassword(password){
         if(password == undefined || password == null || password == " "){
@@ -79,6 +100,15 @@ class userValidation{
                 console.log(err)
                 throw new Error(`Erro no UserValidation método validar senha`)
             }   
+        }
+
+        async validarLogin(login){
+            try{
+                return await new checkLogin(this.table).checkerLogin(login)
+            }catch(err){
+                console.log(err)
+                throw new Error(`Erro no UserValidation método validar login`)
+            }      
         }
 
         async validarCpf(cpf){

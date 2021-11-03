@@ -1,9 +1,9 @@
 const {database} = require('../database/connection')
 const bcrypt = require('bcryptjs')
 const Validation = require('../controllers/validations/validation');
-const condominoValidation = new Validation('condomino')
+const funcionarioValidation = new Validation('funcionario')
 
-class Condomino{
+class funcionario{
     
     constructor(table,name){
         this.table = table;
@@ -12,22 +12,24 @@ class Condomino{
 
     async insertUser(dataUser){
         try{
-        // VALIDAR EMAIL E SENHA
-            let invalidEmail = await condominoValidation.validarEmail(dataUser.email)
+        // VALIDAR EMAIL, CPF, LOGIN E SENHA
+            let invalidEmail = await funcionarioValidation.validarEmail(dataUser.email)
             if(invalidEmail) return invalidEmail
             
-            let invalidSenha = await condominoValidation.validarSenha(dataUser.senha)
+            let invalidSenha = await funcionarioValidation.validarSenha(dataUser.senha)
             if(invalidSenha) return invalidSenha
 
-            let invalidCpf = await condominoValidation.validarCpf(dataUser.cpf)
+            let invalidCpf = await funcionarioValidation.validarCpf(dataUser.cpf)
             if(invalidCpf) return invalidCpf
 
             let invalidLogin = await funcionarioValidation.validarLogin(dataUser.login)
             if(invalidLogin) return invalidLogin
+
         // BCRYPT
             let salt = await bcrypt.genSaltSync(10)
             let hash = await bcrypt.hashSync(dataUser.senha,salt)
             dataUser.senha = hash
+            console.log(dataUser.senha)
         // INSERT
             await database.insert(dataUser).into(this.table)
             return {status:200, result:{Ok:`${this.name} cadastrado com sucesso!`}}  
@@ -134,7 +136,7 @@ class Condomino{
         // VALIDACAO
             let validCpf = await this.findByCpf(cpf)
             if(validCpf.status == 404) return validCpf
-            let validPassword = await condominoValidation.validarSenha(novaSenha)
+            let validPassword = await funcionarioValidation.validarSenha(novaSenha)
             if(validPassword) return validPassword
         // BCRYPT
             let salt = await bcrypt.genSaltSync(10)
@@ -162,4 +164,4 @@ class Condomino{
     }
 }
 
-module.exports = new Condomino('condomino','Condômino')
+module.exports = new funcionario('funcionario','funcionário')
