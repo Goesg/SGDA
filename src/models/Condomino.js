@@ -22,7 +22,7 @@ class Condomino{
             let invalidCpf = await condominoValidation.validarCpf(dataUser.cpf)
             if(invalidCpf) return invalidCpf
 
-            let invalidLogin = await funcionarioValidation.validarLogin(dataUser.login)
+            let invalidLogin = await condominoValidation.validarLogin(dataUser.login)
             if(invalidLogin) return invalidLogin
         // BCRYPT
             let salt = await bcrypt.genSaltSync(10)
@@ -99,7 +99,7 @@ class Condomino{
             else return {status:404, result:{erro:`O login ${login} não corresponde a nenhum ${this.name}`}}
         }catch(err){
             console.log(err)
-            throw new Error(`Erro no model ${this.name}, método findByEmail`)
+            throw new Error(`Erro no model ${this.name}, método findByLogin`)
         };
     };
 

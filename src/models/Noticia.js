@@ -1,6 +1,6 @@
 const {database} = require('../database/connection')
 
-class Boleto{
+class Noticia{
     
     constructor(table,name){
         this.table = table;
@@ -29,14 +29,14 @@ class Boleto{
         };
     };
 
-    async findByApartamento(apartamento){
+    async findAllByData(data){
         try{
-           let user = await database.select().table(this.table).where({apartamento:apartamento})
+           let user = await database.select().table(this.table).where({data:data})
            if(user.length > 0) return {status:200, result:user} 
-           else return {status:404, result:{erro:`O apartamento ${apartamento} não corresponde a nenhum ${this.name}`}}
+           else return {status:404, result:{erro:`A data ${data} não corresponde a nenhum ${this.name}`}}
         }catch(err){
             console.log(err)
-            throw new Error(`Erro no model ${this.name}, método findAllByApartamento`)
+            throw new Error(`Erro no model ${this.name}, método findAllByData`)
         };
     };
 
@@ -78,4 +78,4 @@ class Boleto{
     }
 }
 
-module.exports = new Boleto('boleto','boleto')
+module.exports = new Noticia('noticia','notícia')

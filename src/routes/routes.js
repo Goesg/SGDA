@@ -5,6 +5,8 @@ const apartamentoController = require('../controllers/apartamentoController')
 const boletoController = require('../controllers/boletoController')
 const condominioController = require('../controllers/condominioController')
 const funcionarioController = require('../controllers/funcionarioController')
+const negociacaoController = require('../controllers/negociacaoController')
+const noticiaController = require('../controllers/noticiaController')
 
 
 // AGENDA
@@ -57,5 +59,20 @@ router.delete('/funcionario/:id', funcionarioController.removeById)
 router.post('/recovery/funcionario', funcionarioController.recoveryPassword)
 router.post('/login/funcionario',funcionarioController.login)
 
+// NEGOCIACAO
+router.post('/negociacao', negociacaoController.create)
+router.get('/negociacaos', negociacaoController.showAll)
+router.get('/negociacao/codMovel/:codMovel', negociacaoController.showByCodigo)
+router.get('/negociacao/:id', negociacaoController.showById)
+router.put('/negociacao', negociacaoController.editById)
+router.delete('/negociacao/:id', negociacaoController.removeById)
+
+// NOTICIA
+router.post('/noticia', noticiaController.create)
+router.get('/noticias', noticiaController.showAll)
+router.get('/noticias/data/:data', noticiaController.showBydata)
+router.get('/noticia/:id', noticiaController.showById)
+router.put('/noticia', noticiaController.editById)
+router.delete('/noticia/:id', noticiaController.removeById)
 
 module.exports = router

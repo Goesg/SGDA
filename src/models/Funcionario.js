@@ -101,7 +101,7 @@ class funcionario{
             else return {status:404, result:{erro:`O login ${login} não corresponde a nenhum ${this.name}`}}
         }catch(err){
             console.log(err)
-            throw new Error(`Erro no model ${this.name}, método findByEmail`)
+            throw new Error(`Erro no model ${this.name}, método findByLogin`)
         };
     };
 

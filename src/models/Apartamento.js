@@ -36,7 +36,7 @@ class Apartamento{
            else return {status:404, result:{erro:`O número ${numero} não corresponde a nenhum ${this.name}`}}
         }catch(err){
             console.log(err)
-            throw new Error(`Erro no model ${this.name}, método findAllByData`)
+            throw new Error(`Erro no model ${this.name}, método findAllByNumero`)
         };
     };
 
