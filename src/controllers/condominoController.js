@@ -101,7 +101,7 @@ class condominoController {
 
     async removeById(req,res){
         try{
-           let resultDelete = await Condomino.deleteById(req.body.id)
+           let resultDelete = await Condomino.deleteById(req.params.id)
            res.json(resultDelete.result)
         }catch(err){
             console.log(err)

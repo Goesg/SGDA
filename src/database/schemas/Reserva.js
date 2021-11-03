@@ -1,11 +1,11 @@
 const {db,Sequelize} = require('../connection')
-const Condomino = require("./Condominio")
+const Condomino = require("./Condomino")
 
 const Reserva = db.define('reserva',{
     tipo:{
         type: Sequelize.STRING,    
     },
-    condomino:{
+    nomeCondomino:{
         type: Sequelize.STRING,    
     },
     data:{

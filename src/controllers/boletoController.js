@@ -1,6 +1,6 @@
-const Agenda = require('../models/Agenda')
+const Boleto = require('../models/Boleto')
 
-class agendaController {
+class boletoController {
     constructor(name){
         this.name = name
     }
@@ -8,12 +8,16 @@ class agendaController {
          async function inserirUsuario(){
             try{
                 let dataUser =  await {
-                    data:req.body.data,
-                    titulo:req.body.titulo,
-                    assunto:req.body.assunto,
-                    horario:req.body.horario,
+                    apartamento:req.body.apartamento,
+                    anoReferencia:req.body.anoReferencia,
+                    mesReferencia:req.body.mesReferencia,
+                    valorPago:req.body.valorPago,
+                    bloco:req.body.bloco,
+                    dataPagamento:req.body.dataPagamento,
+                    observacao:req.body.observacao,
+                    id_Condomino:req.body.id_Condomino,
                 }
-                let resultInsert = await Agenda.insertUser(dataUser)
+                let resultInsert = await Boleto.insertUser(dataUser)
                 res.json(resultInsert.result)
             }catch(err){
                 console.log(err)
@@ -26,7 +30,7 @@ class agendaController {
 
     async showAll(req,res){
         try{
-            let resultFindAll = await Agenda.findAll()
+            let resultFindAll = await Boleto.findAll()
             res.json(resultFindAll.result)
         }catch(err){
             console.log(err)
@@ -37,7 +41,7 @@ class agendaController {
 
     async showById(req,res){    
         try{
-            let resultFindId = await Agenda.findById(req.params.id)
+            let resultFindId = await Boleto.findById(req.params.id)
             res.json(resultFindId.result)
         }catch(err){
             console.log(err)
@@ -46,13 +50,13 @@ class agendaController {
         }
     };
 
-    async showBydata(req,res){    
+    async showByApartamento(req,res){    
         try{
-            let resultFindData = await Agenda.findAllByData(req.params.data)
+            let resultFindData = await Boleto.findByApartamento(req.params.apartamento)
             res.json(resultFindData.result)
         }catch(err){
             console.log(err)
-            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pela data`}
+            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pelo apartamento`}
             res.status(500).json(catchErro)
         }
     };
@@ -61,12 +65,16 @@ class agendaController {
         try{
             let dataUpdate = await {
                 id:req.body.id,
-                data:req.body.data,
-                titulo:req.body.titulo,
-                assunto:req.body.assunto,
-                horario:req.body.horario,   
+                apartamento:req.body.apartamento,
+                anoReferencia:req.body.anoReferencia,
+                mesReferencia:req.body.mesReferencia,
+                valorPago:req.body.valorPago,
+                bloco:req.body.bloco,
+                dataPagamento:req.body.dataPagamento,
+                observacao:req.body.observacao,
+                id_Condomino:req.body.id_Condomino,
             }
-            let resultUpdate = await Agenda.updateById(dataUpdate)
+            let resultUpdate = await Boleto.updateById(dataUpdate)
             res.json(resultUpdate.result)
         }catch(err){
             console.log(err)
@@ -77,7 +85,7 @@ class agendaController {
 
     async removeById(req,res){
         try{
-           let resultDelete = await Agenda.deleteById(req.params.id)
+           let resultDelete = await Boleto.deleteById(req.params.id)
            res.json(resultDelete.result)
         }catch(err){
             console.log(err)
@@ -87,4 +95,4 @@ class agendaController {
     }
 }
 
-module.exports = new agendaController ('agenda')
+module.exports = new boletoController ('boleto')

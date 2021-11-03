@@ -48,7 +48,7 @@ class apartamentoController {
 
     async showByNumero(req,res){    
         try{
-            let resultFindNumero = await Apartamento.findByNumero(req.body.numero)
+            let resultFindNumero = await Apartamento.findByNumero(req.params.numero)
             res.json(resultFindNumero.result)
         }catch(err){
             console.log(err)
@@ -77,7 +77,7 @@ class apartamentoController {
 
     async removeById(req,res){
         try{
-           let resultDelete = await Apartamento.deleteById(req.body.id)
+           let resultDelete = await Apartamento.deleteById(req.params.id)
            res.json(resultDelete.result)
         }catch(err){
             console.log(err)

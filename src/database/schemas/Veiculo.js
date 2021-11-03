@@ -1,5 +1,5 @@
 const {db,Sequelize} = require('../connection')
-const Condomino = require('./Condominio')
+const Condomino = require('./Condomino')
 const Sindico = require('./Sindico')
 const Funcionario = require('./Funcionario')
 
