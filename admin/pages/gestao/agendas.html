@@ -300,6 +300,9 @@
                       <th>
                           Hoáraio
                       </th>
+                      <th>
+                        Data
+                    </th>
                   </tr>
               </thead>
               <tbody>
@@ -379,6 +382,9 @@
                       <td>
                         ${element.horario}
                       </td>
+                      <td>
+                        ${element.data}
+                      </td>
                       <td class="project-actions text-right">
                           <a id="buttonEditar" class="btn btn-info btn-sm" href="/admin/pages/gestao/agendaEdit.html">
                               <i class="fas fa-pencil-alt">
@@ -396,8 +402,9 @@
     });
   })
 
-  $('buttonDeletar').click(()=>{
-    fetch(`http://localhost:8787/delete/agenda/${$('#idDeletar').val()}`).then(result => result.json()).then(dados => {
+  $('#buttonDeletar').click(()=>{
+    id = $('#idDeletar').val()
+    fetch(`http://localhost:8787/agenda/${id}`,{method:'DELETE'}).then(result => result.json()).then(dados => {
       if(dados.Ok) alert(dados.Ok)
       else{alert(dados.erro)}
     })
