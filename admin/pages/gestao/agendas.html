@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Contacts</title>
+  <title>AdminLTE 3 | Projects</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -12,6 +12,14 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 </head>
+<style>
+  .card-header{
+   display: flex;
+   justify-content: space-evenly;
+   width: 37%;
+   align-items: center;
+  }
+ </style>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
@@ -51,107 +59,13 @@
         </div>
       </li>
 
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
-      </li>
+     
     </ul>
   </nav>
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+   <!-- Main Sidebar Container -->
+   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/admin/index.html" class="brand-link">
       <span class="brand-text font-weight-bolder">SGADC</span>
@@ -163,12 +77,7 @@
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
          
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div>
-      </div>
-
+      
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
@@ -239,6 +148,18 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+                <a href="/admin/pages/gestao/sindicos.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sindicos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/pages/gestao/agendas.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Agendas</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="/admin/pages/gestao/condominios.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Condominios</p>
@@ -293,7 +214,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin/pages/gestao/projects.html" class="nav-link">
+                <a href="/admin/pages/gestao/eventos.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Eventos</p>
                 </a>
@@ -302,12 +223,6 @@
                 <a href="/admin/pages/gestao/prestador.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Prestador</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/admin/pages/gestao/pessoas.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pessoas</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -350,12 +265,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Contacts</h1>
+            <h1>Agendas</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Contacts</li>
+              <li class="breadcrumb-item"><a href="/admin/index.html">Home</a></li>
             </ol>
           </div>
         </div>
@@ -366,44 +280,60 @@
     <section class="content">
 
       <!-- Default box -->
-      <div class="card card-solid">
-        <div class="card-body pb-0">
-          <div class="row">
-           
-            
-              <div class="card bg-light d-flex flex-fill">
-                <div class="card-header text-muted border-bottom-0">
-                  Digital Strategist
-                </div>
-                <div class="card-body pt-0">
-                  <div class="row">
-                    <div class="col-7">
-                      <h2 class="lead"><b>Nicole Pearson</b></h2>
-                      <p class="text-muted text-sm"><b>About: </b> Web Designer / UX / Graphic Artist / Coffee Lover </p>
-                      <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
-                      </ul>
-                    </div>
-                    <div class="col-5 text-center">
-                      <img src="../../dist/img/user2-160x160.jpg" alt="user-avatar" class="img-circle img-fluid">
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <div class="text-right">
-                    <a href="#" class="btn btn-sm btn-primary">
-                      <i class="fas fa-user"></i> Editar 
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="card">
+        <div class="card-header">
+          <a href="/admin/pages/gestao/agendaCreate.html"><button type="button" class="btn btn-success">Adcionar</button> </a>   
         </div>
+        <div class="card-body p-0">
+          <table class="table table-striped projects">
+              <thead>
+                  <tr>
+                      <th>
+                          ID
+                      </th>
+                      <th>
+                          Título
+                      </th>
+                      <th>
+                          Assunto
+                      </th>
+                      <th>
+                          Hoáraio
+                      </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  
+              </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
       </div>
-      <!-- /.card -->
-
+<!-- /.MODAL -->
+  <div class="modal fade" id="modal-danger">
+  <div class="modal-dialog">
+    <div class="modal-content bg-danger">
+      <div class="modal-header">
+        <h4 class="modal-title">Deletar </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <p>insira o id referente para deletar</p>
+          <input type="text" id="idDeletar">
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-outline-light" data-dismiss="modal">Cancelar</button>
+          <button id='buttonDeletar' type="button" class="btn btn-outline-light">Deletar</button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+  </div>
     </section>
     <!-- /.content -->
   </div>
@@ -432,5 +362,47 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<script>
+  fetch('http://localhost:8787/agendas').then(result => result.json()).then(dados => {
+    dados.forEach(element => {
+      $('tbody').prepend(`
+       <tr>
+                      <td>
+                        ${element.id}
+                      </td>
+                      <td>
+                        ${element.titulo}
+                      </td>
+                      <td>
+                        ${element.assunto}
+                      </td>
+                      <td>
+                        ${element.horario}
+                      </td>
+                      <td class="project-actions text-right">
+                          <a id="buttonEditar" class="btn btn-info btn-sm" href="/admin/pages/gestao/agendaEdit.html">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Editar
+                          </a>
+                          <a class="btn btn-danger btn-sm" href="#" data-toggle="modal"  data-target="#modal-danger">
+                            <i class="fas fa-trash">
+                            </i>
+                            Deletar
+                        </a>
+                      </td>
+        </tr>
+    `)
+    });
+  })
+
+  $('buttonDeletar').click(()=>{
+    fetch(`http://localhost:8787/delete/agenda/${$('#idDeletar').val()}`).then(result => result.json()).then(dados => {
+      if(dados.Ok) alert(dados.Ok)
+      else{alert(dados.erro)}
+    })
+  })
+
+</script>
 </body>
 </html>

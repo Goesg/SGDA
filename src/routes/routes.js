@@ -4,6 +4,7 @@ const agendaController = require('../controllers/agendaController')
 const apartamentoController = require('../controllers/apartamentoController')
 const boletoController = require('../controllers/boletoController')
 const condominioController = require('../controllers/condominioController')
+const encomendaController = require('../controllers/encomendaController')
 const eventoController = require('../controllers/eventoController')
 const funcionarioController = require('../controllers/funcionarioController')
 const mensagemController = require('../controllers/mensagemController')
@@ -57,6 +58,14 @@ router.put('/condomino', condominoController.editById)
 router.delete('/condomino/:id', condominoController.removeById)
 router.post('/recovery/condomino', condominoController.recoveryPassword)
 router.post('/login/condomino',condominoController.login)
+
+// ENCOMENDA
+router.post('/encomenda', encomendaController.create)
+router.get('/encomendas', encomendaController.showAll)
+router.get('/encomendas/data/:data', encomendaController.showByIdCondomino)
+router.get('/encomenda/:id', encomendaController.showById)
+router.put('/encomenda', encomendaController.editById)
+router.delete('/encomenda/:id', encomendaController.removeById)
 
 // EVENTO
 router.post('/evento', eventoController.create)

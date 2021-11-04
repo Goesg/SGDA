@@ -29,6 +29,7 @@ const Agenda = require('./database/schemas/Agenda')
 const Visita = require('./database/schemas/Visita')
 const Mensagem = require('./database/schemas/Mensagem')
 const Evento = require('./database/schemas/Evento')
+const Encomenda = require('./database/schemas/Encomenda')
 const {db} = require('./database/connection')
 // db.sync({force:true})
 
