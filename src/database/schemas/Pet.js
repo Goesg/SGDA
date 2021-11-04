@@ -12,7 +12,7 @@ const Pet = db.define('pet',{
         type: Sequelize.STRING,    
     },
     apartamento:{
-        type: Sequelize.STRING,    
+        type: Sequelize.STRING,  
     },
 })
 

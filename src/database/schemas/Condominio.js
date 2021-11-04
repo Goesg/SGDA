@@ -14,6 +14,7 @@ const Condominio = db.define('condominio',{
     },
     cidade:{
         type: Sequelize.STRING,
+        allowNull: false
     },
     estado:{
         type: Sequelize.STRING, 

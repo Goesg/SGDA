@@ -20,14 +20,13 @@ const Solicitacao = db.define('solicitacao',{
     },
     bloco:{
         type: Sequelize.STRING, 
-        allowNull: false    
     },
     dataRegistro:{
         type: Sequelize.STRING,   
         allowNull: false  
     },
     numeroRegistro:{
-        type: Sequelize.INTEGER,   
+        type: Sequelize.STRING,   
     },
     tipo:{
         type: Sequelize.STRING,    

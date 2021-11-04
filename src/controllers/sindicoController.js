@@ -19,7 +19,7 @@ class sindicoController {
                     rg:req.body.rg,
                     cep:req.body.cep,
                     telefone:req.body.telefone,
-                    dataCadastro:req.body.dataCadastro,
+                    dataCadastro:new Date().toLocaleDateString('PT-BR',{year: 'numeric', month: 'short', weekday: 'long', day: 'numeric',}),
                     ativo:req.body.ativo,
                 }
                 let resultInsert = await Sindico.insertUser(dataUser)

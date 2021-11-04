@@ -13,7 +13,7 @@ class solicitacaoController {
                     nomeCondomino:req.body.nomeCondomino,
                     apartamento:req.body.apartamento,
                     bloco:req.body.bloco,
-                    dataRegistro:req.body.dataRegistro,
+                    dataRegistro:new Date().toLocaleDateString('PT-BR',{year: 'numeric', month: 'short', weekday: 'long', day: 'numeric',}),
                     numeroRegistro:req.body.numeroRegistro,
                     tipo:req.body.tipo,
                     observacao:req.body.observacao,

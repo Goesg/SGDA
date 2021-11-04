@@ -1,6 +1,6 @@
-const Negociacao = require('../models/Negociacao')
+const Mensagem = require('../models/Mensagem')
 
-class negociacaoController {
+class mensagemController {
     constructor(name){
         this.name = name
     }
@@ -8,17 +8,13 @@ class negociacaoController {
          async function inserirUsuario(){
             try{
                 let dataUser =  await {
-                    codMovel:req.body.codMovel,
-                    proprietario:req.body.proprietario,
-                    condomino:req.body.condomino,
-                    numeroApartamento:req.body.numeroApartamento,
-                    bloco:req.body.bloco,
-                    dataRegistro:new Date().toLocaleDateString('PT-BR',{year: 'numeric', month: 'short', weekday: 'long', day: 'numeric',}),
-                    valorPago:req.body.valorPago,
-                    observacao:req.body.observacao,
-                    id_Apartamento:req.body.id_Apartamento
+                    assunto:req.body.assunto,
+                    texto:req.body.texto,
+                    dataRegistro: new Date().toLocaleDateString('PT-BR',{year: 'numeric', month: 'short', weekday: 'long', day: 'numeric',}),
+                    remetente:req.body.remetente,
+                    id_Condomino:req.body.id_Condomino
                 }
-                let resultInsert = await Negociacao.insertUser(dataUser)
+                let resultInsert = await Mensagem.insertUser(dataUser)
                 res.json(resultInsert.result)
             }catch(err){
                 console.log(err)
@@ -31,7 +27,7 @@ class negociacaoController {
 
     async showAll(req,res){
         try{
-            let resultFindAll = await Negociacao.findAll()
+            let resultFindAll = await Mensagem.findAll()
             res.json(resultFindAll.result)
         }catch(err){
             console.log(err)
@@ -42,7 +38,7 @@ class negociacaoController {
 
     async showById(req,res){    
         try{
-            let resultFindId = await Negociacao.findById(req.params.id)
+            let resultFindId = await Mensagem.findById(req.params.id)
             res.json(resultFindId.result)
         }catch(err){
             console.log(err)
@@ -51,13 +47,13 @@ class negociacaoController {
         }
     };
 
-    async showByCodigo(req,res){    
+    async showBydata(req,res){    
         try{
-            let resultFindNumero = await Negociacao.findByCodMovel(req.params.codMovel)
-            res.json(resultFindNumero.result)
+            let resultFindData = await Mensagem.findAllByData(req.params.data)
+            res.json(resultFindData.result)
         }catch(err){
             console.log(err)
-            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pelo codigo`}
+            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pela data`}
             res.status(500).json(catchErro)
         }
     };
@@ -66,17 +62,13 @@ class negociacaoController {
         try{
             let dataUpdate = await {
                 id:req.body.id,
-                codMovel:req.body.codMovel,
-                proprietario:req.body.proprietario,
-                condomino:req.body.condomino,
-                numeroApartamento:req.body.numeroApartamento,
-                bloco:req.body.bloco,
-                dataRegistro:req.body.dataRegistro,
-                valorPago:req.body.valorPago,
-                observacao:req.body.observacao,
-                id_Apartamento:req.body.id_Apartamento
+                assunto:req.body.assunto,
+                texto:req.body.texto,
+                dataRegistro:req.body.data,
+                remetente:req.body.remetente,
+                id_Condomino:req.body.id_Condomino
             }
-            let resultUpdate = await Negociacao.updateById(dataUpdate)
+            let resultUpdate = await Mensagem.updateById(dataUpdate)
             res.json(resultUpdate.result)
         }catch(err){
             console.log(err)
@@ -87,7 +79,7 @@ class negociacaoController {
 
     async removeById(req,res){
         try{
-           let resultDelete = await Negociacao.deleteById(req.params.id)
+           let resultDelete = await Mensagem.deleteById(req.params.id)
            res.json(resultDelete.result)
         }catch(err){
             console.log(err)
@@ -97,4 +89,4 @@ class negociacaoController {
     }
 }
 
-module.exports = new negociacaoController ('negociacao')
+module.exports = new mensagemController ('mensagem')

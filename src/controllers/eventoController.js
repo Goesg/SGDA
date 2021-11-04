@@ -1,6 +1,6 @@
-const Negociacao = require('../models/Negociacao')
+const Evento = require('../models/Evento')
 
-class negociacaoController {
+class eventoController {
     constructor(name){
         this.name = name
     }
@@ -8,17 +8,12 @@ class negociacaoController {
          async function inserirUsuario(){
             try{
                 let dataUser =  await {
-                    codMovel:req.body.codMovel,
-                    proprietario:req.body.proprietario,
-                    condomino:req.body.condomino,
-                    numeroApartamento:req.body.numeroApartamento,
-                    bloco:req.body.bloco,
-                    dataRegistro:new Date().toLocaleDateString('PT-BR',{year: 'numeric', month: 'short', weekday: 'long', day: 'numeric',}),
-                    valorPago:req.body.valorPago,
-                    observacao:req.body.observacao,
-                    id_Apartamento:req.body.id_Apartamento
+                    nome:req.body.nome,
+                    tipo:req.body.tipo,
+                    descricao:req.body.descricao,
+                    data:req.body.data,
                 }
-                let resultInsert = await Negociacao.insertUser(dataUser)
+                let resultInsert = await Evento.insertUser(dataUser)
                 res.json(resultInsert.result)
             }catch(err){
                 console.log(err)
@@ -31,7 +26,7 @@ class negociacaoController {
 
     async showAll(req,res){
         try{
-            let resultFindAll = await Negociacao.findAll()
+            let resultFindAll = await Evento.findAll()
             res.json(resultFindAll.result)
         }catch(err){
             console.log(err)
@@ -42,7 +37,7 @@ class negociacaoController {
 
     async showById(req,res){    
         try{
-            let resultFindId = await Negociacao.findById(req.params.id)
+            let resultFindId = await Evento.findById(req.params.id)
             res.json(resultFindId.result)
         }catch(err){
             console.log(err)
@@ -51,13 +46,13 @@ class negociacaoController {
         }
     };
 
-    async showByCodigo(req,res){    
+    async showBydata(req,res){    
         try{
-            let resultFindNumero = await Negociacao.findByCodMovel(req.params.codMovel)
-            res.json(resultFindNumero.result)
+            let resultFindData = await Evento.findAllByData(req.params.data)
+            res.json(resultFindData.result)
         }catch(err){
             console.log(err)
-            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pelo codigo`}
+            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pela data`}
             res.status(500).json(catchErro)
         }
     };
@@ -66,17 +61,12 @@ class negociacaoController {
         try{
             let dataUpdate = await {
                 id:req.body.id,
-                codMovel:req.body.codMovel,
-                proprietario:req.body.proprietario,
-                condomino:req.body.condomino,
-                numeroApartamento:req.body.numeroApartamento,
-                bloco:req.body.bloco,
-                dataRegistro:req.body.dataRegistro,
-                valorPago:req.body.valorPago,
-                observacao:req.body.observacao,
-                id_Apartamento:req.body.id_Apartamento
+                nome:req.body.nome,
+                tipo:req.body.tipo,
+                descricao:req.body.descricao,
+                data:req.body.data,
             }
-            let resultUpdate = await Negociacao.updateById(dataUpdate)
+            let resultUpdate = await Evento.updateById(dataUpdate)
             res.json(resultUpdate.result)
         }catch(err){
             console.log(err)
@@ -87,7 +77,7 @@ class negociacaoController {
 
     async removeById(req,res){
         try{
-           let resultDelete = await Negociacao.deleteById(req.params.id)
+           let resultDelete = await Evento.deleteById(req.params.id)
            res.json(resultDelete.result)
         }catch(err){
             console.log(err)
@@ -97,4 +87,4 @@ class negociacaoController {
     }
 }
 
-module.exports = new negociacaoController ('negociacao')
+module.exports = new eventoController ('evento')

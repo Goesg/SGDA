@@ -6,7 +6,6 @@ const Agenda = db.define('agenda',{
     },
     titulo:{
         type: Sequelize.STRING,
-        allowNull: false
     },
     assunto:{
         type: Sequelize.TEXT,

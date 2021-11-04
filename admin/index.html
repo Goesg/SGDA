@@ -77,21 +77,7 @@
           <span class="badge badge-danger navbar-badge">3</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
+          
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
@@ -109,6 +95,7 @@
             <!-- Message End -->
           </a>
           <div class="dropdown-divider"></div>
+
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
@@ -129,32 +116,7 @@
         </div>
       </li>
       <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
+    
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
@@ -390,7 +352,7 @@
             <!-- small box -->
             <div class="small-box bg-primary">
               <div class="inner">
-                <h3>44</h3>
+                <h3 id="numCondominos">44</h3>
 
                 <p>Condôminos</p>
               </div>
@@ -405,8 +367,7 @@
             <!-- small box -->
             <div class="small-box bg-indigo">
               <div class="inner">
-                <h3>44</h3>
-
+                <h3 id="numFuncionarios">44</h3>
                 <p>Funcionários</p>
               </div>
               <div class="icon">
@@ -420,7 +381,7 @@
             <!-- small box -->
             <div class="small-box bg-orange">
               <div class="inner">
-                <h3>44</h3>
+                <h3 id="numVisitas">44</h3>
 
                 <p>Visitantes</p>
               </div>
@@ -435,9 +396,9 @@
             <!-- small box -->
             <div class="small-box bg-teal">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3 id="numSolicitacoes">55</h3>
 
-                <p>Eventos</p>
+                <p>Solicitacoes</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -468,47 +429,9 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
-                <ul class="users-list clearfix">
-                  <li>
-                    <img src="dist/img/user1-128x128.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Alexander Pierce</a>
-                    <span class="users-list-date">Today</span>
-                  </li>
-                  <li>
-                    <img src="dist/img/user8-128x128.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Norman</a>
-                    <span class="users-list-date">Yesterday</span>
-                  </li>
-                  <li>
-                    <img src="dist/img/user7-128x128.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Jane</a>
-                    <span class="users-list-date">12 Jan</span>
-                  </li>
-                  <li>
-                    <img src="dist/img/user6-128x128.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">John</a>
-                    <span class="users-list-date">12 Jan</span>
-                  </li>
-                  <li>
-                    <img src="dist/img/user2-160x160.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Alexander</a>
-                    <span class="users-list-date">13 Jan</span>
-                  </li>
-                  <li>
-                    <img src="dist/img/user5-128x128.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Sarah</a>
-                    <span class="users-list-date">14 Jan</span>
-                  </li>
-                  <li>
-                    <img src="dist/img/user4-128x128.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Nora</a>
-                    <span class="users-list-date">15 Jan</span>
-                  </li>
-                  <li>
-                    <img src="dist/img/user3-128x128.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Nadia</a>
-                    <span class="users-list-date">15 Jan</span>
-                  </li>
+                <ul class="users-list clearfix" id="tabelaCondominos">
+                  
+      
                 </ul>
                 <!-- /.users-list -->
                 
@@ -540,47 +463,8 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
-                <ul class="users-list clearfix">
-                  <li>
-                    <img src="dist/img/user1-128x128.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Alexander Pierce</a>
-                    <span class="users-list-date">Today</span>
-                  </li>
-                  <li>
-                    <img src="dist/img/user8-128x128.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Norman</a>
-                    <span class="users-list-date">Yesterday</span>
-                  </li>
-                  <li>
-                    <img src="dist/img/user7-128x128.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Jane</a>
-                    <span class="users-list-date">12 Jan</span>
-                  </li>
-                  <li>
-                    <img src="dist/img/user6-128x128.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">John</a>
-                    <span class="users-list-date">12 Jan</span>
-                  </li>
-                  <li>
-                    <img src="dist/img/user2-160x160.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Alexander</a>
-                    <span class="users-list-date">13 Jan</span>
-                  </li>
-                  <li>
-                    <img src="dist/img/user5-128x128.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Sarah</a>
-                    <span class="users-list-date">14 Jan</span>
-                  </li>
-                  <li>
-                    <img src="dist/img/user4-128x128.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Nora</a>
-                    <span class="users-list-date">15 Jan</span>
-                  </li>
-                  <li>
-                    <img src="dist/img/user3-128x128.jpg" alt="User Image">
-                    <a class="users-list-name" href="#">Nadia</a>
-                    <span class="users-list-date">15 Jan</span>
-                  </li>
+                <ul class="users-list clearfix" id="tabelaVisitas">
+                  
                 </ul>
                 <!-- /.users-list -->
                 
@@ -598,7 +482,7 @@
            <!-- TABLE: LATEST ORDERS -->
            <div class="card">
             <div class="card-header border-transparent">
-              <h3 class="card-title">Eventos Recentes</h3>
+              <h3 class="card-title">Últimas Solicitações</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -615,69 +499,15 @@
                 <table class="table m-0">
                   <thead>
                   <tr>
-                    <th>Order ID</th>
-                    <th>Item</th>
-                    <th>Status</th>
-                    <th>Popularity</th>
+                    <th>Condômino</th>
+                    <th>Apartamento</th>
+                    <th>Tipo</th>
+                    <th>Data solicitação</th>
                   </tr>
                   </thead>
-                  <tbody>
-                  <tr>
-                    <td><a href="pages/gestao/invoice.html">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="badge badge-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/gestao/invoice.html">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="badge badge-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/gestao/invoice.html">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="badge badge-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/gestao/invoice.html">OR7429</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="badge badge-info">Processing</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/gestao/invoice.html">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="badge badge-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/gestao/invoice.html">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="badge badge-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/gestao/invoice.html">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="badge badge-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
-                  </tr>
+                  <tbody id="tabelaSolicitacoes">
+                 
+                 
                   </tbody>
                 </table>
               </div>
@@ -741,5 +571,81 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+<script>
+  fetch('http://localhost:8787/condominos').then(result => result.json())
+  .then(condominos => {
+    $('#numCondominos').html(condominos.length)
+      let totalCondominos = condominos.length
+      let oitoCondominos;
+      if(totalCondominos > 8){
+        oitoCondominos = condominos.slice(totalCondominos - 8)
+      }else{
+        oitoCondominos = condominos
+      }
+      oitoCondominos.forEach(element => {
+        $('#tabelaCondominos').prepend(`
+          <li>
+                <img src="dist/img/user1-128x128.jpg" alt="User Image">
+                <a class="users-list-name" href="#">${element.nome}</a>
+                <span class="users-list-date">${element.dataCadastro}</span>
+          </li>
+      `)
+      })
+  })
+
+  fetch('http://localhost:8787/visitas').then(result => result.json())
+  .then(visitas => {
+    $('#numVisitas').html(visitas.length)
+      let totalvisitas = visitas.length
+      let oitovisitas;
+      if(totalvisitas > 8){
+        oitovisitas = visitas.slice(totalvisitas - 8)
+      }else{
+        oitovisitas = visitas
+      }
+      oitovisitas.forEach(element => {
+        $('#tabelaVisitas').prepend(`
+          <li>
+                <img src="dist/img/user1-128x128.jpg" alt="User Image">
+                <a class="users-list-name" href="#">${element.nome}</a>
+                <span class="users-list-date">${element.dataEntrada}</span>
+          </li>
+      `)
+      })
+  })
+
+  fetch('http://localhost:8787/solicitacoes').then(result => result.json())
+  .then(solicitacoes => {
+    $('#numSolicitacoes').html(solicitacoes.length)
+      let totalsolicitacoes = solicitacoes.length
+      let oitosolicitacoes;
+      if(totalsolicitacoes > 8){
+        oitosolicitacoes = solicitacoes.slice(totalsolicitacoes - 8)
+      }else{
+        oitosolicitacoes = solicitacoes
+      }
+      oitosolicitacoes.forEach(element => {
+        $('#tabelaSolicitacoes').prepend(`
+        <tr>
+                <td><p>${element.proprietario}</p></td>
+                td>${element.apartamento}</td>
+                <td><span>${element.tipo}</span></td>
+                <td><span>${element.tipo}</span></td>
+                <td><span>${element.dataRegistro}</span></td>
+        </tr>
+      `)
+      })
+  })
+
+  fetch('http://localhost:8787/funcionarios').then(result => result.json())
+  .then(funcionarios => {
+    $('#numFuncionarios').html(funcionarios.length)
+
+  })
+
+
+
+
+</script>
 </body>
 </html>

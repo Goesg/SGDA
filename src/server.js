@@ -27,6 +27,8 @@ const Veiculo = require('./database/schemas/Veiculo')
 const Boleto = require('./database/schemas/Boleto')
 const Agenda = require('./database/schemas/Agenda')
 const Visita = require('./database/schemas/Visita')
+const Mensagem = require('./database/schemas/Mensagem')
+const Evento = require('./database/schemas/Evento')
 const {db} = require('./database/connection')
 // db.sync({force:true})
 

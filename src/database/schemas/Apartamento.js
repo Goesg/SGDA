@@ -3,10 +3,10 @@ const Condomino = require('./Condomino')
 
 const Apartamento = db.define('apartamento',{
     numeroAndar:{
-        type: Sequelize.INTEGER,    
+        type: Sequelize.STRING,    
     },
     numero:{
-        type: Sequelize.INTEGER,    
+        type: Sequelize.STRING,    
     },
     interFone:{
         type: Sequelize.STRING,    
@@ -17,7 +17,6 @@ Apartamento.belongsTo(Condomino,{
     constraint:true,
     foreignKey:'id_Condomino',
 })
-
 
 
 module.exports = Apartamento

@@ -46,10 +46,10 @@ const Condomino = db.define('condomino',{
         type: Sequelize.STRING,      
     },
     dependentes:{
-        type: Sequelize.INTEGER,      
+        type: Sequelize.STRING,      
     },
     apartamento:{
-        type: Sequelize.INTEGER,      
+        type: Sequelize.STRING,      
     },
     profissao:{
         type: Sequelize.STRING,      

@@ -13,7 +13,6 @@ const Negociacao = db.define('negociacao',{
     },
     condomino:{
         type: Sequelize.STRING,
-        allowNull: false
     },
     numeroApartamento:{
         type: Sequelize.STRING,
@@ -21,11 +20,9 @@ const Negociacao = db.define('negociacao',{
     },
     bloco:{
         type: Sequelize.STRING, 
-        allowNull: false    
     },
     dataRegistro:{
         type: Sequelize.STRING,   
-        allowNull: false  
     },
     valorPago:{
         type: Sequelize.STRING,   

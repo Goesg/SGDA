@@ -4,7 +4,9 @@ const agendaController = require('../controllers/agendaController')
 const apartamentoController = require('../controllers/apartamentoController')
 const boletoController = require('../controllers/boletoController')
 const condominioController = require('../controllers/condominioController')
+const eventoController = require('../controllers/eventoController')
 const funcionarioController = require('../controllers/funcionarioController')
+const mensagemController = require('../controllers/mensagemController')
 const negociacaoController = require('../controllers/negociacaoController')
 const noticiaController = require('../controllers/noticiaController')
 const petController = require('../controllers/petController')
@@ -14,7 +16,6 @@ const sindicoController = require('../controllers/sindicoController')
 const solicitacaoController = require('../controllers/solicitacaoController')
 const veiculoController = require('../controllers/veiculoController')
 const visitaController = require('../controllers/visitaController')
-
 
 // AGENDA
 router.post('/agenda', agendaController.create)
@@ -57,6 +58,14 @@ router.delete('/condomino/:id', condominoController.removeById)
 router.post('/recovery/condomino', condominoController.recoveryPassword)
 router.post('/login/condomino',condominoController.login)
 
+// EVENTO
+router.post('/evento', eventoController.create)
+router.get('/eventos', eventoController.showAll)
+router.get('/eventos/data/:data', eventoController.showBydata)
+router.get('/evento/:id', eventoController.showById)
+router.put('/evento', eventoController.editById)
+router.delete('/evento/:id', eventoController.removeById)
+
 // FUNCIONARIO
 router.post('/funcionario', funcionarioController.create)
 router.get('/funcionarios', funcionarioController.showAll)
@@ -65,6 +74,14 @@ router.put('/funcionario', funcionarioController.editById)
 router.delete('/funcionario/:id', funcionarioController.removeById)
 router.post('/recovery/funcionario', funcionarioController.recoveryPassword)
 router.post('/login/funcionario',funcionarioController.login)
+
+// MENSAGEM
+router.post('/mensagem', mensagemController.create)
+router.get('/mensagems', mensagemController.showAll)
+router.get('/mensagems/data/:data', mensagemController.showBydata)
+router.get('/mensagem/:id', mensagemController.showById)
+router.put('/mensagem', mensagemController.editById)
+router.delete('/mensagem/:id', mensagemController.removeById)
 
 // NEGOCIACAO
 router.post('/negociacao', negociacaoController.create)
