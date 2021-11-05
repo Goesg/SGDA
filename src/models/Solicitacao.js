@@ -32,7 +32,7 @@ class Solicitacao{
     async findByCodMovel(codMovel){
         try{
            let user = await database.select().table(this.table).where({codMovel:codMovel})
-           if(user.length > 0) return {status:200, result:user} 
+           if(user.length > 0) return {status:200, result:user[0]} 
            else return {status:404, result:{erro:`O código do imóvel ${codMovel} não corresponde a nenhuma ${this.name}`}}
         }catch(err){
             console.log(err)
@@ -43,7 +43,7 @@ class Solicitacao{
     async findById(id){
         try{
             let user = await database.select().table(this.table).where({id:id})
-            if(user.length > 0) return {status:200, result:user} 
+            if(user.length > 0) return {status:200, result:user[0]} 
             else return {status:404, result:{erro:`O id ${id} não corresponde a nenhuma ${this.name}`}}
         }catch(err){
             console.log(err)

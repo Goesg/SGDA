@@ -77,7 +77,7 @@ class Sindico{
     async findByCpf(cpf){
         try{
             let user = await database.select().table(this.table).where({cpf:cpf})
-            if(user.length > 0) return {status:200, result:user} 
+            if(user.length > 0) return {status:200, result:user[0]} 
             else return {status:404, result:{erro:`O cpf ${cpf} não corresponde a nenhum ${this.name}`}}
         }catch(err){
             console.log(err)
@@ -88,7 +88,7 @@ class Sindico{
     async findByEmail(email){
         try{
             let user = await database.select().table(this.table).where({email:email})
-            if(user.length > 0) return {status:200, result:user} 
+            if(user.length > 0) return {status:200, result:user[0]} 
             else return {status:404, result:{erro:`O email ${email} não corresponde a nenhum ${this.name}`}}
         }catch(err){
             console.log(err)
@@ -99,7 +99,7 @@ class Sindico{
     async findByLogin(login){
         try{
             let user = await database.select().table(this.table).where({login:login})
-            if(user.length > 0) return {status:200, result:user} 
+            if(user.length > 0) return {status:200, result:user[0]} 
             else return {status:404, result:{erro:`O login ${login} não corresponde a nenhum ${this.name}`}}
         }catch(err){
             console.log(err)

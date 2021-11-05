@@ -32,7 +32,7 @@ class Pet{
     async findAByApartamento(apartamento){
         try{
            let user = await database.select().table(this.table).where({apartamento:apartamento})
-           if(user.length > 0) return {status:200, result:user} 
+           if(user.length > 0) return {status:200, result:user[0]} 
            else return {status:404, result:{erro:`O apartamento ${apartamento} não corresponde a nenhum ${this.name}`}}
         }catch(err){
             console.log(err)
@@ -43,7 +43,7 @@ class Pet{
     async findById(id){
         try{
             let user = await database.select().table(this.table).where({id:id})
-            if(user.length > 0) return {status:200, result:user} 
+            if(user.length > 0) return {status:200, result:user[0]} 
             else return {status:404, result:{erro:`O id ${id} não corresponde a nenhum ${this.name}`}}
         }catch(err){
             console.log(err)

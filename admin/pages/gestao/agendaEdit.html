@@ -548,12 +548,12 @@ $('#buttonEditar').click(()=>{
 
 $('#inputId').blur(()=>{
   let id = $('#inputId').val()
-  fetch(`http://localhost:8787/agenda/${id}`).then(result => result.json()).then(agenda => {
-    if(agenda.erro) alert(agenda.erro)
-    $('#inputTitulo').val(agenda.titulo)
-    $('#inputAssunto').val(agenda.assunto)
-    $('#inputMDEx1').val(agenda.horario)
-    $('#inputData').val(agenda.data)
+  fetch(`http://localhost:8787/agenda/${id}`).then(result => result.json()).then(dado => {
+    if(dado.erro) alert(dado.erro)
+    $('#inputTitulo').val(dado.titulo)
+    $('#inputAssunto').val(dado.assunto)
+    $('#inputMDEx1').val(dado.horario)
+    $('#inputData').val(dado.data)
   })
 })
 </script>
