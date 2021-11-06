@@ -41,6 +41,7 @@ router.get('/boleto/apartamento/:apartamento', boletoController.showByApartament
 router.get('/boleto/:id', boletoController.showById)
 router.put('/boleto', boletoController.editById)
 router.delete('/boleto/:id', boletoController.removeById)
+router.get('/boleto/view/:idCondomino', boletoController.showAllByIdCondomino)
 
 // CONDOMINIO
 router.post('/condominio', condominioController.create)
@@ -163,5 +164,7 @@ router.get('/visita/rg/:rg', visitaController.showByRg)
 router.get('/visita/:id', visitaController.showById)
 router.put('/visita', visitaController.editById)
 router.delete('/visita/:id', visitaController.removeById)
+
+
 
 module.exports = router

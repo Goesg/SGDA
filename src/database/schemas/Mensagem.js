@@ -20,6 +20,9 @@ const Mensagem = db.define('mensagem',{
     apartamento:{
         type: Sequelize.STRING,
     },
+    tipo:{
+        type: Sequelize.STRING
+    }
 })
 
 Mensagem.belongsTo(Condomino,{

@@ -12,7 +12,7 @@ class encomendaController {
                     apartamento:req.body.apartamento,
                     nome:req.body.nome,
                     status:req.body.status,
-                    id_Condomino: req.body.id_Condomino
+                    id_Condomino: req.body.id_Condomino || null
                 }
                 let resultInsert = await Encomenda.insertUser(dataUser)
                 res.json(resultInsert.result)
@@ -66,7 +66,7 @@ class encomendaController {
                 apartamento:req.body.apartamento,
                 nome:req.body.nome,
                 status:req.body.status,
-                id_Condomino: req.body.id_Condomino
+                id_Condomino: req.body.id_Condomino || null
             }
             let resultUpdate = await Encomenda.updateById(dataUpdate)
             res.json(resultUpdate.result)

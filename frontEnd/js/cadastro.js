@@ -1,8 +1,10 @@
 $('button').click(()=>{
     let cadastro = {
-        name: $('#inputName').val(),
+        nome: $('#inputName').val(),
         email: $('#inputEmail').val(),
-        password: $('#inputPassword').val(),
+        login: $('#inputLogin').val(),
+        apartamento: $('#inputApt').val(),
+        senha: $('#inputPassword').val(),
         cpf: $('#inputCpf').val(),
     }
     axios.post('http://localhost:8787/condomino',cadastro).then(response => {

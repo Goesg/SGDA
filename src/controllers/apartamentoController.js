@@ -11,7 +11,7 @@ class apartamentoController {
                     numeroAndar:req.body.numeroAndar,
                     numero:req.body.numero,
                     interFone:req.body.interFone,
-                    id_Condomino:req.body.id_Condomino
+                    id_Condomino:req.body.id_Condomino || null
                 }
                 let resultInsert = await Apartamento.insertUser(dataUser)
                 res.json(resultInsert.result)
@@ -64,7 +64,7 @@ class apartamentoController {
                 numeroAndar:req.body.numeroAndar,
                 numero:req.body.numero,
                 interFone:req.body.interFone,
-                id_Condomino:req.body.id_Condomino 
+                id_Condomino:req.body.id_Condomino || null
             }
             let resultUpdate = await Apartamento.updateById(dataUpdate)
             res.json(resultUpdate.result)

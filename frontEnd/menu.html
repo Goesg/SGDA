@@ -32,7 +32,11 @@
   </head>
   <body><!-- Menu -->
    
-
+    <style>
+      a:hover{
+        color: #0ad92d !important;
+      }
+    </style>
     <div class="btn">
       <span class="fas fa-bars"></span>
     </div>
@@ -41,7 +45,7 @@
         
         <div class="text"><img class="photo" alt=""><!-- Foto de perfil/ nome/ cargo( morador ou Síndico) -->
           <h2 id= "UserName" class="size14-600">Nome sobrenome</h2>
-          <h3 class="size14-400">CARGO</h3></div>
+          <h3 class="size14-400" id="apartamento">CARGO</h3></div>
         <ul>
           
           <li class="active"><a href="#" class="com-btn">Menu</a></li>
@@ -54,7 +58,7 @@
                 <span class="fas fa-caret-down seven"></span>
               </a>
             <ul class="my-show">
-              <li><a href="#">Meus Dados</a></li>
+              <li><a id="meusDados" href="#">Meus Dados</a></li>
               <li><a href="#">Sair</a></li>
             </ul></li>
               <li><a href="#">Pagina inicial</a></li>
@@ -127,98 +131,21 @@
       </li>
         </ul>
       </nav>
-      <div style="position: absolute; z-index: 20; top: 23%; left: 30%; width: 57%;">
+      <div id="quadro" style="position: absolute; z-index: 20; top: 23%; left: 30%; width: 57%;">
         <!-- TABLE -->
-        <div class="table-wrapper-scroll-y my-custom-scrollbar" style="min-height: 372px; display: none;">
+        <div id="tabelaDisplay" class="table-wrapper-scroll-y my-custom-scrollbar" style="min-height: 372px; display: none;">
 
-          <table class="table table-bordered table-striped mb-0" id="table">
+          <table class="table table-bordered table-striped mb-0">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Cpf</th>
+                <th scope="col">Email</th>
+                <th scope="col">Apartamento</th>
+                <th scope="col">boleto</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">6</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+              
             </tbody>
           </table>
         

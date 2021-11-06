@@ -23,7 +23,7 @@ class funcionarioController {
                     ativo:req.body.ativo,
                     cargo:req.body.cargo,
                     ctps:req.body.ctps,
-                    id_Condominio: req.body.id_Condominio,
+                    id_Condominio: req.body.id_Condominio || null,
                 }
                 let resultInsert = await Funcionario.insertUser(dataUser)
                 res.json(resultInsert.result)
@@ -88,7 +88,7 @@ class funcionarioController {
                 ativo:req.body.ativo,
                 cargo:req.body.cargo,
                 ctps:req.body.ctps,
-                id_Condominio: req.body.id_Condominio
+                id_Condominio: req.body.id_Condominio || null
 
             }
             let resultUpdate = await Funcionario.updateById(dataUpdate)

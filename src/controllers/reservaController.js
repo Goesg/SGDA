@@ -13,7 +13,7 @@ class reservaController {
                     data:req.body.data,
                     horario:req.body.horario,
                     descricao:req.body.descricao,
-                    id_Condomino: req.body.id_Condomino
+                    id_Condomino: req.body.id_Condomino || null
                 }
                 let resultInsert = await Reserva.insertUser(dataUser)
                 res.json(resultInsert.result)
@@ -68,7 +68,7 @@ class reservaController {
                 data:req.body.data,
                 horario:req.body.horario,
                 descricao:req.body.descricao,
-                id_Condomino: req.body.id_Condomino
+                id_Condomino: req.body.id_Condomino || null
             }
             let resultUpdate = await Reserva.updateById(dataUpdate)
             res.json(resultUpdate.result)

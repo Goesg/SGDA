@@ -12,7 +12,7 @@ class mensagemController {
                     texto:req.body.texto,
                     dataRegistro: new Date().toLocaleDateString(),
                     remetente:req.body.remetente,
-                    id_Condomino:req.body.id_Condomino
+                    id_Condomino:req.body.id_Condomino || null
                 }
                 let resultInsert = await Mensagem.insertUser(dataUser)
                 res.json(resultInsert.result)
@@ -66,7 +66,7 @@ class mensagemController {
                 texto:req.body.texto,
                 dataRegistro:req.body.data,
                 remetente:req.body.remetente,
-                id_Condomino:req.body.id_Condomino
+                id_Condomino:req.body.id_Condomino || null
             }
             let resultUpdate = await Mensagem.updateById(dataUpdate)
             res.json(resultUpdate.result)

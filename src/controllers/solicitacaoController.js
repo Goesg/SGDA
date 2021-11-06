@@ -16,7 +16,7 @@ class solicitacaoController {
                     numeroRegistro:req.body.numeroRegistro,
                     tipo:req.body.tipo,
                     observacao:req.body.observacao,
-                    id_Condomino:req.body.id_Condomino
+                    id_Condomino:req.body.id_Condomino || null
                 }
                 let resultInsert = await Solicitacao.insertUser(dataUser)
                 res.json(resultInsert.result)
@@ -74,7 +74,7 @@ class solicitacaoController {
                 numeroRegistro:req.body.numeroRegistro,
                 tipo:req.body.tipo,
                 observacao:req.body.observacao,
-                id_Condomino:req.body.id_Condomino
+                id_Condomino:req.body.id_Condomino || null
             }
             let resultUpdate = await Solicitacao.updateById(dataUpdate)
             res.json(resultUpdate.result)

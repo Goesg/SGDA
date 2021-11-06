@@ -12,7 +12,7 @@ class petController {
                     raca:req.body.raca,
                     idade:req.body.idade,
                     apartamento:req.body.apartamento,
-                    id_Condomino:req.body.id_Condomino
+                    id_Condomino:req.body.id_Condomino || null
                 }
                 let resultInsert = await Pet.insertUser(dataUser)
                 res.json(resultInsert.result)
@@ -66,7 +66,7 @@ class petController {
                 raca:req.body.raca,
                 idade:req.body.idade,
                 apartamento:req.body.apartamento,
-                id_Condomino:req.body.id_Condomino
+                id_Condomino:req.body.id_Condomino || null
             }
             let resultUpdate = await Pet.updateById(dataUpdate)
             res.json(resultUpdate.result)

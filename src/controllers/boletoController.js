@@ -61,6 +61,17 @@ class boletoController {
         }
     };
 
+    async showAllByIdCondomino(req,res){    
+        try{
+            let resultFindData = await Boleto.findAllByIdCondomino(req.params.idCondomino)
+            res.render('boleto', {dados: resultFindData.result})
+        }catch(err){
+            console.log(err)
+            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pelo id do condômino`}
+            res.status(500).json(catchErro)
+        }
+    };
+
     async editById(req,res){
         try{
             let dataUpdate = await {
@@ -72,7 +83,7 @@ class boletoController {
                 bloco:req.body.bloco,
                 dataPagamento:req.body.dataPagamento,
                 observacao:req.body.observacao,
-                id_Condomino:req.body.id_Condomino,
+                id_Condomino:req.body.id_Condomino || null,
             }
             let resultUpdate = await Boleto.updateById(dataUpdate)
             res.json(resultUpdate.result)

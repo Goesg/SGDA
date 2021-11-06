@@ -16,7 +16,7 @@ class negociacaoController {
                     dataRegistro:new Date().toLocaleDateString(),
                     valorPago:req.body.valorPago,
                     observacao:req.body.observacao,
-                    id_Apartamento:req.body.id_Apartamento
+                    id_Apartamento:req.body.id_Apartamento || null
                 }
                 let resultInsert = await Negociacao.insertUser(dataUser)
                 res.json(resultInsert.result)
@@ -74,7 +74,7 @@ class negociacaoController {
                 dataRegistro:req.body.dataRegistro,
                 valorPago:req.body.valorPago,
                 observacao:req.body.observacao,
-                id_Apartamento:req.body.id_Apartamento
+                id_Apartamento:req.body.id_Apartamento || null
             }
             let resultUpdate = await Negociacao.updateById(dataUpdate)
             res.json(resultUpdate.result)
