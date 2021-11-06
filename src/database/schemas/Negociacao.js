@@ -11,9 +11,6 @@ const Negociacao = db.define('negociacao',{
         type: Sequelize.STRING,
         allowNull: false
     },
-    condomino:{
-        type: Sequelize.STRING,
-    },
     numeroApartamento:{
         type: Sequelize.STRING,
         allowNull: false

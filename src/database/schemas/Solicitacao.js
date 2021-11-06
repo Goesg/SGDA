@@ -10,10 +10,6 @@ const Solicitacao = db.define('solicitacao',{
         type: Sequelize.STRING,
         allowNull: false
     },
-    nomeCondomino:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
     apartamento:{
         type: Sequelize.STRING,
         allowNull: false

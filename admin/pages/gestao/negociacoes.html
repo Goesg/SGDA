@@ -265,7 +265,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Agendas</h1>
+            <h1>Negociações</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -282,23 +282,38 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <a href="/admin/pages/gestao/agendaCreate.html"><button type="button" class="btn btn-success">Adcionar</button> </a>   
+          <a href="/admin/pages/gestao/negociacaoCreate.html"><button type="button" class="btn btn-success">Adcionar</button> </a>   
         </div>
         <div class="card-body p-0">
           <table class="table table-striped projects">
               <thead>
                   <tr>
                       <th>
-                          ID
+                        ID
                       </th>
                       <th>
-                          Título
+                        Código do imóvel
                       </th>
                       <th>
-                          Assunto
+                        Proprietário
                       </th>
                       <th>
-                          Hoáraio
+                        Apartamento
+                      </th>
+                      <th>
+                        Bloco
+                      </th>
+                      <th>
+                        Data do registro
+                      </th>
+                      <th>
+                        Valor Pago
+                      </th>
+                      <th>
+                        Observação
+                      </th>
+                      <th>
+                        ID do apartamento
                       </th>
                   </tr>
               </thead>
@@ -363,24 +378,39 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <script>
-  fetch('http://localhost:8787/agendas').then(result => result.json()).then(dados => {
+  fetch('http://localhost:8787/negociacoes').then(result => result.json()).then(dados => {
     dados.forEach(element => {
       $('tbody').prepend(`
        <tr>
-                      <td>
+                      <th>
                         ${element.id}
-                      </td>
-                      <td>
-                        ${element.titulo}
-                      </td>
-                      <td>
-                        ${element.assunto}
-                      </td>
-                      <td>
-                        ${element.horario}
-                      </td>
+                      </th>
+                      <th>
+                        ${element.codMovel}
+                      </th>
+                      <th>
+                        ${element.proprietario}
+                      </th>
+                      <th>
+                        ${element.numeroApartamento}
+                      </th>
+                      <th>
+                        ${element.bloco}
+                      </th>
+                      <th>
+                        ${element.dataRegistro}
+                      </th>
+                      <th>
+                        ${element.valorPago}
+                      </th>
+                      <th>
+                        ${element.observacao}
+                      </th>
+                      <th>
+                        ${element.id_Apartamento}
+                      </th>
                       <td class="project-actions text-right">
-                          <a id="buttonEditar" class="btn btn-info btn-sm" href="/admin/pages/gestao/agendaEdit.html">
+                          <a id="buttonEditar" class="btn btn-info btn-sm" href="/admin/pages/gestao/negociacaoEdit.html">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Editar
@@ -396,8 +426,9 @@
     });
   })
 
-  $('buttonDeletar').click(()=>{
-    fetch(`http://localhost:8787/delete/agenda/${$('#idDeletar').val()}`).then(result => result.json()).then(dados => {
+  $('#buttonDeletar').click(()=>{
+    id = $('#idDeletar').val()
+    fetch(`http://localhost:8787/negociacao/${id}`,{method:'DELETE'}).then(result => result.json()).then(dados => {
       if(dados.Ok) alert(dados.Ok)
       else{alert(dados.erro)}
     })
