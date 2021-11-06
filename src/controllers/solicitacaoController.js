@@ -10,7 +10,6 @@ class solicitacaoController {
                 let dataUser =  await {
                     codMovel:req.body.codMovel,
                     proprietario:req.body.proprietario,
-                    nomeCondomino:req.body.nomeCondomino,
                     apartamento:req.body.apartamento,
                     bloco:req.body.bloco,
                     dataRegistro:new Date().toLocaleDateString(),
@@ -69,7 +68,6 @@ class solicitacaoController {
                 id:req.body.id,
                 codMovel:req.body.codMovel,
                 proprietario:req.body.proprietario,
-                nomeCondomino:req.body.nomeCondomino,
                 apartamento:req.body.numeroApartamento,
                 bloco:req.body.bloco,
                 dataRegistro:req.body.dataRegistro,

@@ -265,7 +265,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Notícias</h1>
+            <h1>Boletos</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -282,8 +282,8 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <a href="/admin/pages/gestao/solicitacaoCreate.html"><button type="button" class="btn btn-success">Adcionar</button> </a>   
-          <a id="buttonEditar" class="btn btn-info btn-sm" href="/admin/pages/gestao/solicitacaoEdit.html">
+          <a href="/admin/pages/gestao/boletoCreate.html"><button type="button" class="btn btn-success">Adcionar</button> </a>   
+          <a id="buttonEditar" class="btn btn-info btn-sm" href="/admin/pages/gestao/boletoEdit.html">
             <i class="fas fa-pencil-alt">
             </i>
             Editar
@@ -302,26 +302,23 @@
                         ID
                       </th>
                       <th>
-                        Código Imóvel
-                      </th>
-                      <th>
-                        Proprietário
-                      </th>
-                      <th>
                         Apartamento
                       </th>
                       <th>
-                        Bloco
+                        Ano de Referência
                       </th>
                       <th>
-                        Data do registro
+                        Mês de Referência
+                      </th>
+                      <th>
+                        Valor Pago
+                      </th>
+                      <th>
+                        Bloco
                       </th>    
                       <th>
-                        Registro
+                        Data de pagamento
                       </th>  
-                      <th>
-                       Tipo
-                      </th>   
                       <th>
                         Observação
                       </th>   
@@ -391,7 +388,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <script>
-  fetch('http://localhost:8787/solicitacoes').then(result => result.json()).then(dados => {
+  fetch('http://localhost:8787/boletos').then(result => result.json()).then(dados => {
     dados.forEach(element => {
       $('tbody').prepend(`
        <tr>        
@@ -399,32 +396,29 @@
                         ${element.id}
                       </td>
                       <td>
-                        ${element.codMovel}
-                      </td>
-                      <td>
-                        ${element.proprietario}
-                      </td>
-                      <td>
                         ${element.apartamento}
                       </td>
                       <td>
-                        ${element.bloco}
+                        ${element.anoReferencia}
                       </td>
                       <td>
-                        ${element.dataRegistro}
+                        ${element.mesReferencia}
+                      </td>
+                      <td>
+                        ${element.valorPago}
+                      </td>
+                      <td>
+                        ${element.bloco}
                       </td>    
                       <td>
-                        ${element.numeroRegistro}
+                        ${element.dataPagamento}
                       </td>  
                       <td>
-                        ${element.tipo}
+                        ${element.observacao}
                       </td>   
                       <td>
-                        ${element.observacao}
-                      </td> 
-                      <td>
                         ${element.id_Condomino}
-                      </td>             
+                      </td>        
         </tr>
     `)
     });
@@ -432,7 +426,7 @@
 
   $('#buttonDeletar').click(()=>{
     id = $('#idDeletar').val()
-    fetch(`http://localhost:8787/solicitacao/${id}`,{method:'DELETE'}).then(result => result.json()).then(dados => {
+    fetch(`http://localhost:8787/boleto/${id}`,{method:'DELETE'}).then(result => result.json()).then(dados => {
       if(dados.Ok) alert(dados.Ok)
       else{alert(dados.erro)}
     })

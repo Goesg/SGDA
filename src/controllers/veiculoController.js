@@ -12,9 +12,9 @@ class veiculoController {
                     placa:req.body.placa,
                     ano:req.body.ano,
                     cor:req.body.cor,
-                    id_Condomino: req.body.id_Condomino,
-                    id_Sindico: req.body.id_Sindico,
-                    id_Funcionario: req.body.id_Funcionario
+                    id_Condomino: req.body.id_Condomino || null,
+                    id_Sindico: req.body.id_Sindico || null,
+                    id_Funcionario: req.body.id_Funcionario || null
                 }
                 let resultInsert = await Veiculo.insertUser(dataUser)
                 res.json(resultInsert.result)
@@ -68,9 +68,9 @@ class veiculoController {
                 placa:req.body.placa,
                 ano:req.body.ano,
                 cor:req.body.cor,
-                id_Condomino: req.body.id_Condomino,
-                id_Sindico: req.body.id_Sindico,
-                id_Funcionario: req.body.id_Funcionario
+                id_Condomino: req.body.id_Condomino || null,
+                id_Sindico: req.body.id_Sindico || null,
+                id_Funcionario: req.body.id_Funcionario || null
             }
             let resultUpdate = await Veiculo.updateById(dataUpdate)
             res.json(resultUpdate.result)

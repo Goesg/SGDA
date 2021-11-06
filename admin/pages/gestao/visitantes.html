@@ -265,7 +265,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Agendas</h1>
+            <h1>Veículos</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -282,24 +282,49 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <a href="/admin/pages/gestao/agendaCreate.html"><button type="button" class="btn btn-success">Adcionar</button> </a>   
+          <a href="/admin/pages/gestao/visitanteCreate.html"><button type="button" class="btn btn-success">Adcionar</button> </a>   
+          <a id="buttonEditar" class="btn btn-info btn-sm" href="/admin/pages/gestao/visitanteEdit.html">
+            <i class="fas fa-pencil-alt">
+            </i>
+            Editar
+        </a>
+        <a class="btn btn-danger btn-sm" href="#" data-toggle="modal"  data-target="#modal-danger">
+          <i class="fas fa-trash">
+          </i>
+          Deletar
+      </a>
         </div>
         <div class="card-body p-0">
           <table class="table table-striped projects">
               <thead>
                   <tr>
                       <th>
-                          ID
+                        ID
                       </th>
                       <th>
-                          Título
+                        Nome
                       </th>
                       <th>
-                          Assunto
+                        Sexo
                       </th>
                       <th>
-                          Hoáraio
+                        Rg
                       </th>
+                      <th>
+                      Expedição
+                      </th>
+                      <th>
+                       Data de entrada
+                      </th>    
+                      <th>
+                       Data de saida
+                      </th>  
+                      <th>
+                      Autorizado
+                      </th>  
+                      <th>
+                        ID_Apartamento
+                      </th>      
                   </tr>
               </thead>
               <tbody>
@@ -363,41 +388,45 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <script>
-  fetch('http://localhost:8787/agendas').then(result => result.json()).then(dados => {
+  fetch('http://localhost:8787/visitas').then(result => result.json()).then(dados => {
     dados.forEach(element => {
       $('tbody').prepend(`
-       <tr>
+       <tr>        
                       <td>
                         ${element.id}
                       </td>
                       <td>
-                        ${element.titulo}
+                        ${element.nome}
                       </td>
                       <td>
-                        ${element.assunto}
+                        ${element.sexo}
                       </td>
                       <td>
-                        ${element.horario}
+                        ${element.rg}
                       </td>
-                      <td class="project-actions text-right">
-                          <a id="buttonEditar" class="btn btn-info btn-sm" href="/admin/pages/gestao/agendaEdit.html">
-                              <i class="fas fa-pencil-alt">
-                              </i>
-                              Editar
-                          </a>
-                          <a class="btn btn-danger btn-sm" href="#" data-toggle="modal"  data-target="#modal-danger">
-                            <i class="fas fa-trash">
-                            </i>
-                            Deletar
-                        </a>
+                      <td>
+                        ${element.expedicao}
                       </td>
+                      <td>
+                        ${element.dataEntrada}
+                      </td>             
+                      <td>
+                        ${element.dataSaida}
+                      </td>    
+                      <td>
+                        ${element.autorizado}
+                      </td>  
+                      <td>
+                        ${element.id_Apartamento}
+                      </td>  
         </tr>
     `)
     });
   })
 
-  $('buttonDeletar').click(()=>{
-    fetch(`http://localhost:8787/delete/agenda/${$('#idDeletar').val()}`).then(result => result.json()).then(dados => {
+  $('#buttonDeletar').click(()=>{
+    id = $('#idDeletar').val()
+    fetch(`http://localhost:8787/visita/${id}`,{method:'DELETE'}).then(result => result.json()).then(dados => {
       if(dados.Ok) alert(dados.Ok)
       else{alert(dados.erro)}
     })

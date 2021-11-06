@@ -13,9 +13,9 @@ class visitaController {
                     rg:req.body.rg,
                     expedicao:req.body.expedicao,
                     dataEntrada: new Date().toLocaleDateString(),
-                    dataSaida: req.body.dataSaida,
+                    dataSaida: req.body.dataSaida || null,
                     autorizado: req.body.autorizado,
-                    id_Apartamento:req.body.id_Apartamento
+                    id_Apartamento:req.body.id_Apartamento || null
                 }
                 let resultInsert = await Visita.insertUser(dataUser)
                 res.json(resultInsert.result)
@@ -72,7 +72,7 @@ class visitaController {
                 dataEntrada: req.body.dataEntrada,
                 dataSaida: req.body.dataSaida,
                 autorizado: req.body.autorizado,
-                id_Apartamento:req.body.id_Apartamento
+                id_Apartamento:req.body.id_Apartamento || null
             }
             let resultUpdate = await Visita.updateById(dataUpdate)
             res.json(resultUpdate.result)

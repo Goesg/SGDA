@@ -15,7 +15,7 @@ class boletoController {
                     bloco:req.body.bloco,
                     dataPagamento:req.body.dataPagamento,
                     observacao:req.body.observacao,
-                    id_Condomino:req.body.id_Condomino,
+                    id_Condomino:req.body.id_Condomino || null,
                 }
                 let resultInsert = await Boleto.insertUser(dataUser)
                 res.json(resultInsert.result)
