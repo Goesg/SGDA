@@ -8,7 +8,7 @@ class encomendaController {
          async function inserirUsuario(){
             try{
                 let dataUser =  await {
-                    dataRegistro:req.body.dataRegistro,
+                    dataRegistro:new Date().toLocaleDateString(),
                     apartamento:req.body.apartamento,
                     nome:req.body.nome,
                     status:req.body.status,

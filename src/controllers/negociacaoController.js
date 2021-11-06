@@ -13,7 +13,7 @@ class negociacaoController {
                     condomino:req.body.condomino,
                     numeroApartamento:req.body.numeroApartamento,
                     bloco:req.body.bloco,
-                    dataRegistro:new Date().toLocaleDateString('PT-BR',{year: 'numeric', month: 'short', weekday: 'long', day: 'numeric',}),
+                    dataRegistro:new Date().toLocaleDateString(),
                     valorPago:req.body.valorPago,
                     observacao:req.body.observacao,
                     id_Apartamento:req.body.id_Apartamento

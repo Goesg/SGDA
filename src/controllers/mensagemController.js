@@ -10,7 +10,7 @@ class mensagemController {
                 let dataUser =  await {
                     assunto:req.body.assunto,
                     texto:req.body.texto,
-                    dataRegistro: new Date().toLocaleDateString('PT-BR',{year: 'numeric', month: 'short', weekday: 'long', day: 'numeric',}),
+                    dataRegistro: new Date().toLocaleDateString(),
                     remetente:req.body.remetente,
                     id_Condomino:req.body.id_Condomino
                 }

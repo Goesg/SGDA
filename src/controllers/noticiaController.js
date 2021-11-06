@@ -8,7 +8,7 @@ class noticiaController {
          async function inserirUsuario(){
             try{
                 let dataUser =  await {
-                    data:new Date().toLocaleDateString('PT-BR',{year: 'numeric', month: 'short', weekday: 'long', day: 'numeric',}),
+                    data:new Date().toLocaleDateString(),
                     titulo:req.body.titulo,
                     conteudo:req.body.conteudo,
                 }

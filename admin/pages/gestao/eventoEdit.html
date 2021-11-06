@@ -273,12 +273,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Formulário De Cadastro</h1>
+            <h1>Formulário De Edição</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/admin/index.html">Home</a></li>
-              <li class="breadcrumb-item active">Formulário De Cadastro</li>
+              <li class="breadcrumb-item active">Formulário De Edição</li>
             </ol>
           </div>
         </div>
@@ -294,82 +294,46 @@
 
           </div>
           <!-- /.col (left) -->
-          <form class="col-md-12" method="post" action="http://localhost:8787/condomino"> 
+          <form class="col-md-12"> 
           <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Cadastrar Condômino</h3>
+                <h3 class="card-title">Editar Evento</h3>
               </div>
               <div class="card-body">
                 
                 <div class="form-group">
-                
                   
                   <div class="form-group">
-                    <label for="inputCpf">Cpf:</label>
-                    <input type="text" name="cpf" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputNome">Nome:</label>
-                    <input type="text" name="nome" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail">Email:</label>
-                    <input type="text" name="email" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail">Login:</label>
-                    <input type="text" name="login" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail">Senha:</label>
-                    <input type="text" name="senha" class="form-control">
-                  </div>
-                  <label for="inputDataDeNascimento">Data De Nascimento:</label>
-                      <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                          <input name="dataNascimento"type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                          <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                          </div>
+                    <div class="form-group">
+                      <label for="email">ID:</label>
+                      <input type="text" id="id" class="form-control">
                     </div>
-                  <div class="form-group">
-                    <label for="inputCargo">Sexo:</label>
-                    <input type="text" name="sexo" class="form-control">
+                    <div class="form-group">
+                      <div class="form-group">
+                        <label for="email">Nome:</label>
+                        <input type="text" id="nome" class="form-control">
+                      </div>
+                    <div class="form-group">
+                      <label for="email">Tipo:</label>
+                      <input type="text" id="tipo" class="form-control">
+                    </div>
+                    <label for="inputDataDeNascimento">Data:</label>
+                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                        <input id="data"type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
                   </div>
-                  <div class="form-group">
-                    <label for="inputCargo">Estado Civil:</label>
-                    <input type="text" name="estadoCivil" class="form-control">
+                    <div class="form-group">
+                      <label for="nome">Descrição:</label>
+                      <input type="text" id="descricao" class="form-control">
+                    </div>              
                   </div>
-                  <div class="form-group">
-                    <label for="inputCargo">Rg:</label>
-                    <input type="text" name="rg" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputCargo">Cep:</label>
-                    <input type="text" name="cep" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputTelefone">Telefone:</label>
-                    <input type="text" name="telefone" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputBairro">Ativo:</label>
-                    <input type="text" name="ativo" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputCTPS">Dependentes:</label>
-                    <input type="text" name="dependentes" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputSexo">Apartamento:</label>
-                    <input type="text" name="apartamento" class="form-control">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputSexo">Profissao:</label>
-                    <input type="text" name="profissao" class="form-control">
-                  </div>
-
-                  <button id="buttonCadastrar" type="submit" class="btn btn-success" style="width: 15%; align-self: flex-end; margin-right: 1.2%; margin-bottom: 2%;">Cadastrar</button>      
+                
+                </div>
+              </div>
+              <button id="buttonEditar" type="button" class="btn btn-success" style="width: 15%; align-self: flex-end; margin-right: 1.2%; margin-bottom: 2%;">Editar</button>      
             </div> 
           </div>
         </form>
@@ -560,6 +524,37 @@
   }
   // DropzoneJS Demo Code End
 </script>
+<script>
+$('#buttonEditar').click(()=>{
+ 
+  let update = {
+      id: $('#id').val(),
+      nome:  $('#nome').val(),
+      tipo: $('#tipo').val(),
+      data:  $('#data').val(),
+      descricao: $('#descricao').val(),
+  }
 
+  fetch('http://localhost:8787/evento',{ 
+    method:'PUT', 
+    headers: {'Content-type': 'application/json; charset=UTF-8'},
+    body: JSON.stringify(update)
+  }).then(result => result.json()).then(data => {
+    if(data.Ok) alert(data.Ok)
+    else{alert(data.erro) } 
+  })
+})
+
+$('#id').blur(()=>{
+  let id = $('#id').val()
+  fetch(`http://localhost:8787/evento/${id}`).then(result => result.json()).then(dado => {
+    if(dado.erro) alert(dado.erro)
+    $('#nome').val(dado.nome)
+    $('#tipo').val(dado.tipo)
+    $('#data').val(dado.data)
+    $('#descricao').val(dado.descricao)
+  })
+})
+</script>
 </body>
 </html>

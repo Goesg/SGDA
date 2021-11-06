@@ -6,6 +6,7 @@ class condominoController {
     }
     async create(req,res){   
          async function inserirUsuario(){
+           
             try{
                 let dataUser =  await {
                     nome:req.body.nome,
@@ -19,7 +20,7 @@ class condominoController {
                     rg:req.body.rg,
                     cep:req.body.cep,
                     telefone:req.body.telefone,
-                    dataCadastro:req.body.dataCadastro,
+                    dataCadastro: new Date().toLocaleDateString(),
                     ativo:req.body.ativo,
                     dependentes:req.body.dependentes,
                     apartamento:req.body.apartamento,
@@ -71,6 +72,7 @@ class condominoController {
 
     async editById(req,res){
         try{
+            
             let dataUpdate = await {
                 id:req.body.id,
                 nome:req.body.nome,

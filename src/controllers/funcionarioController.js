@@ -19,7 +19,7 @@ class funcionarioController {
                     rg:req.body.rg,
                     cep:req.body.cep,
                     telefone:req.body.telefone,
-                    dataCadastro:req.body.dataCadastro,
+                    dataCadastro:new Date().toLocaleDateString(),
                     ativo:req.body.ativo,
                     cargo:req.body.cargo,
                     ctps:req.body.ctps,

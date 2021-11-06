@@ -12,7 +12,7 @@ class visitaController {
                     sexo:req.body.sexo,
                     rg:req.body.rg,
                     expedicao:req.body.expedicao,
-                    dataEntrada: req.body.dataEntrada,
+                    dataEntrada: new Date().toLocaleDateString(),
                     dataSaida: req.body.dataSaida,
                     autorizado: req.body.autorizado,
                     id_Apartamento:req.body.id_Apartamento
