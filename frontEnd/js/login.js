@@ -7,11 +7,10 @@ $('button').click(()=>{
         let dados = response.data
         console.log(dados.user)
         if(dados.Ok){
-            sessionStorage.userName = dados.user.nome
-            sessionStorage.userCpf = dados.user.cpf
-            sessionStorage.userEmail = dados.user.email
-            sessionStorage.userApartamento = dados.user.apartamento
             sessionStorage.userId = dados.user.id
+            sessionStorage.userNome = dados.user.nome
+            sessionStorage.userApartamento = dados.user.apartamento
+            sessionStorage.userCpf = dados.user.cpf
 
             window.location.href = ('/frontEnd/menu.html') 
         }

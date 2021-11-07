@@ -28,15 +28,15 @@ class Reserva{
             throw new Error(`Erro no model ${this.name}, método findAll`)
         };
     };
-
-    async findAllByData(data){
+    
+    async findAllByIdCondomino(idCondomino){
         try{
-           let user = await database.select().table(this.table).where({data:data})
+           let user = await database.select().table(this.table).where({id_Condomino:idCondomino})
            if(user.length > 0) return {status:200, result:user} 
-           else return {status:404, result:{erro:`A data ${data} não corresponde a nenhum ${this.name}`}}
+           else return {status:404, result:{erro:`o id do condomino ${id_Condomino} não corresponde a nenhum ${this.name}`}}
         }catch(err){
             console.log(err)
-            throw new Error(`Erro no model ${this.name}, método findAllByData`)
+            throw new Error(`Erro no model ${this.name}, método findAllByIdCondomino`)
         };
     };
 

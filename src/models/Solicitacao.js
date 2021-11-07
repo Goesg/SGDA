@@ -29,14 +29,14 @@ class Solicitacao{
         };
     };
 
-    async findByCodMovel(codMovel){
+    async findAllByIdCondomino(idCondomino){
         try{
-           let user = await database.select().table(this.table).where({codMovel:codMovel})
-           if(user.length > 0) return {status:200, result:user[0]} 
-           else return {status:404, result:{erro:`O código do imóvel ${codMovel} não corresponde a nenhuma ${this.name}`}}
+           let user = await database.select().table(this.table).where({id_Condomino:idCondomino})
+           if(user.length > 0) return {status:200, result:user} 
+           else return {status:404, result:{erro:`O id do condomino ${codMovel} não corresponde a nenhuma ${this.name}`}}
         }catch(err){
             console.log(err)
-            throw new Error(`Erro no model ${this.name}, método findByCodMovel`)
+            throw new Error(`Erro no model ${this.name}, método findAllByIdCondomino`)
         };
     };
 

@@ -140,7 +140,7 @@ class Condomino{
             let salt = await bcrypt.genSaltSync(10)
             let hash = await bcrypt.hashSync(novaSenha,salt)
             
-            await database.where({id:validCpf.result[0].id}).update({senha:hash}).table(this.table)
+            await database.where({id:validCpf.result.id}).update({senha:hash}).table(this.table)
             return {status:200 , result:{Ok:`senha atualizada com sucesso!`,user:validCpf.result[0]}}
         }catch(err){
             console.log(err)

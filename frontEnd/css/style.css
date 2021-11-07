@@ -199,3 +199,37 @@ nav ul li a span.rotate {
   #table{
     background-color: #cacecb81;
   }
+
+
+  a:hover{
+    color: #0ad92d !important;
+  }
+
+  tr{
+    background-color: rgb(0 0 0 / 28%);
+   font-weight: bolder;
+   font-size: large;
+  }
+
+  th{
+    background-color: #0a0a0a74;
+     color: white;
+     width: 25%;
+  }
+
+  td{
+    text-align: center;
+   background-color: #ffffff6d !important;
+   font-weight: 500;
+  }
+  #btnBoleto{
+    padding: 0.3%;
+    border-radius: 9px;
+    background-color: white;
+    font-weight: 400;
+  }
+
+  #btnBoleto:hover{
+    background-color: #0ad92d;
+    color: #ffff;
+  }

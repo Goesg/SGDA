@@ -49,7 +49,7 @@ class encomendaController {
 
     async showByIdCondomino(req,res){    
         try{
-            let resultFindData = await Encomenda.findAllByData(req.params.idCondomino)
+            let resultFindData = await Encomenda.findAllByIdCondomino(req.params.idCondomino)
             res.json(resultFindData.result)
         }catch(err){
             console.log(err)

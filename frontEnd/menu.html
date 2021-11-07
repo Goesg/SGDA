@@ -32,18 +32,13 @@
   </head>
   <body><!-- Menu -->
    
-    <style>
-      a:hover{
-        color: #0ad92d !important;
-      }
-    </style>
     <div class="btn">
       <span class="fas fa-bars"></span>
     </div>
     <div style="display: flex; justify-content: center;"> 
       <nav class="sidebar">
         
-        <div class="text"><img class="photo" alt=""><!-- Foto de perfil/ nome/ cargo( morador ou Síndico) -->
+        <div class="text"><img src="/frontEnd/images/user.png" class="photo" alt=""><!-- Foto de perfil/ nome/ cargo( morador ou Síndico) -->
           <h2 id= "UserName" class="size14-600">Nome sobrenome</h2>
           <h3 class="size14-400" id="apartamento">CARGO</h3></div>
         <ul>
@@ -59,9 +54,9 @@
               </a>
             <ul class="my-show">
               <li><a id="meusDados" href="#">Meus Dados</a></li>
-              <li><a href="#">Sair</a></li>
             </ul></li>
-              <li><a href="#">Pagina inicial</a></li>
+              <li><a  href="/frontEnd/atualizarDados.html">Editar Dados</a></li>
+              <li><a  href="/frontEnd/solicitacao.html">Fazer Solicitação</a></li>
             </ul>
           </li>
           <li>
@@ -69,64 +64,39 @@
               <span class="fas fa-caret-down first"></span>
             </a>
             <ul class="feat-show">
-              <li><a href="#">Mensagens Privadas</a></li>
-              <li><a href="#">Documentos</a></li>
-              <li><a href="#">Eventos</a></li>
-              <li><a href="#">Enquetes</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#" class="serv-btn">Ocorrências
-              <span class="fas fa-caret-down second"></span>
-            </a>
-            <ul class="serv-show">
-              <li><a href="#">Todas</a></li>
-              <li><a href="#">Manutenção</a></li>
-              <li><a href="#">Sugestões</a></li>
-              <li><a href="#">Elogios</a></li>
-              <li><a href="#">Reclamações</a></li>
-              <li><a href="#">Dúvidas</a></li>
+              <li><a href="/frontEnd/mensagem.html">Enviar Mensagem</a></li>
             </ul>
           </li>
           <li><a href="#" class="cond-btn">Condomínio
             <span class="fas fa-caret-down third"></span>
           </a>
           <ul class="cond-show">
-            <li><a href="#">Condomínios</a></li>
-            <li><a href="#">Funcionários</a></li>
-            <li><a href="#">Telefone e Ramais</a></li>
-            <li><a href="#">Ficha Técnica</a></li>
+            <li><a id="tabelaFuncionarios" href="#">Funcionários</a></li>
+            <li><a id="tabelaPrestadores" href="#">Prestadores</a></li>
           </ul>
           </li>
           <li><a href="#" class="muri-btn">Mural
             <span class="fas fa-caret-down four"></span>
           </a>
         <ul class="muri-show">
-          <li><a href="#">Todos</a></li>
-          <li><a href="#">Classificados</a></li>
-          <li><a href="#">Achados e Perdidos</a></li>
-          <li><a href="#">Vagas de Garagem</a></li>
+          <li><a id="tabelaEventos" href="#">Eventos</a></li>
+          <li><a id="tabelaNoticias" href="#">Notícias</a></li>
+          <li><a id="tabelaSolicitacoes" href="#">Minhas Solicitações</a></li>
         </ul>
       </li>
           <li><a href="#" class="res-btn">Reservas
             <span class="fas fa-caret-down five"></span>
           </a>
         <ul class="res-show">
-          <li><a href="#">Espaços</a></li>
-          <li><a href="#">Minhas Reservas</a></li>
-          <li><a href="#">Aguardando Aprovação</a></li>
-          <li><a href="#">Reprovadas</a></li>
-          <li><a href="#">Canceladas</a></li>
+          <li><a id="tabelaReserva" href="#">Minhas Reservas</a></li>         
+          <li><a href="/frontEnd/reserva.html">Fazer Reserva</a></li>         
         </ul>
       </li>
           <li><a href="#" class="port-btn">Portaria
             <span class="fas fa-caret-down six"></span>
           </a>
         <ul class="port-show">
-          <li><a href="#">Minhas Encomendas</a></li>
-          <li><a href="#">Lista de condomínios</a></li>
-          <li><a href="#">Lista de Veículos</a></li>
-          <li><a href="#">Funcionários do Dia</a></li>
+          <li><a id ="tabelaEncomendas" href="#">Minhas Encomendas</a></li>
         </ul>
       </li>
         </ul>
@@ -135,26 +105,14 @@
         <!-- TABLE -->
         <div id="tabelaDisplay" class="table-wrapper-scroll-y my-custom-scrollbar" style="min-height: 372px; display: none;">
 
-          <table class="table table-bordered table-striped mb-0">
-            <thead>
-              <tr>
-                <th scope="col">Cpf</th>
-                <th scope="col">Email</th>
-                <th scope="col">Apartamento</th>
-                <th scope="col">boleto</th>
-              </tr>
-            </thead>
-            <tbody>
-              
-            </tbody>
-          </table>
+          
         
         </div>
         <!-- END TABLE -->
 
 
         <!-- MENSAGE -->
-        <div class="col-md-12" style="display: none;">
+        <div id="mensagemDisplay" class="col-md-12" style="display: none;">
           <div class="card card-primary card-outline">
             <div class="card-header">
               <h3 class="card-title">Enviar Mensagem</h3>
@@ -216,59 +174,6 @@
         <!-- END MENSAGE -->
 
 
-        <!-- FORM -->
-        <form class="col-md-12" style="display: none;"> 
-          <div class="col-md-12">
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Formulário</h3>
-              </div>
-              <div class="card-body">              
-                <div class="form-group">
-                <div class="form-group">
-                  <label for="inputNome">Nome:</label>
-                  <input type="text" id="inputNome" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label>Tipo Do Evento</label>
-                  <select class="form-control select2" style="width: 100%;">
-                    <option selected="selected">Alabama</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="inputNome">Local:</label>
-                  <input type="text" id="inputNome" class="form-control">
-                </div>
-                <label for="inputDataDeNascimento">Data do evento:</label>
-                    <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                        <input id="inputDataDeNascimento"type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="md-form ">
-                        <label for="inputMDEx1">Hora do evento:</label>
-                        <input type="time" id="inputMDEx1" class="form-control">
-                      </div>
-                    </div>
-                </div>
-              </div>
-              <button style="width: 16%; align-self: end; margin: 0.5%; margin-right: 4%; border-radius: 6px; background-color: #19ad19e8; height: 2.2em;"> 
-                Agendar
-              </button>  
-            </div>     
-          </div>
-         
-        </form>
-        <!-- END FORM -->
-
       </div>
     </div>
     <section>
@@ -301,6 +206,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/admin/dist/js/demo.js"></script>
 <!-- Page specific script -->
+
     </section>
         <!-- code jquery para trazer funcionalidade aos menus e submenus -->
     <script>
@@ -344,6 +250,7 @@
         $(this).addClass("active").siblings().removeClass("active");
       });
     </script>
+
     <script>
       $(function () {
         $('#input_starttime').pickatime({});
@@ -484,6 +391,7 @@ twelvehour: true,
       }
       // DropzoneJS Demo Code End
     </script>
+
     <script src="js/menu.js"></script>
   </body>
 </html>

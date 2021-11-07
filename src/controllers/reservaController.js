@@ -48,13 +48,13 @@ class reservaController {
         }
     };
 
-    async showBydata(req,res){    
+    async showByIdCondomino(req,res){    
         try{
-            let resultFindData = await Reserva.findAllByData(req.params.data)
+            let resultFindData = await Reserva.findAllByIdCondomino(req.params.idCondomino)
             res.json(resultFindData.result)
         }catch(err){
             console.log(err)
-            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pela data`}
+            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pelo id do condomino`}
             res.status(500).json(catchErro)
         }
     };

@@ -51,13 +51,13 @@ class solicitacaoController {
         }
     };
 
-    async showByCodigo(req,res){    
+    async showAllByIdCondomino(req,res){    
         try{
-            let resultFindNumero = await Solicitacao.findByCodMovel(req.params.codMovel)
+            let resultFindNumero = await Solicitacao.findAllByIdCondomino(req.params.idCondomino)
             res.json(resultFindNumero.result)
         }catch(err){
             console.log(err)
-            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pelo codigo`}
+            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pelo id do condômino`}
             res.status(500).json(catchErro)
         }
     };
