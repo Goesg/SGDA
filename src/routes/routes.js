@@ -87,8 +87,8 @@ router.post('/login/funcionario',funcionarioController.login)
 
 // MENSAGEM
 router.post('/mensagem', mensagemController.create)
-router.get('/mensagems', mensagemController.showAll)
-router.get('/mensagems/data/:data', mensagemController.showBydata)
+router.get('/mensagens', mensagemController.showAll)
+router.get('/mensagem/idCondomino/:idCondomino', mensagemController.showByIdCondomino)
 router.get('/mensagem/:id', mensagemController.showById)
 router.put('/mensagem', mensagemController.editById)
 router.delete('/mensagem/:id', mensagemController.removeById)

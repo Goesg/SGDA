@@ -12,6 +12,7 @@ class mensagemController {
                     texto:req.body.texto,
                     dataRegistro: new Date().toLocaleDateString(),
                     remetente:req.body.remetente,
+                    apartamento:req.body.apartamento,
                     id_Condomino:req.body.id_Condomino || null
                 }
                 let resultInsert = await Mensagem.insertUser(dataUser)
@@ -47,13 +48,13 @@ class mensagemController {
         }
     };
 
-    async showBydata(req,res){    
+    async showByIdCondomino(req,res){    
         try{
-            let resultFindData = await Mensagem.findAllByData(req.params.data)
+            let resultFindData = await Mensagem.findAllByIdCondomino(req.params.idCondomino)
             res.json(resultFindData.result)
         }catch(err){
             console.log(err)
-            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pela data`}
+            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pela id do condomino`}
             res.status(500).json(catchErro)
         }
     };
