@@ -372,7 +372,7 @@ fetch('http://localhost:8787/reservas').then(result => result.json())
             let data = item.data
             let dataRegExp = /(\d{2})\/(\d{2})\/(\d{4})/
             let dia = data.replace(dataRegExp, '$1')
-            let mes = data.replace(dataRegExp, '$2')
+            let mes = parseInt(data.replace(dataRegExp, '$2') - 1)
             let ano = data.replace(dataRegExp, '$3')
             return {
               title: item.tipo,
@@ -390,7 +390,7 @@ fetch('http://localhost:8787/reservas').then(result => result.json())
             let data = item.data
             let dataRegExp = /(\d{2})\/(\d{2})\/(\d{4})/
             let dia = data.replace(dataRegExp, '$1')
-            let mes = data.replace(dataRegExp, '$2')
+            let mes = parseInt(data.replace(dataRegExp, '$2') - 1)
             let ano = data.replace(dataRegExp, '$3')
             return {
               title: item.tipo,

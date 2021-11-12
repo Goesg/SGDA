@@ -17,6 +17,9 @@ const Reserva = db.define('reserva',{
     descricao:{
         type: Sequelize.STRING,    
     },
+    horario:{
+        type: Sequelize.STRING,   
+    }
 })
 
 Reserva.belongsTo(Condomino,{
