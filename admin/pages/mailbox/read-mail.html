@@ -319,8 +319,7 @@
             <div class="card-body p-0">
               <div class="mailbox-read-info">
                 <h5>Remetente : <p class="remetente"> </p></h5>
-                <h6>Apartamento :
-                  <span class="mailbox-read-time float-right" class="apartamento"> </span></h6>
+                <h6>Apartamento : <p class="apartamento"> </p></h6>
               </div>
               <!-- /.mailbox-read-info -->
               <div class="mailbox-controls with-border text-center">
@@ -383,8 +382,9 @@
 <script>
   
   $('#inputId').blur(()=>{
+    $('#caixaEmail').html(' ')
     let id = $('#inputId').val()
-    fetch(`http://localhost:8787/mensagem/idCondomino/${id}`).then(result => result.json()).then(mensagem => {
+    fetch(`http://localhost:8787/mensagens/pergunta/${id}`).then(result => result.json()).then(mensagem => {
       if(mensagem.erro) alert(mensagem.erro)
       else{
         $('.remetente').html(mensagem[0].remetente)
@@ -403,8 +403,6 @@
                     ${element.texto} 
                 </p>
                 <hr>
-
-
         `)
       });
       }

@@ -13,6 +13,7 @@ class mensagemController {
                     dataRegistro: new Date().toLocaleDateString(),
                     remetente:req.body.remetente,
                     apartamento:req.body.apartamento,
+                    tipo:req.body.tipo,
                     id_Condomino:req.body.id_Condomino || null
                 }
                 let resultInsert = await Mensagem.insertUser(dataUser)
@@ -48,9 +49,31 @@ class mensagemController {
         }
     };
 
-    async showByIdCondomino(req,res){    
+    async showAllByPergunta(req,res){    
         try{
-            let resultFindData = await Mensagem.findAllByIdCondomino(req.params.idCondomino)
+            let resultFindData = await Mensagem.findAllByPergunta()
+            res.json(resultFindData.result)
+        }catch(err){
+            console.log(err)
+            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pela id do condomino`}
+            res.status(500).json(catchErro)
+        }
+    };
+
+    async showByIdCondominoPergunta(req,res){    
+        try{
+            let resultFindData = await Mensagem.findAllByIdCondominoPergunta(req.params.idCondomino)
+            res.json(resultFindData.result)
+        }catch(err){
+            console.log(err)
+            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pela id do condomino`}
+            res.status(500).json(catchErro)
+        }
+    };
+
+    async showByIdCondominoResposta(req,res){    
+        try{
+            let resultFindData = await Mensagem.findAllByIdCondominoResposta(req.params.idCondomino)
             res.json(resultFindData.result)
         }catch(err){
             console.log(err)
@@ -67,6 +90,7 @@ class mensagemController {
                 texto:req.body.texto,
                 dataRegistro:req.body.data,
                 remetente:req.body.remetente,
+                tipo:req.body.tipo,
                 id_Condomino:req.body.id_Condomino || null
             }
             let resultUpdate = await Mensagem.updateById(dataUpdate)

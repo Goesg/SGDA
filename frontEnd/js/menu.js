@@ -22,6 +22,7 @@ $('.logout').click(()=>{
 // EXIBIR INFOS BÁSICAS DO USUARIO
 $('#meusDados').click(()=>{
     $('#formDisplay').css('display','none')
+    $('#caixaMensagens').css('display','none')
     $('#mensagemDisplay').css('display','none')
     $('#tabelaDisplay').css('display','flex')
     fetch(`http://localhost:8787/condomino/${userId}`).then(result => result.json()).then(user => {
@@ -96,6 +97,7 @@ $('#meusDados').click(()=>{
 // EXIBIR FUNCIONÁRIOS
 $('#tabelaFuncionarios').click(()=>{
   $('#formDisplay').css('display','none')
+  $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#tabelaDisplay').css('display','flex')
   fetch(`http://localhost:8787/funcionarios`).then(result => result.json()).then(dados => {
@@ -133,6 +135,7 @@ $('#tabelaFuncionarios').click(()=>{
 // EXIBIR PRESTADORES
 $('#tabelaPrestadores').click(()=>{
   $('#formDisplay').css('display','none')
+  $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#tabelaDisplay').css('display','flex')
   fetch(`http://localhost:8787/prestadores`).then(result => result.json()).then(dados => {
@@ -168,6 +171,7 @@ $('#tabelaPrestadores').click(()=>{
 // EXIBIR EVENTOS
 $('#tabelaEventos').click(()=>{
   $('#formDisplay').css('display','none')
+  $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#tabelaDisplay').css('display','flex')
   fetch(`http://localhost:8787/eventos`).then(result => result.json()).then(dados => {
@@ -203,6 +207,7 @@ $('#tabelaEventos').click(()=>{
 // EXIBIR NOTICIAS
 $('#tabelaNoticias').click(()=>{
   $('#formDisplay').css('display','none')
+  $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#tabelaDisplay').css('display','flex')
   fetch(`http://localhost:8787/noticias`).then(result => result.json()).then(dados => {
@@ -236,6 +241,7 @@ $('#tabelaNoticias').click(()=>{
 // EXIBIR MINHAS SOLICITACOES
 $('#tabelaSolicitacoes').click(()=>{
   $('#formDisplay').css('display','none')
+  $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#tabelaDisplay').css('display','flex')
   fetch(`http://localhost:8787/solicitacao/idCondomino/${userId}`).then(result => result.json()).then(dados => {
@@ -279,6 +285,7 @@ $('#tabelaSolicitacoes').click(()=>{
 // EXIBIR MINHAS RESERVAS
 $('#tabelaReserva').click(()=>{
   $('#formDisplay').css('display','none')
+  $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#tabelaDisplay').css('display','flex')
   fetch(`http://localhost:8787/reservas/idCondomino/${userId}`).then(result => result.json()).then(dados => {
@@ -317,6 +324,7 @@ $('#tabelaReserva').click(()=>{
 $('#tabelaEncomendas').click(()=>{
   $('#formDisplay').css('display','none')
   $('#mensagemDisplay').css('display','none')
+  $('#caixaMensagens').css('display','none')
   $('#tabelaDisplay').css('display','flex')
   fetch(`http://localhost:8787/encomendas/idCondomino/${userId}`).then(result => result.json()).then(dados => {
       $("#tabelaDisplay").html(` 
@@ -346,4 +354,38 @@ $('#tabelaEncomendas').click(()=>{
     `);
   });
   }) 
+})
+
+// EXIBIR MINHAS MENSAGENS
+$('#verMensagens').click(()=>{
+  $('#formDisplay').css('display','none')
+  $('#mensagemDisplay').css('display','none')
+  $('#tabelaDisplay').css('display','none')
+  $('#caixaMensagens').css('display','flex')
+  $('#caixaEmail').html(' ')
+  fetch(`http://localhost:8787/mensagens/resposta/${userId}`).then(result => result.json()).then(mensagem => {
+    if(mensagem.erro) alert(mensagem.erro)
+    else{
+      $('.remetente').html(mensagem[0].remetente)
+      $('.apartamento').html(mensagem[0].apartamento)
+
+    mensagem.forEach(element => {
+      $('#caixaEmail').prepend(`
+
+              <p>
+                Enviado na data: ${element.dataRegistro} 
+              </p>
+              <h3>
+                  ${element.assunto}
+              </h3>
+              <p>
+                  ${element.texto} 
+              </p>
+              <hr>
+      `)
+    });
+    }
+   
+  })
+  
 })

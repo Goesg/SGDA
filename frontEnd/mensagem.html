@@ -311,7 +311,8 @@
                 texto: $('#texto').val(),
                 remetente: sessionStorage.userNome,
                 apartamento: sessionStorage.userApartamento,
-                id_Condomino: sessionStorage.userId
+                id_Condomino: sessionStorage.userId,
+                tipo:'pergunta'
             }
 
             fetch('http://localhost:8787/mensagem', {

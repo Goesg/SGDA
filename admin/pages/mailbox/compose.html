@@ -311,15 +311,15 @@
           <div class="col-md-9">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h3 class="card-title">Compose New Message</h3>
+                <h3 class="card-title">Enviar Mensagem</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <div class="form-group">
-                  <input class="form-control" placeholder="To:">
+                  <input class="form-control" id="id_Condomino" placeholder="Id do Condômino:">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" placeholder="Subject:">
+                  <input class="form-control" id="assunto" placeholder="Assunto:">
                 </div>
                 <div class="form-group">
                     <textarea id="compose-textarea" class="form-control" style="height: 300px">
@@ -331,10 +331,8 @@
               <!-- /.card-body -->
               <div class="card-footer">
                 <div class="float-right">
-                  <button type="button" class="btn btn-default"><i class="fas fa-pencil-alt"></i> Draft</button>
-                  <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Send</button>
+                  <button id="enviar" type="button" class="btn btn-primary"><i class="far fa-envelope"></i> Enviar</button>
                 </div>
-                <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> Discard</button>
               </div>
               <!-- /.card-footer -->
             </div>
@@ -380,5 +378,35 @@
     $('#compose-textarea').summernote()
   })
 </script>
+
+<script>
+  $('#enviar').click(()=>{
+    if ($('#assunto').val().length == 0 || $('#compose-textarea').val().length == 0) {
+            alert("preeencha a mensagem")
+        } else {
+            let update = {
+                assunto: $('#assunto').val(),
+                texto: $('#compose-textarea').val(),
+                remetente: 'Síndico',
+                apartamento: '000',
+                id_Condomino: $('#id_Condomino').val(),
+                tipo:'resposta'
+            }
+
+            fetch('http://localhost:8787/mensagem', {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json; charset=UTF-8' },
+                body: JSON.stringify(update)
+            }).then(result => result.json()).then(data => {
+                if (data.Ok) {
+                    alert('Mensagem enviada.')
+                    window.location.href = ("/admin/pages/mailbox/mailbox.html")
+                }
+                else { alert(data.erro) }
+            })
+        }
+  })
+</script>
+
 </body>
 </html>

@@ -64,6 +64,7 @@
               <span class="fas fa-caret-down first"></span>
             </a>
             <ul class="feat-show">
+              <li><a id="verMensagens" href="#">Mensagens</a></li>
               <li><a href="/frontEnd/mensagem.html">Enviar Mensagem</a></li>
             </ul>
           </li>
@@ -111,68 +112,44 @@
         <!-- END TABLE -->
 
 
-        <!-- MENSAGE -->
-        <div id="mensagemDisplay" class="col-md-12" style="display: none;">
-          <div class="card card-primary card-outline">
+        <!-- CAIXA MENSAGE -->
+        <div id="caixaMensagens" class="col-md-12" style="display:none">
+          <div class="card card-primary card-outline" style="width: 960px; overflow: auto; height: 646px;">
             <div class="card-header">
-              <h3 class="card-title">Enviar Mensagem</h3>
+              <div class="card-tools">
+              </div>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <div class="form-group">
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Enviar Para</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                  <option value="1">Porteiro</option>
-                  <option value="2">Funcionários</option>
-                  <option value="3">Síndico</option>
-                </select>
+            <div class="card-body p-0">
+              <div class="mailbox-read-info">
+                <h5>Remetente : Síndico</h5>
               </div>
-              <div class="form-group">
-                <input class="form-control" placeholder="Subject:">
+              <!-- /.mailbox-read-info -->
+              <div class="mailbox-controls with-border text-center">
+               
+               
               </div>
-              <div class="form-group">
-                  <textarea id="compose-textarea" class="form-control" style="height: 300px">
-                    <h1><u>Heading Of Message</u></h1>
-                    <h4>Subheading</h4>
-                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
-                      was born and I will give you a complete account of the system, and expound the actual teachings
-                      of the great explorer of the truth, the master-builder of human happiness. No one rejects,
-                      dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know
-                      how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again
-                      is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain,
-                      but because occasionally circumstances occur in which toil and pain can procure him some great
-                      pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise,
-                      except to obtain some advantage from it? But who has any right to find fault with a man who
-                      chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that
-                      produces no resultant pleasure? On the other hand, we denounce with righteous indignation and
-                      dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so
-                      blinded by desire, that they cannot foresee</p>
-                    <ul>
-                      <li>List item one</li>
-                      <li>List item two</li>
-                      <li>List item three</li>
-                      <li>List item four</li>
-                    </ul>
-                    <p>Thank you,</p>
-                    <p>John Doe</p>
-                  </textarea>
-              </div>
-              <div class="form-group">
+              <!-- /.mailbox-controls -->
+              <div class="mailbox-read-message" id="caixaEmail">
                 
+
               </div>
+              <!-- /.mailbox-read-message -->
             </div>
             <!-- /.card-body -->
-            <div class="card-footer" style="display: flex; justify-content: flex-end;" >
+           
+            <!-- /.card-footer -->
+            <div class="card-footer">
               
-              <button  style="background-color: #0ad92d; width: 8em; border-radius: 8px">Enviar</button>
-
-            </div>
             <!-- /.card-footer -->
           </div>
           <!-- /.card -->
         </div>
-        <!-- END MENSAGE -->
-
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+      </div><!-- /.container-fluid -->
+        <!-- END CAIXA MENSAGE -->
 
       </div>
     </div>

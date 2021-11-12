@@ -473,7 +473,7 @@
 </script>
 
 <script>
-  fetch('http://localhost:8787/mensagens').then(result=> result.json()).then(mensagens =>{
+  fetch('http://localhost:8787/mensagens/pergunta').then(result=> result.json()).then(mensagens =>{
     mensagens.forEach(element => {
         $('tbody').prepend(`
                 <tr>
@@ -483,11 +483,11 @@
                         <label for="check1"></label>
                       </div>
                     </td>
-                    <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
+                    <td class="mailbox-name">Id do Condômino:  ${element.id_Condomino}</td>
                     <td class="mailbox-name"><a href="/admin/pages/mailbox/read-mail.html">${element.remetente}</a></td>
                     <td class="mailbox-subject"><b>${element.assunto}</b> 
                     <td class="mailbox-attachment"></td>
-                    <td class="mailbox-date">data</td>
+                    <td class="mailbox-date">${element.dataRegistro}</td>
                 </tr>
         
         
@@ -497,3 +497,4 @@
 </script>
 </body>
 </html>
+ 
