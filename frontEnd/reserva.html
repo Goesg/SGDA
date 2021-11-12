@@ -57,8 +57,16 @@
                 <div class="card-body">
                 
                     <div class="form-group">
-                        <label for="email">Tipo:</label>
-                        <input type="text" id="tipo" class="form-control">
+                      <label for="email">Local:</label>
+                      <select id="tipo" class="form-select" style="margin-left: 1%;" >
+                        <option >Salão</option>
+                        <option >Quadra</option>
+                        <option >Campo</option>
+                        <option >Piscina</option>
+                        <option >Churrasqueira</option>
+
+                      </select>
+                      
                       </div>
                       <div class="form-group">
                         <label for="email">proprietário:</label>
@@ -87,15 +95,19 @@
             
         </form>
         </div>
-       
+
+        <img id="imgSalao" src="/frontEnd/images/salao.png" style="width: 1100px; height: 460px; margin-left: 1%; display: flex;">
+        <img id="imgCampo" src="/frontEnd/images/campo.jpg" style="width: 1100px; height: 460px; margin-left: 1%; display: none;">
+        <img id="imgChurras" src="/frontEnd/images/churrasqueira.jpg" style="width: 1100px; height: 460px; margin-left: 1%; display: none;">
+        <img id="imgQuadra" src="/frontEnd/images/quadra.jpg" style="width: 1100px; height: 460px; margin-left: 1%; display: none;">
+        <img id="imgPiscina"src="/frontEnd/images/piscina.jpg" style="width: 1100px; height: 460px; margin-left: 1%; display: none;">
+
       </div>
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
- 
-
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -206,6 +218,46 @@
         
     })
 
+    $('select').click(()=>{
+      let local = $('select').val()
+      switch(local){
+        case 'Salão':
+        $('#imgSalao').css('display','flex')  
+        $('#imgQuadra').css('display','none')  
+        $('#imgPiscina').css('display','none')  
+        $('#imgChurras').css('display','none')  
+        $('#imgCampo').css('display','none')  
+        break;
+        case 'Campo':
+        $('#imgCampo').css('display','flex')  
+        $('#imgQuadra').css('display','none')  
+        $('#imgSalao').css('display','none')  
+        $('#imgPiscina').css('display','none')  
+        $('#imgChurras').css('display','none')  
+        break;
+        case 'Quadra':
+        $('#imgQuadra').css('display','flex')  
+        $('#imgSalao').css('display','none')  
+        $('#imgPiscina').css('display','none')  
+        $('#imgChurras').css('display','none') 
+        $('#imgCampo').css('display','none') 
+        break;
+        case 'Piscina':
+        $('#imgPiscina').css('display','flex')  
+        $('#imgSalao').css('display','none')  
+        $('#imgQuadra').css('display','none')  
+        $('#imgChurras').css('display','none')  
+        $('#imgCampo').css('display','none')  
+        break;
+        case 'Churrasqueira':
+        $('#imgChurras').css('display','flex')  
+        $('#imgSalao').css('display','none')  
+        $('#imgQuadra').css('display','none')  
+        $('#imgPiscina').css('display','none')
+        $('#imgCampo').css('display','none')    
+        break;        
+      }
+    })
 </script>
 </body>
 </html>
