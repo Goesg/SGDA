@@ -286,11 +286,11 @@ $('#tabelaReserva').click(()=>{
           <table class="table table-bordered table-striped mb-0">
               <thead>
               <tr>
-                  <th scope="col">Tipo</th>
                   <th scope="col">Proprietário</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Descrição</th>
                   <th scope="col">Data</th>
                   <th scope="col">Horário</th>
-                  <th scope="col">Descrição</th>
                   </tr>
               </thead>
               <tbody>
@@ -302,26 +302,26 @@ $('#tabelaReserva').click(()=>{
       dados.forEach(element => {
         $("tbody").prepend(`  
                 <tr>
-                <td scope="col">${element.tipo}</td>
                 <td scope="col">${element.nomeCondomino}</td>
+                <td scope="col">${element.tipo}</td>
+                <td scope="col">${element.descricao}</td>
                 <td scope="col">${element.data}</td>
                 <td scope="col">${element.horario}</td>
-                <td scope="col">${element.descricao}</td>
                 </tr> 
     `);
   });
   }) 
 })
 
-// EXIBIR MINHAS RESERVAS
+// EXIBIR MINHAS ENCOMENDAS
 $('#tabelaEncomendas').click(()=>{
   $('#formDisplay').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#tabelaDisplay').css('display','flex')
   fetch(`http://localhost:8787/encomendas/idCondomino/${userId}`).then(result => result.json()).then(dados => {
       $("#tabelaDisplay").html(` 
-          <table class="table table-bordered table-striped mb-0">
-              <thead>
+          <table>
+              <thead >
               <tr>
                   <th scope="col">Nome</th>
                   <th scope="col">Entregue</th>

@@ -60,8 +60,8 @@ body {
 }
 .btn span {
   color: white;
-    font-size: 21px;
-    line-height: 33px;
+  font-size: 21px;
+  line-height: 33px;
 }
 .btn.click span:before {
   content: "\f00d";
@@ -184,52 +184,62 @@ nav ul li a span.rotate {
   color: white;
 }
 
-.logout:hover{
-  color: #00ea27
+.logout:hover {
+  color: #00ea27;
 }
 .my-custom-scrollbar {
   position: relative;
   height: 200px;
   overflow: auto;
-  }
-  .table-wrapper-scroll-y {
+}
+.table-wrapper-scroll-y {
   display: block;
-  }
+}
 
-  #table{
-    background-color: #cacecb81;
-  }
+#tabelaDisplay {
+  background-color: #cacecb81;
+  margin-top: 15px;
+  width: 100%;
+  text-align: center;
+  border-collapse: separate;
+  border: solid #ccc 1px;
+  border-radius: 25px;
+}
 
+a:hover {
+  color: #0ad92d !important;
+}
 
-  a:hover{
-    color: #0ad92d !important;
-  }
+tr {
+  background-color: rgb(0 0 0 / 28%);
+  font-weight: bolder;
+  font-size: large;
+}
 
-  tr{
-    background-color: rgb(0 0 0 / 28%);
-   font-weight: bolder;
-   font-size: large;
-  }
+th {
+  background-color: #0a0a0a74;
+  color: white;
+  width: 25%;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+}
 
-  th{
-    background-color: #0a0a0a74;
-     color: white;
-     width: 25%;
-  }
+td {
+  text-align: center;
+  background-color: #ffffff6d !important;
+  font-weight: 500;
+  border: 1px solid #ddd;
+}
 
-  td{
-    text-align: center;
-   background-color: #ffffff6d !important;
-   font-weight: 500;
-  }
-  #btnBoleto{
-    padding: 0.3%;
-    border-radius: 9px;
-    background-color: white;
-    font-weight: 400;
-  }
+#btnBoleto {
+  padding: 0.3%;
+  border-radius: 9px;
+  background-color: white;
+  font-weight: 400;
+}
 
-  #btnBoleto:hover{
-    background-color: #0ad92d;
-    color: #ffff;
-  }
+#btnBoleto:hover {
+  background-color: #0ad92d;
+  color: #ffff;
+}
