@@ -60,6 +60,17 @@ class mensagemController {
         }
     };
 
+    async showAllByResposta(req,res){    
+        try{
+            let resultFindData = await Mensagem.findAllByResposta()
+            res.json(resultFindData.result)
+        }catch(err){
+            console.log(err)
+            let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pela id do condomino`}
+            res.status(500).json(catchErro)
+        }
+    };
+
     async showByIdCondominoPergunta(req,res){    
         try{
             let resultFindData = await Mensagem.findAllByIdCondominoPergunta(req.params.idCondomino)

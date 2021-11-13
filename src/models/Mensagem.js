@@ -29,11 +29,22 @@ class Mensagem{
         };
     };
 
-    async findAllByPergunta(idCondomino){
+    async findAllByPergunta(){
         try{
            let user = await database.select().table(this.table).where({tipo:'pergunta'})
            if(user.length > 0) return {status:200, result:user} 
-           else return {status:404, result:{erro:`O id do condômino ${idCondomino} não corresponde a nenhum ${this.name}`}}
+           else return {status:404, result:{erro:`O id do condômino  não corresponde a nenhum ${this.name}`}}
+        }catch(err){
+            console.log(err)
+            throw new Error(`Erro no model ${this.name}, método findAllByData`)
+        };
+    };
+
+    async findAllByResposta(){
+        try{
+           let user = await database.select().table(this.table).where({tipo:'resposta'})
+           if(user.length > 0) return {status:200, result:user} 
+           else return {status:404, result:{erro:`O id do condômino  não corresponde a nenhum ${this.name}`}}
         }catch(err){
             console.log(err)
             throw new Error(`Erro no model ${this.name}, método findAllByData`)

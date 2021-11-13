@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Compose Message</title>
+  <title>AdminLTE 3 | Mailbox</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -51,13 +51,13 @@
           </form>
         </div>
       </li>
+      
 
       
-    </ul>
   </nav>
   <!-- /.navbar -->
 
- <!-- Main Sidebar Container -->
+  <!-- Main Sidebar Container -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="/admin/index.html" class="brand-link">
@@ -259,12 +259,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Escrever</h1>
+            <h1>Minhas respostas</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Escrever</li>
             </ol>
           </div>
         </div>
@@ -273,81 +272,126 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-3">
-            <a href="mailbox.html" class="btn btn-primary btn-block mb-3">Caixa de entrada</a>
+      <div class="row">
+        <div class="col-md-3">
+          <a href="compose.html" class="btn btn-primary btn-block mb-3">Escrever Mensagem</a>
 
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Pasta</h3>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Pasta</h3>
 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                </div>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
               </div>
-              <div class="card-body p-0">
-                <ul class="nav nav-pills flex-column">
-                  <li class="nav-item active">
-                    <a href="/admin/pages/mailbox/mailbox.html" class="nav-link">
-                      <i class="fas fa-inbox"></i> Caixa de entrada
-                      <span class="badge bg-primary float-right"></span>
-                    </a>
-                  </li>
-                  <li class="nav-item active">
-                    <a href="/admin/pages/mailbox/mailbox.html" class="nav-link">
-                      <i class="fas fa-inbox"></i> Minhas mensagens
-                      <span class="badge bg-primary float-right"></span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-envelope"></i> Escrever
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <!-- /.card-body -->
             </div>
-            
+            <div class="card-body p-0">
+              <ul class="nav nav-pills flex-column">
+                <li class="nav-item active">
+                  <a href="/admin/pages/mailbox/mailbox.html" class="nav-link">
+                    <i class="fas fa-inbox"></i> Caixa de entrada
+                    <span class="badge bg-primary float-right"></span>
+                  </a>
+                </li>
+                <li class="nav-item active">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-inbox"></i> Caixa de entrada
+                    <span class="badge bg-primary float-right"></span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/admin/pages/mailbox/compose.html" class="nav-link">
+                    <i class="far fa-envelope"></i> Escrever
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.card-body -->
           </div>
-          <!-- /.col -->
-          <div class="col-md-9">
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h3 class="card-title">Enviar Mensagem</h3>
+         
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">Minhas Respostas</h3>
+
+              <div class="card-tools">
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control" placeholder="Search Mail">
+                  <div class="input-group-append">
+                    <div class="btn btn-primary">
+                      <i class="fas fa-search"></i>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <div class="form-group">
-                  <input class="form-control" id="id_Condomino" placeholder="Id do Condômino:">
-                </div>
-                <div class="form-group">
-                  <input class="form-control" id="assunto" placeholder="Assunto:">
-                </div>
-                <div class="form-group">
-                    <textarea id="compose-textarea" class="form-control" style="height: 300px">
-                      
-                    </textarea>
-                </div>
+              <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+              <div class="mailbox-controls">
+                <!-- Check all button -->
+                
                 
               </div>
-              <!-- /.card-body -->
-              <div class="card-footer">
-                <div class="float-right">
-                  <button id="enviar" type="button" class="btn btn-primary"><i class="far fa-envelope"></i> Enviar</button>
-                </div>
+              <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                  <tbody>
+                  
+                  </tbody>
+                </table>
+                <!-- /.table -->
               </div>
-              <!-- /.card-footer -->
+              <!-- /.mail-box-messages -->
             </div>
-            <!-- /.card -->
+            <!-- /.card-body -->
+            <div class="card-footer p-0">
+              <div class="mailbox-controls">
+                <!-- Check all button -->
+                
+                <div class="btn-group">
+                  <button type="button" class="btn btn-danger btn-sm" href="#" data-toggle="modal"  data-target="#modal-danger">
+                    <i class="far fa-trash-alt"></i>
+                  </button>
+                  
+                 
+                  <!-- /.btn-group -->
+                </div>
+                <!-- /.float-right -->
+              </div>
+            </div>
           </div>
-          <!-- /.col -->
+          <!-- /.card -->
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+        <!-- /.col -->
+      </div>
+     <!-- /.MODAL -->
+  <div class="modal fade" id="modal-danger">
+    <div class="modal-dialog">
+      <div class="modal-content bg-danger">
+        <div class="modal-header">
+          <h4 class="modal-title">Deletar Mensagem </h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <p>insira o id referente para deletar</p>
+            <input type="text" id="idDeletar">
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-outline-light" data-dismiss="modal">Cancelar</button>
+            <button id='buttonDeletar' type="button" class="btn btn-outline-light">Deletar</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+    </div>
     </section>
     <!-- /.content -->
   </div>
@@ -373,46 +417,74 @@
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
-<!-- Summernote -->
-<script src="../../plugins/summernote/summernote-bs4.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
   $(function () {
-    //Add text editor
-    $('#compose-textarea').summernote()
+    //Enable check and uncheck all functionality
+    $('.checkbox-toggle').click(function () {
+      var clicks = $(this).data('clicks')
+      if (clicks) {
+        //Uncheck all checkboxes
+        $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+        $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+      } else {
+        //Check all checkboxes
+        $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+        $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+      }
+      $(this).data('clicks', !clicks)
+    })
+
+    //Handle starring for font awesome
+    $('.mailbox-star').click(function (e) {
+      e.preventDefault()
+      //detect type
+      var $this = $(this).find('a > i')
+      var fa    = $this.hasClass('fa')
+
+      //Switch states
+      if (fa) {
+        $this.toggleClass('fa-star')
+        $this.toggleClass('fa-star-o')
+      }
+    })
   })
 </script>
 
 <script>
-  $('#enviar').click(()=>{
-    if ($('#assunto').val().length == 0 || $('#compose-textarea').val().length == 0) {
-            alert("preeencha a mensagem")
-        } else {
-            let update = {
-                assunto: $('#assunto').val(),
-                texto: $('#compose-textarea').val(),
-                remetente: 'Síndico',
-                apartamento: '000',
-                id_Condomino: $('#id_Condomino').val(),
-                tipo:'resposta'
-            }
+  fetch('http://localhost:8787/mensagens/resposta').then(result=> result.json()).then(mensagens =>{
+    mensagens.forEach(element => {
+        $('tbody').prepend(`
+                <tr>
+                    <td>
+                      <div class="icheck-primary">
+                        <input type="checkbox" value="" id="check1">
+                        <label for="check1"></label>
+                      </div>
+                    </td>
+                    <td class="mailbox-name">Id da mensagem:  ${element.id}</td>
+                    <td class="mailbox-name">Id do Condômino:  ${element.id_Condomino}</td>
+                    <td class="mailbox-name"><a href="/admin/pages/mailbox/read-mailResposta.html">${element.remetente}</a></td>
+                    <td class="mailbox-subject"><b>${element.assunto}</b> 
+                    <td class="mailbox-attachment"></td>
+                    <td class="mailbox-date">${element.dataRegistro}</td>
+                </tr>
+        
+        
+        `)
+    });
+  })
 
-            fetch('http://localhost:8787/mensagem', {
-                method: 'POST',
-                headers: { 'Content-type': 'application/json; charset=UTF-8' },
-                body: JSON.stringify(update)
-            }).then(result => result.json()).then(data => {
-                if (data.Ok) {
-                    alert('Mensagem enviada.')
-                    window.location.href = ("/admin/pages/mailbox/mailbox.html")
-                }
-                else { alert(data.erro) }
-            })
-        }
+  $('#buttonDeletar').click(()=>{
+    id = $('#idDeletar').val()
+    fetch(`http://localhost:8787/mensagem/${id}`,{method:'DELETE'}).then(result => result.json()).then(dados => {
+      if(dados.Ok) alert(dados.Ok)
+      else{alert(dados.erro)}
+    })
   })
 </script>
-
 </body>
 </html>
+ 

@@ -259,7 +259,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Inbox</h1>
+            <h1>Caixa de mensagens</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -278,7 +278,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Folders</h3>
+              <h3 class="card-title">Pasta</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -290,13 +290,17 @@
               <ul class="nav nav-pills flex-column">
                 <li class="nav-item active">
                   <a href="#" class="nav-link">
-                    <i class="fas fa-inbox"></i> Inbox
-                    <span class="badge bg-primary float-right">12</span>
+                    <i class="fas fa-inbox"></i> Caixa de entrada
+                  </a>
+                </li>
+                <li class="nav-item active">
+                  <a href="/admin/pages/mailbox/mailboxRespostas.html" class="nav-link">
+                    <i class="fas fa-inbox"></i> Minhas respostas
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="/admin/pages/mailbox/compose.html" class="nav-link">
-                    <i class="far fa-envelope"></i> Sent
+                    <i class="far fa-envelope"></i> Escrever
                   </a>
                 </li>
               </ul>
@@ -327,36 +331,8 @@
             <div class="card-body p-0">
               <div class="mailbox-controls">
                 <!-- Check all button -->
-                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
-                </button>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm">
-                    <i class="far fa-trash-alt"></i>
-                  </button>
-                  <button type="button" class="btn btn-default btn-sm">
-                    <i class="fas fa-reply"></i>
-                  </button>
-                  <button type="button" class="btn btn-default btn-sm">
-                    <i class="fas fa-share"></i>
-                  </button>
-                </div>
-                <!-- /.btn-group -->
-                <button type="button" class="btn btn-default btn-sm">
-                  <i class="fas fa-sync-alt"></i>
-                </button>
-                <div class="float-right">
-                  1-50/200
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm">
-                      <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button type="button" class="btn btn-default btn-sm">
-                      <i class="fas fa-chevron-right"></i>
-                    </button>
-                  </div>
-                  <!-- /.btn-group -->
-                </div>
-                <!-- /.float-right -->
+                
+                
               </div>
               <div class="table-responsive mailbox-messages">
                 <table class="table table-hover table-striped">
@@ -372,34 +348,13 @@
             <div class="card-footer p-0">
               <div class="mailbox-controls">
                 <!-- Check all button -->
-                <button type="button" class="btn btn-default btn-sm checkbox-toggle">
-                  <i class="far fa-square"></i>
-                </button>
+                
                 <div class="btn-group">
-                  <button type="button" class="btn btn-default btn-sm">
+                  <button type="button" class="btn btn-danger btn-sm" href="#" data-toggle="modal"  data-target="#modal-danger">
                     <i class="far fa-trash-alt"></i>
                   </button>
-                  <button type="button" class="btn btn-default btn-sm">
-                    <i class="fas fa-reply"></i>
-                  </button>
-                  <button type="button" class="btn btn-default btn-sm">
-                    <i class="fas fa-share"></i>
-                  </button>
-                </div>
-                <!-- /.btn-group -->
-                <button type="button" class="btn btn-default btn-sm">
-                  <i class="fas fa-sync-alt"></i>
-                </button>
-                <div class="float-right">
-                  1-50/200
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm">
-                      <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button type="button" class="btn btn-default btn-sm">
-                      <i class="fas fa-chevron-right"></i>
-                    </button>
-                  </div>
+                  
+                 
                   <!-- /.btn-group -->
                 </div>
                 <!-- /.float-right -->
@@ -410,7 +365,31 @@
         </div>
         <!-- /.col -->
       </div>
-      <!-- /.row -->
+     <!-- /.MODAL -->
+  <div class="modal fade" id="modal-danger">
+    <div class="modal-dialog">
+      <div class="modal-content bg-danger">
+        <div class="modal-header">
+          <h4 class="modal-title">Deletar Mensagem </h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <p>insira o id referente para deletar</p>
+            <input type="text" id="idDeletar">
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-outline-light" data-dismiss="modal">Cancelar</button>
+            <button id='buttonDeletar' type="button" class="btn btn-outline-light">Deletar</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+    </div>
     </section>
     <!-- /.content -->
   </div>
@@ -483,6 +462,7 @@
                         <label for="check1"></label>
                       </div>
                     </td>
+                    <td class="mailbox-name">Id da mensagem:  ${element.id}</td>
                     <td class="mailbox-name">Id do Condômino:  ${element.id_Condomino}</td>
                     <td class="mailbox-name"><a href="/admin/pages/mailbox/read-mail.html">${element.remetente}</a></td>
                     <td class="mailbox-subject"><b>${element.assunto}</b> 
@@ -493,6 +473,14 @@
         
         `)
     });
+  })
+
+  $('#buttonDeletar').click(()=>{
+    id = $('#idDeletar').val()
+    fetch(`http://localhost:8787/mensagem/${id}`,{method:'DELETE'}).then(result => result.json()).then(dados => {
+      if(dados.Ok) alert(dados.Ok)
+      else{alert(dados.erro)}
+    })
   })
 </script>
 </body>
