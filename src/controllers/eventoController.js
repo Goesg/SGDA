@@ -18,7 +18,7 @@ class eventoController {
             }catch(err){
                 console.log(err)
                 let catchErro = {erro:`Houve uma falha no servidor ao cadastrar um novo ${this.name}`}
-                res.status(500).json(catchErro)
+                res.json(catchErro)
             }
          }       
          inserirUsuario() 
@@ -31,7 +31,7 @@ class eventoController {
         }catch(err){
             console.log(err)
             let catchErro = {erro:`Houve uma falha no servidor ao listar todos ${this.name}s`}
-            res.status(500).json(catchErro)
+            res.json(catchErro)
         }     
     };
 
@@ -42,7 +42,7 @@ class eventoController {
         }catch(err){
             console.log(err)
             let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pelo id`}
-            res.status(500).json(catchErro)
+            res.json(catchErro)
         }
     };
 
@@ -53,7 +53,7 @@ class eventoController {
         }catch(err){
             console.log(err)
             let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pela data`}
-            res.status(500).json(catchErro)
+            res.json(catchErro)
         }
     };
 
@@ -71,7 +71,7 @@ class eventoController {
         }catch(err){
             console.log(err)
             let catchErro = {erro:`Houve uma falha no servidor ao editar ${this.name} pelo id`}
-            res.status(500).json(catchErro)
+            res.json(catchErro)
         }
     };
 
@@ -82,7 +82,7 @@ class eventoController {
         }catch(err){
             console.log(err)
             let catchErro = {erro:`Houve uma falha no servidor ao remover ${this.name} pelo id`}
-            res.status(500).json(catchErro)
+            res.json(catchErro)
         }
     }
 }

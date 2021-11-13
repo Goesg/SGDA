@@ -22,8 +22,8 @@ class solicitacaoController {
                 res.json(resultInsert.result)
             }catch(err){
                 console.log(err)
-                let catchErro = {erro:`Houve uma falha no servidor ao cadastrar um novo ${this.name}`}
-                res.status(500).json(catchErro)
+                let catchErro = {erro:`Houve uma falha no servidor ao cadastrar uma nova ${this.name}`}
+                res.json(catchErro)
             }
          }       
          inserirUsuario() 
@@ -35,8 +35,8 @@ class solicitacaoController {
             res.json(resultFindAll.result)
         }catch(err){
             console.log(err)
-            let catchErro = {erro:`Houve uma falha no servidor ao listar todos ${this.name}s`}
-            res.status(500).json(catchErro)
+            let catchErro = {erro:`Houve uma falha no servidor ao listar todas as solicitações`}
+            res.json(catchErro)
         }     
     };
 
@@ -47,7 +47,7 @@ class solicitacaoController {
         }catch(err){
             console.log(err)
             let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pelo id`}
-            res.status(500).json(catchErro)
+            res.json(catchErro)
         }
     };
 
@@ -58,7 +58,7 @@ class solicitacaoController {
         }catch(err){
             console.log(err)
             let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pelo id do condômino`}
-            res.status(500).json(catchErro)
+            res.json(catchErro)
         }
     };
 
@@ -81,7 +81,7 @@ class solicitacaoController {
         }catch(err){
             console.log(err)
             let catchErro = {erro:`Houve uma falha no servidor ao editar ${this.name} pelo id`}
-            res.status(500).json(catchErro)
+            res.json(catchErro)
         }
     };
 
@@ -92,7 +92,7 @@ class solicitacaoController {
         }catch(err){
             console.log(err)
             let catchErro = {erro:`Houve uma falha no servidor ao remover ${this.name} pelo id`}
-            res.status(500).json(catchErro)
+            res.json(catchErro)
         }
     }
 }

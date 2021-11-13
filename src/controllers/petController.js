@@ -19,7 +19,7 @@ class petController {
             }catch(err){
                 console.log(err)
                 let catchErro = {erro:`Houve uma falha no servidor ao cadastrar um novo ${this.name}`}
-                res.status(500).json(catchErro)
+                res.json(catchErro)
             }
          }       
          inserirUsuario() 
@@ -31,8 +31,8 @@ class petController {
             res.json(resultFindAll.result)
         }catch(err){
             console.log(err)
-            let catchErro = {erro:`Houve uma falha no servidor ao listar todos ${this.name}s`}
-            res.status(500).json(catchErro)
+            let catchErro = {erro:`Houve uma falha no servidor ao listar todos os ${this.name}s`}
+            res.json(catchErro)
         }     
     };
 
@@ -43,7 +43,7 @@ class petController {
         }catch(err){
             console.log(err)
             let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pelo id`}
-            res.status(500).json(catchErro)
+            res.json(catchErro)
         }
     };
 
@@ -54,7 +54,7 @@ class petController {
         }catch(err){
             console.log(err)
             let catchErro = {erro:`Houve uma falha no servidor ao listar ${this.name} pelo apartamento`}
-            res.status(500).json(catchErro)
+            res.json(catchErro)
         }
     };
 
@@ -73,7 +73,7 @@ class petController {
         }catch(err){
             console.log(err)
             let catchErro = {erro:`Houve uma falha no servidor ao editar ${this.name} pelo id`}
-            res.status(500).json(catchErro)
+            res.json(catchErro)
         }
     };
 
@@ -84,7 +84,7 @@ class petController {
         }catch(err){
             console.log(err)
             let catchErro = {erro:`Houve uma falha no servidor ao remover ${this.name} pelo id`}
-            res.status(500).json(catchErro)
+            res.json(catchErro)
         }
     }
 }
