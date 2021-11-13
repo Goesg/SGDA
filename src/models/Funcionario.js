@@ -29,7 +29,6 @@ class Funcionario{
             let salt = await bcrypt.genSaltSync(10)
             let hash = await bcrypt.hashSync(dataUser.senha,salt)
             dataUser.senha = hash
-            console.log(dataUser.senha)
         // INSERT
             await database.insert(dataUser).into(this.table)
             return {status:200, result:{Ok:`${this.name} cadastrado com sucesso!`}}  
@@ -110,6 +109,12 @@ class Funcionario{
         // VALIDACAO   
             let userId = await this.findById(dataUpdate.id)
             if(userId.status == 404) return userId
+            if(dataUpdate.senha){
+                // BCRYPT
+                let salt = await bcrypt.genSaltSync(10)
+                let hash = await bcrypt.hashSync(dataUpdate.senha,salt)
+                dataUpdate.senha = hash
+            }
             await database.where({id:dataUpdate.id}).update(dataUpdate).table(this.table)
             return {status:200 , result:{Ok:`${this.name} atualizado com sucesso!`}}
         }catch(err){
