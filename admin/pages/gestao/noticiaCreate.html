@@ -295,7 +295,7 @@
 
           </div>
           <!-- /.col (left) -->
-          <form class="col-md-12" method="post" action="http://localhost:8787/noticia"> 
+          <form class="col-md-12"> 
           <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
@@ -306,15 +306,15 @@
                 <div class="form-group">
                   <div class="form-group">
                     <label for="email">Titulo:</label>
-                    <input type="text" name="titulo" class="form-control">
+                    <input type="text" id="titulo" class="form-control">
                   </div>
                 <div class="form-group">
                   <label for="email">Conteúdo:</label>
-                  <textarea name="conteudo" class="form-control"> </textarea>
+                  <textarea id="conteudo" class="form-control"> </textarea>
                 </div>
               </div>
                
-              <button id="buttonCadastrar" type="submit" class="btn btn-success" style="width: 15%; align-self: flex-end; margin-right: 1.2%; margin-bottom: 2%;">Cadastrar</button>      
+              <button id="buttonCadastrar" type="button" class="btn btn-success" style="width: 15%; align-self: flex-end; margin-right: 1.2%; margin-bottom: 2%;">Cadastrar</button>      
             </div> 
           </div>
         </form>
@@ -506,5 +506,29 @@
   // DropzoneJS Demo Code End
 </script>
 
+
+<script>
+  $('#buttonCadastrar').click(()=>{
+   
+    let update = {
+        id: $('#id').val(),
+        titulo:  $('#titulo').val(),
+        conteudo: $('#conteudo').val(),
+        data:  $('#data').val(),
+    }
+  
+    fetch('http://localhost:8787/noticia',{ 
+      method:'POST', 
+      headers: {'Content-type': 'application/json; charset=UTF-8'},
+      body: JSON.stringify(update)
+    }).then(result => result.json()).then(data => {
+      if(data.Ok){
+        alert(data.Ok)
+        window.location.href = ('/admin/pages/gestao/noticias.html')
+      }
+      else{alert(data.erro) } 
+    })
+  })
+  </script>
 </body>
 </html>

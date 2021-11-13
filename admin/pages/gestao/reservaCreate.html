@@ -295,7 +295,7 @@
 
           </div>
           <!-- /.col (left) -->
-          <form class="col-md-12" method="post" action="http://localhost:8787/reserva"> 
+          <form class="col-md-12"> 
           <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
@@ -306,29 +306,29 @@
 
                   <div class="form-group">
                     <label for="email">Tipo:</label>
-                    <input type="text" name="tipo" class="form-control">
+                    <input type="text" id="tipo" class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="email">Condômino:</label>
-                    <input type="text" name="nomeCondomino" class="form-control">
+                    <input type="text" id="nomeCondomino" class="form-control">
                   </div>
                   <label for="inputDataDeNascimento">Data:</label>
                   <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                    <input name="data" type="text" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                    <input id="data" type="text" class="form-control datetimepicker-input" data-target="#reservationdate" />
                     <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                       <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                     </div>
                   </div>
                   <div class="form-group ">
                     <label for="inputMDEx1">Horário:</label>
-                    <input type="time" name="horario" id="inputMDEx1" class="form-control">
+                    <input type="time" id="horario" id="inputMDEx1" class="form-control">
                   </div>
                 
                 <div class="form-group">
                   <label for="nome">Descrição:</label>
-                  <input type="text" name="descricao" class="form-control">
+                  <input type="text" id="descricao" class="form-control">
                 </div>
-              <button id="buttonCadastrar" type="submit" class="btn btn-success" style="width: 15%; align-self: flex-end; margin-right: 1.2%; margin-bottom: 2%;">Cadastrar</button>      
+              <button id="buttonCadastrar" type="button" class="btn btn-success" style="width: 15%; align-self: flex-end; margin-right: 1.2%; margin-bottom: 2%;">Cadastrar</button>      
             </div> 
           </div>
         </form>
@@ -520,5 +520,30 @@
   // DropzoneJS Demo Code End
 </script>
 
+<script>
+  $('#buttonCadastrar').click(()=>{
+   
+    let update = {
+        id: $('#id').val(),
+        tipo:  $('#tipo').val(),
+        nomeCondomino: $('#nomeCondomino').val(),
+        data:  $('#data').val(),
+        horario:  $('#horario').val(),
+        descricao:  $('#descricao').val(),
+    }
+  
+    fetch('http://localhost:8787/reserva',{ 
+      method:'POST', 
+      headers: {'Content-type': 'application/json; charset=UTF-8'},
+      body: JSON.stringify(update)
+    }).then(result => result.json()).then(data => {
+      if(data.Ok){
+        alert(data.Ok)
+        window.location.href = ('/admin/pages/gestao/reservas.html')
+      }
+      else{alert(data.erro) } 
+    })
+  })
+  </script>
 </body>
 </html>

@@ -11,7 +11,7 @@ class Negociacao{
         try{
         // INSERT
             await database.insert(dataUser).into(this.table)
-            return {status:200, result:{Ok:`${this.name} cadastrado com sucesso!`}}  
+            return {status:200, result:{Ok:`${this.name} cadastrada com sucesso!`}}  
         }catch(err){
             console.log(err)
             throw new Error(`Erro no model ${this.name}, método insertUser`)
@@ -57,7 +57,7 @@ class Negociacao{
             let userId = await this.findById(dataUpdate.id)
             if(userId.status == 404) return userId
             await database.where({id:dataUpdate.id}).update(dataUpdate).table(this.table)
-            return {status:200 , result:{Ok:`${this.name} atualizado com sucesso!`}}
+            return {status:200 , result:{Ok:`${this.name} atualizada com sucesso!`}}
         }catch(err){
             console.log(err)
             throw new Error(`Erro no model ${this.name}, método updateById`)

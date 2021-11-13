@@ -295,7 +295,7 @@
 
           </div>
           <!-- /.col (left) -->
-          <form class="col-md-12" method="post" action="http://localhost:8787/apartamento"> 
+          <form class="col-md-12"> 
           <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
@@ -307,26 +307,26 @@
                   
                 <div class="form-group">
                   <label for="email">Número do andar:</label>
-                  <input type="text" name="numeroAndar" class="form-control">
+                  <input type="text" id="numeroAndar" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="nome">Número:</label>
-                  <input type="text" name="numero" class="form-control">
+                  <input type="text" id="numero" class="form-control">
                 </div>
                 <div class="form-group">
                   <div class="form-group">
                     <label for="email">Interfone:</label>
-                    <input type="text" name="interFone" class="form-control">
+                    <input type="text" id="interFone" class="form-control">
                   </div>
                   <div class="form-group">
                     <div class="form-group">
                       <label for="email">ID_Condômino:</label>
-                      <input type="text" name="id_Condomino" class="form-control">
+                      <input type="text" id="id_Condomino" class="form-control">
                     </div>
                             
                
               </div>
-              <button id="buttonCadastrar" type="submit" class="btn btn-success" style="width: 15%; align-self: flex-end; margin-right: 1.2%; margin-bottom: 2%;">Cadastrar</button>      
+              <button id="buttonCadastrar" type="button" class="btn btn-success" style="width: 15%; align-self: flex-end; margin-right: 1.2%; margin-bottom: 2%;">Cadastrar</button>      
             </div> 
           </div>
         </form>
@@ -517,6 +517,34 @@
   }
   // DropzoneJS Demo Code End
 </script>
+
+<script>
+  $('#buttonCadastrar').click(()=>{
+    let id = $('#id').val()
+    let numeroAndar = $('#numeroAndar').val()
+    let numero = $('#numero').val()
+    let interFone = $('#interFone').val()
+    let id_Condomino = $('#id_Condomino').val()
+    let update = {
+        numeroAndar: numeroAndar,
+        numero:numero,
+        interFone: interFone,
+        id_Condomino:id_Condomino
+    }
+  
+    fetch('http://localhost:8787/apartamento',{ 
+      method:'POST', 
+      headers: {'Content-type': 'application/json; charset=UTF-8'},
+      body: JSON.stringify(update)
+    }).then(result => result.json()).then(data => {
+      if(data.Ok){
+        alert(data.Ok)
+        window.location.href = ('/admin/pages/gestao/apartamentos.html')
+      }
+      else{alert(data.erro) } 
+    })
+  })
+  </script>
 
 </body>
 </html>

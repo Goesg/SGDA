@@ -295,7 +295,7 @@
 
           </div>
           <!-- /.col (left) -->
-          <form class="col-md-12" method="post" action="http://localhost:8787/solicitacao"> 
+          <form class="col-md-12"> 
           <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
@@ -306,37 +306,37 @@
 
                   <div class="form-group">
                     <label for="email">Código do imovél:</label>
-                    <input type="text" name="codMovel" class="form-control">
+                    <input type="text" id="codMovel" class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="email">Proprietario:</label>
-                    <input type="text" name="proprietario" class="form-control">
+                    <input type="text" id="proprietario" class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="email">Apartamento:</label>
-                    <input type="text" name="apartamento" class="form-control">
+                    <input type="text" id="apartamento" class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="email">Bloco:</label>
-                    <input type="text" name="bloco" class="form-control">
+                    <input type="text" id="bloco" class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="email">Numero Do Registro:</label>
-                    <input type="text" name="numeroRegistro" class="form-control">
+                    <input type="text" id="numeroRegistro" class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="nome">Tipo:</label>
-                    <input type="text" name="tipo" class="form-control">
+                    <input type="text" id="tipo" class="form-control">
                   </div>
                 <div class="form-group">
                   <label for="nome">Observação:</label>
-                  <input type="text" name="observacao" class="form-control">
+                  <input type="text" id="observacao" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="nome">ID_Condômino:</label>
-                  <input type="text" name="id_Condomino" class="form-control">
+                  <input type="text" id="id_Condomino" class="form-control">
                 </div>
-              <button id="buttonCadastrar" type="submit" class="btn btn-success" style="width: 15%; align-self: flex-end; margin-right: 1.2%; margin-bottom: 2%;">Cadastrar</button>      
+              <button id="buttonCadastrar" type="button" class="btn btn-success" style="width: 15%; align-self: flex-end; margin-right: 1.2%; margin-bottom: 2%;">Cadastrar</button>      
             </div> 
           </div>
         </form>
@@ -528,5 +528,34 @@
   // DropzoneJS Demo Code End
 </script>
 
+<script>
+  $('#buttonCadastrar').click(()=>{
+   
+    let update = {
+        id: $('#id').val(),
+        codMovel:  $('#codMovel').val(),
+        proprietario: $('#proprietario').val(),
+        apartamento:  $('#apartamento').val(),
+        bloco:  $('#bloco').val(),
+        dataRegistro:  $('#dataRegistro').val(),
+        numeroRegistro:  $('#numeroRegistro').val(),
+        tipo:  $('#tipo').val(),
+        observacao:  $('#observacao').val(),
+        id_Condomino:  $('#id_Condomino').val(),
+    }
+  
+    fetch('http://localhost:8787/solicitacao',{ 
+      method:'POST', 
+      headers: {'Content-type': 'application/json; charset=UTF-8'},
+      body: JSON.stringify(update)
+    }).then(result => result.json()).then(data => {
+      if(data.Ok){
+        alert(data.Ok)
+        window.location.href = ('/admin/pages/gestao/solicitacoes.html')
+      }
+      else{alert(data.erro) } 
+    })
+  })
+  </script>
 </body>
 </html>

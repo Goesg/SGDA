@@ -10,7 +10,6 @@ class negociacaoController {
                 let dataUser =  await {
                     codMovel:req.body.codMovel,
                     proprietario:req.body.proprietario,
-                    condomino:req.body.condomino,
                     numeroApartamento:req.body.numeroApartamento,
                     bloco:req.body.bloco,
                     dataRegistro:new Date().toLocaleDateString(),
@@ -68,7 +67,6 @@ class negociacaoController {
                 id:req.body.id,
                 codMovel:req.body.codMovel,
                 proprietario:req.body.proprietario,
-                condomino:req.body.condomino,
                 numeroApartamento:req.body.numeroApartamento,
                 bloco:req.body.bloco,
                 dataRegistro:req.body.dataRegistro,

@@ -295,7 +295,7 @@
 
           </div>
           <!-- /.col (left) -->
-          <form class="col-md-12" method="post" action="http://localhost:8787/visita"> 
+          <form class="col-md-12"> 
           <div class="col-md-12">
             <div class="card card-primary">
               <div class="card-header">
@@ -306,37 +306,37 @@
 
                   <div class="form-group">
                     <label for="email">Nome:</label>
-                    <input type="text" name="nome" class="form-control">
+                    <input type="text" id="nome" class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="email">Sexo:</label>
-                    <input type="text" name="sexo" class="form-control">
+                    <input type="text" id="sexo" class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="email">Rg:</label>
-                    <input type="text" name="rg" class="form-control">
+                    <input type="text" id="rg" class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="email">Expedicao:</label>
-                    <input type="text" name="expedicao" class="form-control">
+                    <input type="text" id="expedicao" class="form-control">
                   </div>
                 
                   <label for="inputDataDeNascimento">Data da saída:</label>
                   <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                    <input name="dataSaida" type="text" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                    <input id="dataSaida" type="text" class="form-control datetimepicker-input" data-target="#reservationdate" />
                     <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                       <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                     </div>
                   </div>
                 <div class="form-group">
                   <label for="nome">Autorização:</label>
-                  <input type="text" name="autorizacao" class="form-control">
+                  <input type="text" id="autorizacao" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="nome">ID_Apartamento:</label>
-                  <input type="text" name="id_Apartamento" class="form-control">
+                  <input type="text" id="id_Apartamento" class="form-control">
                 </div>
-              <button id="buttonCadastrar" type="submit" class="btn btn-success" style="width: 15%; align-self: flex-end; margin-right: 1.2%; margin-bottom: 2%;">Cadastrar</button>      
+              <button id="buttonCadastrar" type="button" class="btn btn-success" style="width: 15%; align-self: flex-end; margin-right: 1.2%; margin-bottom: 2%;">Cadastrar</button>      
             </div> 
           </div>
         </form>
@@ -528,5 +528,32 @@
   // DropzoneJS Demo Code End
 </script>
 
+<script>
+  $('#buttonCadastrar').click(()=>{
+   
+    let update = {
+        id: $('#id').val(),
+        nome:  $('#nome').val(),
+        sexo: $('#sexo').val(),
+        rg:  $('#rg').val(),
+        expedicao:  $('#expedicao').val(),
+        dataSaida:  $('#dataSaida').val(),
+        autorizado:  $('#autorizado').val(),
+        id_Apartamento:  $('#id_Apartamento').val(),
+    }
+  
+    fetch('http://localhost:8787/visita',{ 
+      method:'POST', 
+      headers: {'Content-type': 'application/json; charset=UTF-8'},
+      body: JSON.stringify(update)
+    }).then(result => result.json()).then(data => {
+      if(data.Ok){
+        alert(data.Ok)
+        window.location.href = ('/admin/pages/gestao/visitantes.html')
+      }
+      else{alert(data.erro) } 
+    })
+  })
+  </script>
 </body>
 </html>

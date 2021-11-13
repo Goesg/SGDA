@@ -526,6 +526,7 @@
   }
   // DropzoneJS Demo Code End
 </script>
+
 <script>
 $('#buttonEditar').click(()=>{
  
@@ -543,8 +544,10 @@ $('#buttonEditar').click(()=>{
     headers: {'Content-type': 'application/json; charset=UTF-8'},
     body: JSON.stringify(update)
   }).then(result => result.json()).then(data => {
-    if(data.Ok) alert(data.Ok)
-    else{alert(data.erro) } 
+    if(data.Ok){
+      alert(data.Ok)
+      window.location.href = ('/admin/pages/gestao/pets.html')
+    }else{alert(data.erro)} 
   })
 })
 
