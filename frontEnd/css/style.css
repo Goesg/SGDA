@@ -44,7 +44,7 @@ body {
 }
 .btn {
   position: absolute;
-  top: 15px;
+  top: 8px;
   left: 45px;
   height: 45px;
   width: 45px;
@@ -75,7 +75,7 @@ body {
   transition: left 0.4s ease;
 }
 .sidebar.show {
-  left: 0px;
+  left: -2px;
   width: 18%;
 }
 .sidebar .text {
@@ -242,4 +242,13 @@ td {
 #btnBoleto:hover {
   background-color: #0ad92d;
   color: #ffff;
+}
+
+.navBar{
+  height: 4em;
+  background-color: rgb(0 0 0 / 78%);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: self-end;
 }
