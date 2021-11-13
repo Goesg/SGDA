@@ -328,8 +328,8 @@ $('#tabelaEncomendas').click(()=>{
   $('#tabelaDisplay').css('display','flex')
   fetch(`http://localhost:8787/encomendas/idCondomino/${userId}`).then(result => result.json()).then(dados => {
       $("#tabelaDisplay").html(` 
-          <table>
-              <thead >
+          <table class="table table-bordered table-striped mb-0">
+              <thead>
               <tr>
                   <th scope="col">Nome</th>
                   <th scope="col">Entregue</th>
