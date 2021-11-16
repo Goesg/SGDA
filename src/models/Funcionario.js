@@ -30,8 +30,10 @@ class Funcionario{
             let hash = await bcrypt.hashSync(dataUser.senha,salt)
             dataUser.senha = hash
         // INSERT
-            await database.insert(dataUser).into(this.table)
-            return {status:200, result:{Ok:`${this.name} cadastrado com sucesso!`}}  
+            let errSql;
+            await database.insert(dataUser).into(this.table).then(sql => errSql = false).catch(err => errSql = true)
+            if(errSql) return {status:404, result:{erro:`Erro ao inserir no banco!!! \n O id do condominio informado não existe. \n Revise as informações!`}} 
+            else{ return {status:200, result:{Ok:`${this.name} cadastrado com sucesso!`}} }
         }catch(err){
             console.log(err)
             throw new Error(`Erro no model ${this.name}, método insertUser`)
@@ -115,7 +117,9 @@ class Funcionario{
                 let hash = await bcrypt.hashSync(dataUpdate.senha,salt)
                 dataUpdate.senha = hash
             }
-            await database.where({id:dataUpdate.id}).update(dataUpdate).table(this.table)
+            let errSql;
+            await database.where({id:dataUpdate.id}).update(dataUpdate).table(this.table).then(sql => errSql = false).catch(err => errSql = true)
+            if(errSql) return {status:404, result:{erro:`Erro ao atualizar ${this.name}!!! \n O id do condominio informado não existe. \n Revise as informações!`}} 
             return {status:200 , result:{Ok:`${this.name} atualizado com sucesso!`}}
         }catch(err){
             console.log(err)

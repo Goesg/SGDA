@@ -364,8 +364,6 @@ $('#verMensagens').click(()=>{
   $('#caixaMensagens').css('display','flex')
   $('#caixaEmail').html(' ')
   fetch(`http://localhost:8787/mensagens/resposta/${userId}`).then(result => result.json()).then(mensagem => {
-    if(mensagem.erro) alert(mensagem.erro)
-    else{
       $('.remetente').html(mensagem[0].remetente)
       $('.apartamento').html(mensagem[0].apartamento)
 
@@ -384,8 +382,5 @@ $('#verMensagens').click(()=>{
               <hr>
       `)
     });
-    }
-   
   })
-  
 })

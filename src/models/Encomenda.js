@@ -10,8 +10,10 @@ class Encomenda{
     async insertUser(dataUser){
         try{
         // INSERT
-            await database.insert(dataUser).into(this.table)
-            return {status:200, result:{Ok:`${this.name} cadastrada com sucesso!`}}  
+            let errSql;
+            await database.insert(dataUser).into(this.table).then(sql => errSql = false).catch(err => errSql = true)
+            if(errSql) return {status:404, result:{erro:`Erro ao inserir no banco!!! \n O id do condômino informado não existe. \n Revise as informações!`}} 
+            else{ return {status:200, result:{Ok:`${this.name} cadastrada com sucesso!`}} }
         }catch(err){
             console.log(err)
             throw new Error(`Erro no model ${this.name}, método insertUser`)
@@ -31,9 +33,9 @@ class Encomenda{
 
     async findAllByIdCondomino(idCondomino){
         try{
-           let user = await database.select().table(this.table).where({id_Condomino:idCondomino})
-           if(user.length > 0) return {status:200, result:user} 
-           else return {status:404, result:{erro:`O Condômino ${idCondomino} não corresponde a nenhuma ${this.name}`}}
+            let user = await database.select().table(this.table).where({id_Condomino:idCondomino})
+            if(user.length > 0) return {status:200, result:user} 
+            else return {status:404, result:{erro:`O Condômino ${idCondomino} não corresponde a nenhuma ${this.name}`}}
         }catch(err){
             console.log(err)
             throw new Error(`Erro no model ${this.name}, método findAllIdCondomino`)
@@ -56,7 +58,9 @@ class Encomenda{
         // VALIDACAO   
             let userId = await this.findById(dataUpdate.id)
             if(userId.status == 404) return userId
-            await database.where({id:dataUpdate.id}).update(dataUpdate).table(this.table)
+            let errSql;
+            await database.where({id:dataUpdate.id}).update(dataUpdate).table(this.table).then(sql => errSql = false).catch(err => errSql = true)
+            if(errSql) return {status:404, result:{erro:`Erro ao atualizar ${this.name}!!! \n O id do condômino informado não existe. \n Revise as informações!`}} 
             return {status:200 , result:{Ok:`${this.name} atualizada com sucesso!`}}
         }catch(err){
             console.log(err)
