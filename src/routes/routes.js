@@ -83,7 +83,7 @@ router.get('/funcionario/:id', funcionarioController.showById)
 router.put('/funcionario', funcionarioController.editById)
 router.delete('/funcionario/:id', funcionarioController.removeById)
 router.post('/recovery/funcionario', funcionarioController.recoveryPassword)
-router.post('/login/funcionario',funcionarioController.login)
+router.post('/funcionario/login',funcionarioController.login)
 
 // MENSAGEM
 router.post('/mensagem', mensagemController.create)
@@ -142,7 +142,7 @@ router.get('/sindico/:id', sindicoController.showById)
 router.put('/sindico', sindicoController.editById)
 router.delete('/sindico/:id', sindicoController.removeById)
 router.post('/recovery/sindico', sindicoController.recoveryPassword)
-router.post('/login/sindico',sindicoController.login)
+router.post('/sindico/login',sindicoController.login)
 
 // SOLICITACAO
 router.post('/solicitacao', solicitacaoController.create)

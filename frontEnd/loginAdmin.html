@@ -34,8 +34,16 @@
 					</div>
 
 					<span class="login100-form-title p-t-20 p-b-45">
-						Administrador
+						Administrador / Funcionários
 					</span>
+
+					<div class="wrap-input100 validate-input m-b-10" data-validate = "Insira seu usuário">
+						<span>Se logar como:</span>
+						<select id="user" name="user">
+						  <option value="Administrador">Administrador</option>
+						  <option value="funcionario">Funcionário</option>
+						</select>
+					</div>
 
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "Insira seu usuário">
 						<input class="input100" id="inputLogin" type="text" name="username" placeholder="Usuário">
@@ -86,20 +94,29 @@
                     login: login,
                     senha: senha
                 }
-
-                fetch('http://localhost:8787/login/sindico',{
-                    method: 'POST',
-                    headers: { 'Content-type': 'application/json; charset=UTF-8' },
-                    body: JSON.stringify(data)
-                }).then(result => result.json()).then(dado => {
-                    if(dado.erro) alert(dado.erro)
-                    else{
-                        alert("usuário logado com sucesso")
-                        window.location.href = ('/admin/index.html')
-                    }
-                })
+				let user = $('select').val()
+					if (user == 'Administrador') {
+					axios.post('http://localhost:8787/sindico/login', data).then(data => {
+						let dados = data.data
+						if (dados.Ok) {
+							alert(dados.Ok)
+							window.location.href = ('/admin/index.html')
+						} else {
+							alert(dados.erro)
+						}
+					})
+				} else {
+					axios.post('http://localhost:8787/funcionario/login', data).then(data => {
+						let dados = data.data
+						if (dados.Ok) {
+							alert(dados.Ok)
+							window.location.href = ('/porteiro/index.html')
+						} else {
+							alert(dados.erro)
+						}
+					})
+				}
             }
-
         })
     </script>
 </body>
