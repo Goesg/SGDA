@@ -114,36 +114,50 @@
 
         <!-- CAIXA MENSAGE -->
         <div id="caixaMensagens" class="col-md-12" style="display:none">
-          <div class="card card-primary card-outline" style="width: 960px; overflow: auto; height: 646px;">
-            <div class="card-header">
-              <div class="card-tools">
-              </div>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body p-0">
-              <div class="mailbox-read-info">
-                <h5>Remetente : Síndico</h5>
-              </div>
-              <!-- /.mailbox-read-info -->
-              <div class="mailbox-controls with-border text-center">
-               
-               
-              </div>
-              <!-- /.mailbox-controls -->
-              <div class="mailbox-read-message" id="caixaEmail">
-                
+          <div class="col-md-9">
+            <!-- DIRECT CHAT PRIMARY -->
+            <div class="card card-success card-outline direct-chat direct-chat-success">
+              <div class="card-header">
+                <h3 class="card-title">Mensagens Respondidas</h3>
 
+               
               </div>
-              <!-- /.mailbox-read-message -->
+              <!-- /.card-header -->
+              <div class="card-body" id="historicoMensagens" style="height: 620px;">
+                <!-- Conversations are loaded here -->
+               
+                <!--/.direct-chat-messages-->
+
+                <!-- Contacts are loaded here -->
+                <div class="direct-chat-contacts">
+                  <ul class="contacts-list">
+                    <li>
+                      <a href="#">
+                        <img class="contacts-list-img" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
+
+                        <div class="contacts-list-info">
+                          <span class="contacts-list-name">
+                            Count Dracula
+                            <small class="contacts-list-date float-right">2/28/2015</small>
+                          </span>
+                          <span class="contacts-list-msg">How have you been? I was...</span>
+                        </div>
+                        <!-- /.contacts-list-info -->
+                      </a>
+                    </li>
+                    <!-- End Contact Item -->
+                  </ul>
+                  <!-- /.contatcts-list -->
+                </div>
+                <!-- /.direct-chat-pane -->
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+              </div>
+              <!-- /.card-footer-->
             </div>
-            <!-- /.card-body -->
-           
-            <!-- /.card-footer -->
-            <div class="card-footer">
-              
-            <!-- /.card-footer -->
+            <!--/.direct-chat -->
           </div>
-          <!-- /.card -->
         </div>
         <!-- /.col -->
       </div>

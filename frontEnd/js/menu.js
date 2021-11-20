@@ -9,6 +9,8 @@ fetch(`http://localhost:8787/condomino/${userId}`).then(result => result.json())
   $('#apartamento').html(user.cpf)
 })
 
+let i = 0
+
 //SISTEMA DE LOGOUT
 $('.logout').click(()=>{
     sessionStorage.userName = null
@@ -363,24 +365,57 @@ $('#verMensagens').click(()=>{
   $('#tabelaDisplay').css('display','none')
   $('#caixaMensagens').css('display','flex')
   $('#caixaEmail').html(' ')
-  fetch(`http://localhost:8787/mensagens/resposta/${userId}`).then(result => result.json()).then(mensagem => {
-      $('.remetente').html(mensagem[0].remetente)
-      $('.apartamento').html(mensagem[0].apartamento)
+  $('#historicoMensagens').html(' ')
+  i = 0
+  fetch(`http://localhost:8787/mensagens/resposta/${userId}`).then(result => result.json()).then(respostas => {
+    fetch(`http://localhost:8787/mensagens/pergunta/${userId}`).then(result => result.json()).then(perguntas => {
+            respostas.forEach((element2)=>{
+              console.log(i)
+             
+              $('#historicoMensagens').prepend(`
 
-    mensagem.forEach(element => {
-      $('#caixaEmail').prepend(`
+              <div class="direct-chat-messages">
+              <!-- Message. Default to the left -->
+              <div class="direct-chat-msg">
+                <div class="direct-chat-infos clearfix">
+                </div>
+                <!-- /.direct-chat-infos -->
+                <img class="direct-chat-img" src="/frontEnd/images/user.png">
+                <!-- /.direct-chat-img -->
+                <span>Você</span>
+                <span class="direct-chat-timestamp float-right"> ${perguntas[i].dataRegistro}  </span>
+                <div class="direct-chat-text">
+                ${perguntas[i].texto}
+                </div>
+                <!-- /.direct-chat-text -->
+              </div>
+              <!-- /.direct-chat-msg -->
+  
+              <!-- Message to the right -->
+              <div class="direct-chat-msg right">
+                <div class="direct-chat-infos clearfix">
+                <span class="direct-chat-name float-right">Síndico</span>
+                <span class="direct-chat-timestamp float-left"> ${element2.dataRegistro} </span>
+                </div>
+                <!-- /.direct-chat-infos -->
+                <img class="direct-chat-img" src="/frontEnd/images/user.png">
+                <!-- /.direct-chat-img -->
+                <div class="direct-chat-text">
 
-              <p>
-                Enviado na data: ${element.dataRegistro} 
-              </p>
-              <h3>
-                  ${element.assunto}
-              </h3>
-              <p>
-                  ${element.texto} 
-              </p>
-              <hr>
-      `)
-    });
+                ${element2.texto} 
+
+                </div>
+                <!-- /.direct-chat-text -->
+              </div>
+              <!-- /.direct-chat-msg -->
+            </div>
+              
+              `)
+              if(i <= respostas.length){
+                i = i + 1
+              }
+            
+          })
+    })
   })
 })
