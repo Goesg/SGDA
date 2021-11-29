@@ -3,13 +3,16 @@ if(sessionStorage.userId == " " || sessionStorage.userId == undefined || session
     window.location.href = "/frontEnd/index.html"
 }
 let userId = sessionStorage.userId
+let imgPath;
 
 fetch(`http://localhost:8787/condomino/${userId}`).then(result => result.json()).then(user => {
   $('#UserName').html(user.nome)
   $('#apartamento').html('Apt '+ user.apartamento)
   if(user.sexo[0] == 'f' || user.sexo[0] == 'F'){
+    imgPath = "/frontEnd/images/profileF.png"
     $('.photo').attr('src','/frontEnd/images/profileF.png')
   }else{
+    imgPath = "/frontEnd/images/profile.png"
     $('.photo').attr('src','/frontEnd/images/profile.png')
   }
 })
@@ -395,7 +398,7 @@ $('#verMensagens').click(()=>{
                 <div class="direct-chat-infos clearfix">
                 </div>
                 <!-- /.direct-chat-infos -->
-                <img class="direct-chat-img" src="/frontEnd/images/user.png">
+                <img class="direct-chat-img" src="${imgPath}">
                 <!-- /.direct-chat-img -->
                 <span>Você</span>
                 <span class="direct-chat-timestamp float-right"> ${perguntas[i].dataRegistro}  </span>
@@ -413,7 +416,7 @@ $('#verMensagens').click(()=>{
                 <span class="direct-chat-timestamp float-left"> ${element2.dataRegistro} </span>
                 </div>
                 <!-- /.direct-chat-infos -->
-                <img class="direct-chat-img" src="/frontEnd/images/user.png">
+                <img class="direct-chat-img" src="/frontEnd/images/profile.png">
                 <!-- /.direct-chat-img -->
                 <div class="direct-chat-text">
 
