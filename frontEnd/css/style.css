@@ -217,19 +217,25 @@ tr {
 }
 
 th {
-  background-color: #0a0a0a74;
-  color: white;
+  background-color: #181818c9 !important;
+  color: #dfdfdf;
   width: 25%;
-  color: white;
   text-align: center;
-  font-size: 12px;
+  font-size: 1.3em;
+  letter-spacing: 2px;
+}
+
+th:hover {
+  background-color: #00dc25af !important ;
+  font-size: 1.8em;
 }
 
 td {
   text-align: center;
-  background-color: #ffffff6d !important;
+  background-color: #ffffff85 !important;
   font-weight: 500;
-  border: 1px solid #ddd;
+  font-size: 1.4em;
+  letter-spacing: 1.7px;
 }
 
 #btnBoleto {
@@ -244,7 +250,7 @@ td {
   color: #ffff;
 }
 
-.navBar{
+.navBar {
   height: 4em;
   background-color: rgb(0 0 0 / 78%);
   display: flex;

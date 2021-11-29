@@ -6,8 +6,14 @@ let userId = sessionStorage.userId
 
 fetch(`http://localhost:8787/condomino/${userId}`).then(result => result.json()).then(user => {
   $('#UserName').html(user.nome)
-  $('#apartamento').html(user.cpf)
+  $('#apartamento').html('Apt '+ user.apartamento)
+  if(user.sexo[0] == 'f' || user.sexo[0] == 'F'){
+    $('.photo').attr('src','/frontEnd/images/profileF.png')
+  }else{
+    $('.photo').attr('src','/frontEnd/images/profile.png')
+  }
 })
+
 
 let i = 0
 
@@ -23,6 +29,7 @@ $('.logout').click(()=>{
 
 // EXIBIR INFOS BÁSICAS DO USUARIO
 $('#meusDados').click(()=>{
+    $('#apresentacao').css('display','none')
     $('#formDisplay').css('display','none')
     $('#caixaMensagens').css('display','none')
     $('#mensagemDisplay').css('display','none')
@@ -98,6 +105,7 @@ $('#meusDados').click(()=>{
 
 // EXIBIR FUNCIONÁRIOS
 $('#tabelaFuncionarios').click(()=>{
+  $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
   $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
@@ -136,6 +144,7 @@ $('#tabelaFuncionarios').click(()=>{
 
 // EXIBIR PRESTADORES
 $('#tabelaPrestadores').click(()=>{
+  $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
   $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
@@ -172,6 +181,7 @@ $('#tabelaPrestadores').click(()=>{
 
 // EXIBIR EVENTOS
 $('#tabelaEventos').click(()=>{
+  $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
   $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
@@ -208,6 +218,7 @@ $('#tabelaEventos').click(()=>{
 
 // EXIBIR NOTICIAS
 $('#tabelaNoticias').click(()=>{
+  $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
   $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
@@ -242,6 +253,7 @@ $('#tabelaNoticias').click(()=>{
 
 // EXIBIR MINHAS SOLICITACOES
 $('#tabelaSolicitacoes').click(()=>{
+  $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
   $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
@@ -286,6 +298,7 @@ $('#tabelaSolicitacoes').click(()=>{
 
 // EXIBIR MINHAS RESERVAS
 $('#tabelaReserva').click(()=>{
+  $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
   $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
@@ -324,6 +337,7 @@ $('#tabelaReserva').click(()=>{
 
 // EXIBIR MINHAS ENCOMENDAS
 $('#tabelaEncomendas').click(()=>{
+  $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#caixaMensagens').css('display','none')
@@ -360,6 +374,7 @@ $('#tabelaEncomendas').click(()=>{
 
 // EXIBIR MINHAS MENSAGENS
 $('#verMensagens').click(()=>{
+  $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#tabelaDisplay').css('display','none')
