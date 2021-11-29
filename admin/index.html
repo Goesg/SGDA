@@ -31,7 +31,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="dist/img/24962.png" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -541,13 +541,35 @@
         oitoCondominos = condominos
       }
       oitoCondominos.forEach(element => {
-        $('#tabelaCondominos').prepend(`
+        if(element.sexo){
+          if(element.sexo[0] == 'F' || element.sexo[0] == 'f'){
+            $('#tabelaCondominos').prepend(`
           <li>
-                <img src="dist/img/user1-128x128.jpg" alt="User Image">
+                <img src="dist/img/profileF.png" alt="User Image" style="max-width:60%; !important">
+                <a class="users-list-name" href="#">${element.nome}</a>
+                <span class="users-list-date">${element.dataCadastro}</span>
+          </li>
+         `)
+          }else{
+            $('#tabelaCondominos').prepend(`
+          <li>
+                <img src="dist/img/profile.png" alt="User Image" style="max-width:60%; !important">
+                <a class="users-list-name" href="#">${element.nome}</a>
+                <span class="users-list-date">${element.dataCadastro}</span>
+          </li>
+         `)
+          }
+         
+        }else{
+          $('#tabelaCondominos').prepend(`
+          <li>
+                <img src="dist/img/profile.png" alt="User Image" style="max-width:60%; !important">
                 <a class="users-list-name" href="#">${element.nome}</a>
                 <span class="users-list-date">${element.dataCadastro}</span>
           </li>
       `)
+        }
+        
       })
   })
 
@@ -562,13 +584,34 @@
         oitovisitas = visitas
       }
       oitovisitas.forEach(element => {
-        $('#tabelaVisitas').prepend(`
+        if(element.sexo){
+          if(element.sexo[0] == "f" || element.sexo[0] == "F"){
+              $('#tabelaVisitas').prepend(`
+            <li>
+                  <img src="dist/img/profileF.png" alt="User Image" style="max-width:60%; !important">
+                  <a class="users-list-name" href="#">${element.nome}</a>
+                  <span class="users-list-date">${element.dataEntrada}</span>
+            </li>
+          `)
+          }else{
+            $('#tabelaVisitas').prepend(`
           <li>
-                <img src="dist/img/user1-128x128.jpg" alt="User Image">
+                <img src="dist/img/profileF.png" alt="User Image" style="max-width:60%; !important">
+                <a class="users-list-name" href="#">${element.nome}</a>
+                <span class="users-list-date">${element.dataEntrada}</span>
+          </li>
+          `)
+          }
+        }else{
+          $('#tabelaVisitas').prepend(`
+          <li>
+                <img src="dist/img/profile.png" alt="User Image" style="max-width:60%; !important">
                 <a class="users-list-name" href="#">${element.nome}</a>
                 <span class="users-list-date">${element.dataEntrada}</span>
           </li>
       `)
+        }
+        
       })
   })
 
