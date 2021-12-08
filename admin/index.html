@@ -730,6 +730,7 @@ $(function () {
       labels: ['JAN','FEV','MAR','ABR','MAI','JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'],
       datasets: [
         {
+          label :'Lucro',
           backgroundColor: '#007bff',
           borderColor: '#007bff',
           data: arrLucros
@@ -816,6 +817,7 @@ var $salesChart2 = $('#sales-chart2')
       labels: ['Piscina','Salão','Quadra','Campo','Churrasqueira'],
       datasets: [
         {
+          label :'Local',
           backgroundColor: '#6f42c1',
           borderColor: '#6f42c1',
           data: arrReservas
@@ -947,6 +949,7 @@ var $salesChart2 = $('#sales-chart2')
     data: {
       labels: ['JAN','FEV','MAR','ABR','MAI','JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'],
       datasets: [{
+        label :'Adimplentes',
         type: 'line',
         data: arrAdimplentes,
         backgroundColor: 'transparent',
@@ -954,13 +957,14 @@ var $salesChart2 = $('#sales-chart2')
         pointBorderColor: '#09ef3e',
         pointBackgroundColor: '#09ef3e',
         fill: false,
-         pointHoverBackgroundColor: '#28a745',
-         pointHoverBorderColor    : '#28a745'
+        //  pointHoverBackgroundColor: '#28a745',
+        //  pointHoverBorderColor    : '#28a745'
       },
       {
+        label :'Inadimplentes',
         type: 'line',
         data: arrInadimplentes,
-        backgroundColor: 'tansparent',
+        backgroundColor: 'transparent',
         borderColor: '#e50a1f',
         pointBorderColor: '#e50a1f',
         pointBackgroundColor: '#e50a1f',
