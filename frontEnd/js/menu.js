@@ -36,6 +36,7 @@ $('#meusDados').click(()=>{
     $('#formDisplay').css('display','none')
     $('#caixaMensagens').css('display','none')
     $('#mensagemDisplay').css('display','none')
+    $('iframe').css('display','none')
     $('#tabelaDisplay').css('display','flex')
     fetch(`http://localhost:8787/condomino/${userId}`).then(result => result.json()).then(user => {
         $("#tabelaDisplay").html(` 
@@ -111,6 +112,7 @@ $('#tabelaFuncionarios').click(()=>{
   $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
   $('#caixaMensagens').css('display','none')
+  $('iframe').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#tabelaDisplay').css('display','flex')
   fetch(`http://localhost:8787/funcionarios`).then(result => result.json()).then(dados => {
@@ -149,6 +151,7 @@ $('#tabelaFuncionarios').click(()=>{
 $('#tabelaPrestadores').click(()=>{
   $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
+  $('iframe').css('display','none')
   $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#tabelaDisplay').css('display','flex')
@@ -186,6 +189,7 @@ $('#tabelaPrestadores').click(()=>{
 $('#tabelaEventos').click(()=>{
   $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
+  $('iframe').css('display','none')
   $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#tabelaDisplay').css('display','flex')
@@ -223,6 +227,7 @@ $('#tabelaEventos').click(()=>{
 $('#tabelaNoticias').click(()=>{
   $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
+  $('iframe').css('display','none')
   $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#tabelaDisplay').css('display','flex')
@@ -258,6 +263,7 @@ $('#tabelaNoticias').click(()=>{
 $('#tabelaSolicitacoes').click(()=>{
   $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
+  $('iframe').css('display','none')
   $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#tabelaDisplay').css('display','flex')
@@ -303,6 +309,7 @@ $('#tabelaSolicitacoes').click(()=>{
 $('#tabelaReserva').click(()=>{
   $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
+  $('iframe').css('display','none')
   $('#caixaMensagens').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#tabelaDisplay').css('display','flex')
@@ -342,6 +349,7 @@ $('#tabelaReserva').click(()=>{
 $('#tabelaEncomendas').click(()=>{
   $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
+  $('iframe').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#caixaMensagens').css('display','none')
   $('#tabelaDisplay').css('display','flex')
@@ -379,6 +387,7 @@ $('#tabelaEncomendas').click(()=>{
 $('#verMensagens').click(()=>{
   $('#apresentacao').css('display','none')
   $('#formDisplay').css('display','none')
+  $('iframe').css('display','none')
   $('#mensagemDisplay').css('display','none')
   $('#tabelaDisplay').css('display','none')
   $('#caixaMensagens').css('display','flex')

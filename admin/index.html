@@ -432,42 +432,154 @@
             <!--/.card -->
           </div>
         </div>
-
-           <!-- TABLE: LATEST ORDERS -->
-           <div class="card">
-            <div class="card-header border-transparent">
-              <h3 class="card-title">Últimas Solicitações</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-                
+         
+        <!-- TABELA GERENCIAL -->
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="d-flex justify-content-between">
+                <h3 class="card-title">Gerencial</h3>
               </div>
             </div>
-            <!-- /.card-header -->
-            <div class="card-body p-0">
-              <div class="table-responsive">
-                <table class="table m-0">
-                  <thead>
-                  <tr>
-                    <th>Condômino</th>
-                    <th>Apartamento</th>
-                    <th>Tipo</th>
-                    <th>Data solicitação</th>
-                  </tr>
-                  </thead>
-                  <tbody id="tabelaSolicitacoes">
-                 
-                 
-                  </tbody>
-                </table>
+            <div class="card-body">
+              <div class="d-flex">
+                <p class="d-flex flex-column">
+                  <span class="text-bold text-lg">$18,230.00</span>
+                  <span>Valor Arrecadado</span>
+                </p>
+              
               </div>
-              <!-- /.table-responsive -->
+              <!-- /.d-flex -->
+
+              <div class="position-relative mb-4">
+                <canvas id="sales-chart" height="200"></canvas>
+              </div>
+
+              <div class="d-flex flex-row justify-content-end">
+               
+               
+              </div>
             </div>
-            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
         </div>
-        <!-- /.row (main row) -->
+        <!-- TABELA GERENCIAL -->
+
+
+
+        <!-- TABELA DE RESERVAS -->
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="d-flex justify-content-between">
+                <h3 class="card-title">Reservas</h3>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="d-flex">
+                <p class="d-flex flex-column">
+                  <span class="text-bold text-lg">820</span>
+                  <span>Reservas por semana</span>
+                </p>
+               
+              </div>
+              <!-- /.d-flex -->
+
+              <div class="position-relative mb-4">
+                <canvas id="visitors-chart" height="200"></canvas>
+              </div>
+
+              <div class="d-flex flex-row justify-content-end">
+                <span class="mr-2">
+                  <i class="fas fa-square text-primary"></i> Semana Atual
+                </span>
+
+                <span>
+                  <i class="fas fa-square text-gray"></i> Semana Passada
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- /.card -->
+        <!-- TABELA DE RESERVAS -->
+
+
+
+
+          <!-- TABELAS DE INADIMPLENTES -->
+
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-header border-0">
+                <div class="d-flex justify-content-between">
+                  <h3 class="card-title">Inadimplentes</h3>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="d-flex">
+                  <p class="d-flex flex-column">
+                    <span class="text-bold text-lg">$18,230.00</span>
+                    <span>Valor Arrecadado</span>
+                  </p>
+                
+                </div>
+                <!-- /.d-flex -->
+  
+                <div class="position-relative mb-4">
+                  <canvas id="sales-chart2" height="200"></canvas>
+                </div>
+  
+                <div class="d-flex flex-row justify-content-end">
+                 
+                 
+                </div>
+              </div>
+            </div>
+            <!-- /.card -->
+          </div>
+
+
+
+        <!-- TABELAS DE INADIMPLENTES -->
+
+
+        <!-- TABELAS DE ULTIMAS SOLICITACOES -->
+
+        <div class="card">
+          <div class="card-header border-transparent">
+            <h3 class="card-title">Últimas Solicitações</h3>
+ 
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+              
+            </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table m-0">
+                <thead>
+                <tr>
+                  <th>Condômino</th>
+                  <th>Apartamento</th>
+                  <th>Tipo</th>
+                  <th>Data solicitação</th>
+                </tr>
+                </thead>
+                <tbody id="tabelaSolicitacoes">
+               
+                </tbody>
+              </table>
+            </div>
+  <!-- TABELAS DE ULTIMAS SOLICITACOES -->
+
+ 
+  <!-- /.card -->
+
+
+
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -493,13 +605,11 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
+
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<!-- <script src="plugins/chart.js/Chart.min.js"></script> -->
 <!-- Sparkline -->
 <script src="plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
@@ -527,6 +637,233 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+ /* global Chart:false */
+
+$(function () {
+  'use strict'
+
+  var ticksStyle = {
+    fontColor: '#495057',
+    fontStyle: 'bold'
+  }
+
+  var mode = 'index'
+  var intersect = true
+
+  var $salesChart = $('#sales-chart')
+  // eslint-disable-next-line no-unused-vars
+  var salesChart = new Chart($salesChart, {
+    type: 'bar',
+    data: {
+      labels: ['JAN','FEV','MAR','ABR','MAI','JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'],
+      datasets: [
+        {
+          backgroundColor: '#007bff',
+          borderColor: '#007bff',
+          data: [1000, 2000, 3000, 2500, 2700, 2500, 3000,20000]
+        }
+      ]
+    },
+    options: {
+      maintainAspectRatio: false,
+      tooltips: {
+        mode: mode,
+        intersect: intersect
+      },
+      hover: {
+        mode: mode,
+        intersect: intersect
+      },
+      legend: {
+        display: false
+      },
+      scales: {
+        yAxes: [{
+          // display: false,
+          gridLines: {
+            display: true,
+            lineWidth: '4px',
+            color: 'rgba(0, 0, 0, .2)',
+            zeroLineColor: 'transparent'
+          },
+          ticks: $.extend({
+            beginAtZero: true,
+
+            // Include a dollar sign in the ticks
+            callback: function (value) {
+              if (value >= 1000) {
+                value /= 1000
+                value += 'k'
+              }
+
+              return '$' + value
+            }
+          }, ticksStyle)
+        }],
+        xAxes: [{
+          display: true,
+          gridLines: {
+            display: false
+          },
+          ticks: ticksStyle
+        }]
+      }
+    }
+  })
+
+///////////////
+
+
+var $salesChart2 = $('#sales-chart2')
+  // eslint-disable-next-line no-unused-vars
+  var salesChart2 = new Chart($salesChart2, {
+    type: 'bar',
+    data: {
+      labels: ['JAN','FEV','MAR','ABR','MAI','JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'],
+      datasets: [
+        {
+          backgroundColor: '#007bff',
+          borderColor: '#007bff',
+          data: [1000, 2000, 3000, 2500, 2700, 2500, 3000,20000]
+        }
+      ]
+    },
+    options: {
+      maintainAspectRatio: false,
+      tooltips: {
+        mode: mode,
+        intersect: intersect
+      },
+      hover: {
+        mode: mode,
+        intersect: intersect
+      },
+      legend: {
+        display: false
+      },
+      scales: {
+        yAxes: [{
+          // display: false,
+          gridLines: {
+            display: true,
+            lineWidth: '4px',
+            color: 'rgba(0, 0, 0, .2)',
+            zeroLineColor: 'transparent'
+          },
+          ticks: $.extend({
+            beginAtZero: true,
+
+            // Include a dollar sign in the ticks
+            callback: function (value) {
+              if (value >= 1000) {
+                value /= 1000
+                value += 'k'
+              }
+
+              return '$' + value
+            }
+          }, ticksStyle)
+        }],
+        xAxes: [{
+          display: true,
+          gridLines: {
+            display: false
+          },
+          ticks: ticksStyle
+        }]
+      }
+    }
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  var $visitorsChart = $('#visitors-chart')
+  // eslint-disable-next-line no-unused-vars
+  var visitorsChart = new Chart($visitorsChart, {
+    data: {
+      labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+      datasets: [{
+        type: 'line',
+        data: [100, 120, 170, 167, 180, 177, 160],
+        backgroundColor: 'transparent',
+        borderColor: '#007bff',
+        pointBorderColor: '#007bff',
+        pointBackgroundColor: '#007bff',
+        fill: false
+        // pointHoverBackgroundColor: '#007bff',
+        // pointHoverBorderColor    : '#007bff'
+      },
+      {
+        type: 'line',
+        data: [60, 80, 70, 67, 80, 77, 100],
+        backgroundColor: 'tansparent',
+        borderColor: '#ced4da',
+        pointBorderColor: '#ced4da',
+        pointBackgroundColor: '#ced4da',
+        fill: false
+        // pointHoverBackgroundColor: '#ced4da',
+        // pointHoverBorderColor    : '#ced4da'
+      }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      tooltips: {
+        mode: mode,
+        intersect: intersect
+      },
+      hover: {
+        mode: mode,
+        intersect: intersect
+      },
+      legend: {
+        display: false
+      },
+      scales: {
+        yAxes: [{
+          // display: false,
+          gridLines: {
+            display: true,
+            lineWidth: '4px',
+            color: 'rgba(0, 0, 0, .2)',
+            zeroLineColor: 'transparent'
+          },
+          ticks: $.extend({
+            beginAtZero: true,
+            suggestedMax: 200
+          }, ticksStyle)
+        }],
+        xAxes: [{
+          display: true,
+          gridLines: {
+            display: false
+          },
+          ticks: ticksStyle
+        }]
+      }
+    }
+  })
+})
+
+// lgtm [js/unused-local-variable]
+
+</script>
 
 
 <script>
@@ -643,7 +980,6 @@
     $('#numFuncionarios').html(funcionarios.length)
 
   })
-
 
 
 

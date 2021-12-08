@@ -225,11 +225,6 @@ th {
   letter-spacing: 2px;
 }
 
-th:hover {
-  background-color: #00dc25af !important ;
-  font-size: 1.8em;
-}
-
 td {
   text-align: center;
   background-color: #ffffff85 !important;
