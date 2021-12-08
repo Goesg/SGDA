@@ -438,14 +438,14 @@
           <div class="card">
             <div class="card-header border-0">
               <div class="d-flex justify-content-between">
-                <h3 class="card-title">Gerencial</h3>
+                <h3 class="card-title">Relatório gerencial</h3>
               </div>
             </div>
             <div class="card-body">
               <div class="d-flex">
                 <p class="d-flex flex-column">
-                  <span class="text-bold text-lg">$18,230.00</span>
-                  <span>Valor Arrecadado</span>
+                  <span id="lucro" class="text-bold text-lg">R$0</span>
+                  <span>Total arrecadado por mês</span>
                 </p>
               
               </div>
@@ -472,14 +472,14 @@
           <div class="card">
             <div class="card-header border-0">
               <div class="d-flex justify-content-between">
-                <h3 class="card-title">Reservas</h3>
+                <h3 class="card-title">Relátorio de pagamento</h3>
               </div>
             </div>
             <div class="card-body">
               <div class="d-flex">
                 <p class="d-flex flex-column">
-                  <span class="text-bold text-lg">820</span>
-                  <span>Reservas por semana</span>
+                  <span id="dividas" class="text-bold text-lg">R$ 0</span>
+                  <span>Alugueis atrasados</span>
                 </p>
                
               </div>
@@ -491,11 +491,11 @@
 
               <div class="d-flex flex-row justify-content-end">
                 <span class="mr-2">
-                  <i class="fas fa-square text-primary"></i> Semana Atual
+                  <i class="fas fa-square text-success"></i> Adimplentes
                 </span>
 
                 <span>
-                  <i class="fas fa-square text-gray"></i> Semana Passada
+                  <i class="fas fa-square text-danger"></i> Inadimplentes
                 </span>
               </div>
             </div>
@@ -512,14 +512,13 @@
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Inadimplentes</h3>
+                  <h3 class="card-title">Reservas</h3>
                 </div>
               </div>
               <div class="card-body">
                 <div class="d-flex">
                   <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">$18,230.00</span>
-                    <span>Valor Arrecadado</span>
+                    <span>Reservas por espaço</span>
                   </p>
                 
                 </div>
@@ -645,6 +644,74 @@
  /* global Chart:false */
 
 $(function () {
+  fetch('http://localhost:8787/boletos').then(result => result.json())
+  .then(boletos=> {
+    fetch('http://localhost:8787/condominos').then(result => result.json())
+    .then(condominos => {
+      fetch('http://localhost:8787/reservas').then(result => result.json())
+    .then(reservas => {
+   
+    let lucro = 0
+    let arrLucros = [0,0,0,0,0,0,0,0,0,0,0,0]
+
+
+    boletos.forEach(item =>{
+        let valor;
+        if(item.valorPago == "") valor = 0
+        else{valor = parseInt(item.valorPago)}
+       
+        lucro = lucro + valor
+        
+        let dataRegExp = /(\d{2})\/(\d{2})\/(\d{4})/
+        let data = item.dataPagamento
+        let mes = parseInt(data.replace(dataRegExp, '$2'))
+
+        switch(mes){
+          case 01:
+            arrLucros[0] += valor
+            break;
+            case 02:
+            arrLucros[1] += valor
+            break;
+            case 03:
+            arrLucros[2] += valor
+            break;
+            case 04:
+            arrLucros[3] += valor
+            break;
+            case 05:
+            arrLucros[4] += valor
+            break;              
+            case 06:
+            arrLucros[5] += valor
+            break;
+            case 07:
+            arrLucros[6] += valor
+            break;
+            case 08:
+            arrLucros[7] += valor
+            break;
+            case 09:
+            arrLucros[8] += valor
+            break;
+            case 10:
+            arrLucros[9] += valor
+            break;
+            case 11:
+            arrLucros[10] += valor
+            break;
+            case 12:
+            arrLucros[11] += valor
+            break;
+        }
+    })    
+
+
+    $('#lucro').html(`R$ ${lucro},00`)
+    
+    
+   
+
   'use strict'
 
   var ticksStyle = {
@@ -665,7 +732,7 @@ $(function () {
         {
           backgroundColor: '#007bff',
           borderColor: '#007bff',
-          data: [1000, 2000, 3000, 2500, 2700, 2500, 3000,20000]
+          data: arrLucros
         }
       ]
     },
@@ -716,20 +783,42 @@ $(function () {
     }
   })
 
-///////////////
+///////////////////////////////////////////////
+  let arrReservas = [0,0,0,0,0]
 
+  reservas.forEach(item => {
+    let espaco = item.tipo
+    switch(espaco){
+      case "Piscina":
+      arrReservas[0] += 1
+      break;
+      case "Salão":
+      arrReservas[1] += 1
+      break;
+      case "Quadra":
+      arrReservas[2] += 1
+      break;
+      case "Campo":
+      arrReservas[3] += 1
+      break;
+      case "Churrasqueira":
+      arrReservas[4] += 1
+      break;
+    }
+  })
 
-var $salesChart2 = $('#sales-chart2')
+var $salesChart2 = $('#sales-chart2') 
   // eslint-disable-next-line no-unused-vars
+  
   var salesChart2 = new Chart($salesChart2, {
     type: 'bar',
     data: {
-      labels: ['JAN','FEV','MAR','ABR','MAI','JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'],
+      labels: ['Piscina','Salão','Quadra','Campo','Churrasqueira'],
       datasets: [
         {
-          backgroundColor: '#007bff',
-          borderColor: '#007bff',
-          data: [1000, 2000, 3000, 2500, 2700, 2500, 3000,20000]
+          backgroundColor: '#6f42c1',
+          borderColor: '#6f42c1',
+          data: arrReservas
         }
       ]
     },
@@ -781,42 +870,100 @@ var $salesChart2 = $('#sales-chart2')
   })
 
 
+//////////////////////////////////////
 
+  let qntdC = condominos.length
+  let arrAdimplentes = [0,0,0,0,0,0,0,0,0,0,0,0]
+  let arrInadimplentes = [qntdC,qntdC,qntdC,qntdC,qntdC,qntdC,qntdC,qntdC,qntdC,qntdC,qntdC,qntdC]
+  let totalDividas = 0
 
+  boletos.forEach(item => {
 
+        let dataRegExp = /(\d{2})\/(\d{2})\/(\d{4})/
+        let data = item.dataPagamento
+        let mes = parseInt(data.replace(dataRegExp, '$2'))
 
+        switch(mes){
+          case 01:
+            arrInadimplentes[0] -= 1
+            arrAdimplentes[0] += 1
+            break;
+            case 02:
+            arrInadimplentes[1] -= 1 
+            arrAdimplentes[1] += 1
+            break;
+            case 03:
+            arrInadimplentes[2] -= 1 
+            arrAdimplentes[2] += 1
+            break;
+            case 04:
+            arrInadimplentes[3] -= 1 
+            arrAdimplentes[3] += 1
+            break;
+            case 05:
+            arrInadimplentes[4] -= 1 
+            arrAdimplentes[4] += 1
+            break;              
+            case 06:
+            arrInadimplentes[5] -= 1 
+            arrAdimplentes[5] += 1
+            break;
+            case 07:
+            arrInadimplentes[6] -= 1 
+            arrAdimplentes[6] += 1
+            break;
+            case 08:
+            arrInadimplentes[7] -= 1 
+            arrAdimplentes[7] += 1
+            break;
+            case 09:
+            arrInadimplentes[8] -= 1 
+            arrAdimplentes[8] += 1
+            break;
+            case 10:
+            arrInadimplentes[9] -= 1 
+            arrAdimplentes[9] += 1
+            break;
+            case 11:
+            arrInadimplentes[10] -= 1 
+            arrAdimplentes[10] += 1
+            break;
+            case 12:
+            arrInadimplentes[11] -= 1 
+            arrAdimplentes[11] += 1
+            break;
+        }
+  })
 
+  for(let item of arrInadimplentes){
+    totalDividas = totalDividas + (1200 * item)
+  }
 
-
-
-
-
-
-
+  $("#dividas").html(`R$ ${totalDividas},00`)
 
   var $visitorsChart = $('#visitors-chart')
   // eslint-disable-next-line no-unused-vars
   var visitorsChart = new Chart($visitorsChart, {
     data: {
-      labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+      labels: ['JAN','FEV','MAR','ABR','MAI','JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'],
       datasets: [{
         type: 'line',
-        data: [100, 120, 170, 167, 180, 177, 160],
+        data: arrAdimplentes,
         backgroundColor: 'transparent',
-        borderColor: '#007bff',
-        pointBorderColor: '#007bff',
-        pointBackgroundColor: '#007bff',
-        fill: false
-        // pointHoverBackgroundColor: '#007bff',
-        // pointHoverBorderColor    : '#007bff'
+        borderColor: '#09ef3e',
+        pointBorderColor: '#09ef3e',
+        pointBackgroundColor: '#09ef3e',
+        fill: false,
+         pointHoverBackgroundColor: '#28a745',
+         pointHoverBorderColor    : '#28a745'
       },
       {
         type: 'line',
-        data: [60, 80, 70, 67, 80, 77, 100],
+        data: arrInadimplentes,
         backgroundColor: 'tansparent',
-        borderColor: '#ced4da',
-        pointBorderColor: '#ced4da',
-        pointBackgroundColor: '#ced4da',
+        borderColor: '#e50a1f',
+        pointBorderColor: '#e50a1f',
+        pointBackgroundColor: '#e50a1f',
         fill: false
         // pointHoverBackgroundColor: '#ced4da',
         // pointHoverBorderColor    : '#ced4da'
@@ -859,6 +1006,9 @@ var $salesChart2 = $('#sales-chart2')
       }
     }
   })
+})
+})
+})
 })
 
 // lgtm [js/unused-local-variable]
